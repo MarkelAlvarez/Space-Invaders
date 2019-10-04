@@ -10,8 +10,11 @@ import java.util.Scanner;
 public class Game {
 
 	private Ovni Ovni;
+	private RegularShip RegularShip;
+	private DestroyerShip DestroyerShip;
 	private UCMShip UCMShip;
 	private UCMShipLaser UCMShipLaser;
+	private Bomb Bomb;
 	
 	private Boolean end;
 	private Boolean sentido;
@@ -47,29 +50,26 @@ public class Game {
 	}
 	
 	/*USER COMMAND*/
-	public String leerComando() {
+	
+	public void shoot() {
+		if(UCMShip.getLaser()) {
+			System.out.println("Ya hay un laser en pantalla.");
+		}
+		else {
+			UCMShipLaser = new UCMShipLaser(UCMShip.getPosX(), UCMShip.getPosY());
+			UCMShip.setLaser(true);
+		}
 		
-		return "";
 	}
 	
-	public String move() {
-		
-		return "";
-	}
-	
-	public String shoot() {
-		
-		return "";
-	}
-	
-	public String shockwave() {
+	public void shockwave() {
 			
-		return "";
+	
 	}
 	
-	public String reset() {
+	public void reset() {
 		
-		return "";
+		
 	}
 	
 	public void help() {
@@ -86,17 +86,15 @@ public class Game {
 	}
 	
 	public void list() {
-		
-		System.out.print("[R]egular ship: Points: 5 - Harm: 0 - Shield: 2\n");
-		System.out.print("[D]estroyer ship: Points: 10 - Harm: 1 - Shield: 1\n");
-		System.out.print("[O]vni: Points: 25 - Harm: 0 - Shield: 1\n");
-		System.out.print("^__^: Harm: 1 - Shield: 3\n");	
+		System.out.print("[R]egular ship: Points: " + RegularShip.getPuntos() + " - Harm: 0 - Shield: "
+		+ RegularShip.getResist() + "\n");
+		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.getPuntos() + 
+				" - Harm: " + Bomb.getDamage() + " - Shield: " + DestroyerShip.getResist() + "\n");
+		System.out.print("[O]vni: Points: " + Ovni.getPuntos() + " - Harm: 0 - Shield: " + Ovni.getResist() + "\n");
+		System.out.print(UCMShip.getIcono() + ": Harm: " + UCMShipLaser.getDamage() + 
+				" - Shield: " + UCMShip.getResist() + "\n");	
 	}
-	
-	public String none() {
-		
-		return "";
-	}
+
 	public String exit() {
 		
 		return null;		
@@ -145,9 +143,7 @@ public class Game {
 		else if ((comando.equalsIgnoreCase("shockwave")) || (comando.equals("W"))) {
 			shockwave();
 		}
-		else if ((comando.equalsIgnoreCase("none")) || (comando.equals("N"))) {
-			none();
-		}
+		else if ((comando.equalsIgnoreCase("none")) || (comando.equals("N"))) {}
 		else if ((comando.equalsIgnoreCase("list")) || (comando.equals("L"))) {
 			list();
 		}
