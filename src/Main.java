@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		int semilla; 
+		int semilla;
 		Game game;
 		Controller controlador;
 		Scanner scanner;
