@@ -87,10 +87,10 @@ public class Game {
 	
 	public void list() {
 		
-		/*System.out.print("[R]egular ship: Points: " + this. " - Harm: " + this. " - Shield: " + this. "\n");
-		System.out.print("[D]estroyer ship: Points: " + this. " - Harm: " + this. " - Shield: " + this. "\n");
-		System.out.print("[O]vni: " + this. " - Harm: " + this. " - Shield: " + this. "\n");
-		System.out.print("^__^: Harm: " + this. " - Shield: " + this. "\n");*/
+		System.out.print("[R]egular ship: Points: 5 - Harm: 0 - Shield: 2\n");
+		System.out.print("[D]estroyer ship: Points: 10 - Harm: 1 - Shield: 1\n");
+		System.out.print("[O]vni: Points: 25 - Harm: 0 - Shield: 1\n");
+		System.out.print("^__^: Harm: 1 - Shield: 3\n");	
 	}
 	
 	public String none() {
