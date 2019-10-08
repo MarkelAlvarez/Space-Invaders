@@ -17,9 +17,11 @@ public class Game {
 	private Bomb Bomb;
 	
 	private Boolean end;
-	private Boolean sentido;
+	private Boolean sentido; //false es left y true es derecha
 	private Boolean reset;
 	private Level level;
+	private Boolean existOvni;
+	private Move move; 
 	
 	private RegularShipList rList;
 	private DestroyerShipList dList;
@@ -27,7 +29,7 @@ public class Game {
 	
 	private int ciclos;
 	private int puntuacion;
-	private Random rand;
+	private Random rand; 
 	
 	public Game(Level level, Random rand) {
 		this.level = level;
@@ -47,6 +49,7 @@ public class Game {
 		UCMShip = new UCMShip();
 		ciclos = 0;
 		puntuacion = 0;
+		existOvni = false;
 		sentido = false;
 		reset = false;
 	}
@@ -117,15 +120,68 @@ public class Game {
 	}
 	
 	/*COMPUTER ACTION*/
-	public String computerAction() {
-		
-		return "";
+	public void computerAction() {
+		int i = 0;
+		if ((ciclos % level.getSpeed()) == 0) {
+			//Para Regular y Destroyer
+			if (!sentido) {
+				move = Move.LEFT;
+				while (i < rList.getContador()) {
+					if (rList.getList()[i].getPosY() == 0) {
+						move = Move.DOWN;
+						i = rList.getContador();
+					}
+				}
+				i = 0;
+				while (i < dList.getContador()) {
+					if (dList.getList()[i].getPosY() == 0) {
+						move = Move.DOWN;
+						i = dList.getContador();
+					}
+				}
+			}
+			else {
+				move = Move.RIGHT;
+				while (i < rList.getContador()) {
+					if (rList.getList()[i].getPosY() == 8) {
+						move = Move.DOWN;
+						i = rList.getContador();
+					}
+				}
+				i = 0;
+				while (i < dList.getContador()) {
+					if (dList.getList()[i].getPosY() == 8) {
+						move = Move.DOWN;
+						i = dList.getContador();
+					}
+				}
+			}
+			switch(move) {
+			case LEFT:
+				moveAliensLeft();
+				break;
+			case RIGHT:
+				moveAliensRight();
+				break;
+			case DOWN:
+				moveAliensDown();
+				break;
+			default:
+				break;
+			}
+			//Movemos el Ovni
+			if (existOvni) {
+				moveOvni(Ovni);
+			}
+		}
+		//Disparar
+		//double freqDisparo = new Random().nextDouble(); //pendiente
+		//if (level.getShootFrec() > )
 	}
 	
 	/*UPDATE*/
-	public String update() {
+	public void update() {
 		
-		return "";
 	}
 	
 	public String toStringObjectAt(int i, int j) {
@@ -284,6 +340,14 @@ public class Game {
 	
 	public void setReset(Boolean reset) {
 		this.reset = reset;
+	}
+	
+	public Boolean getExistOvni() {
+		return existOvni;
+	}
+	
+	public void setExistOvni(Boolean existOvni) {
+		this.existOvni = existOvni;
 	}
 
 }
