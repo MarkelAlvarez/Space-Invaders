@@ -2,8 +2,6 @@ package tp.p1.lists;
 
 import tp.p1.objects.Bomb;
 
-import tp.p1.objects.Bomb;
-
 public class BombList {
 	private Bomb[] list;
 	private int contador;

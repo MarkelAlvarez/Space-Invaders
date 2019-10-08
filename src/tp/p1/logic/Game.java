@@ -63,8 +63,19 @@ public class Game {
 	}
 	
 	public void shockwave() {
-			
-	
+		for (int i = 0; i < rList.getContador(); i++) {
+			rList.getList()[i].setResist(rList.getList()[i].getResist());
+			if (rList.getList()[i].getResist() == 0) {
+				rList.deleteRegular(rList.getList()[i].getPosX(), rList.getList()[i].getPosY());
+				--i;	//tenemos que volver a comprobar de nuevo esta posicion
+			}
+		}
+		
+		for (int i = 0; i < dList.getContador(); i++) {		//elimino directamente porque solo tiene 1 de vida
+			dList.deleteDestroyer(dList.getList()[i].getPosX(), dList.getList()[i].getPosY());
+		}
+		
+		UCMShip.setShockwave(false);
 	}
 	
 	public void reset() {
