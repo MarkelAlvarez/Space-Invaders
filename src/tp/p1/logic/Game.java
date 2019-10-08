@@ -18,6 +18,7 @@ public class Game {
 	
 	private Boolean end;
 	private Boolean sentido;
+	private Boolean reset;
 	private Level level;
 	
 	private RegularShipList rList;
@@ -35,6 +36,11 @@ public class Game {
 	}
 	
 	public void initGame() {
+		RegularShip = new RegularShip(0, 0);	//inicializamos para tener un modelo para la lista y el toString
+		DestroyerShip = new DestroyerShip(0, 0, 0);
+		Ovni = new Ovni();
+		Bomb = new Bomb(0, 0, 0);
+		UCMShipLaser = new UCMShipLaser(0, 0);
 		rList = new RegularShipList(level.getNumRegularAliens());
 		dList = new DestroyerShipList(level.getNumDestroyerAliens(), level.getLineDestroyer(), level.getColDestroyerAliens());
 		bList = new BombList(level.getNumDestroyerAliens());
@@ -42,6 +48,7 @@ public class Game {
 		ciclos = 0;
 		puntuacion = 0;
 		sentido = false;
+		reset = false;
 	}
 	
 	public String toString() {
@@ -59,7 +66,6 @@ public class Game {
 			UCMShipLaser = new UCMShipLaser(UCMShip.getPosX(), UCMShip.getPosY());
 			UCMShip.setLaser(true);
 		}
-		
 	}
 	
 	public void shockwave() {
@@ -78,9 +84,8 @@ public class Game {
 		UCMShip.setShockwave(false);
 	}
 	
-	public void reset() {
-		
-		
+	public void reset(){
+		setReset(true);
 	}
 	
 	public void help() {
@@ -106,9 +111,9 @@ public class Game {
 				" - Shield: " + UCMShip.getResist() + "\n");	
 	}
 
-	public String exit() {
-		
-		return null;		
+	public void exit() {
+		System.out.println("Game Over");
+		setEnd(true);
 	}
 	
 	/*COMPUTER ACTION*/
@@ -272,4 +277,13 @@ public class Game {
 	public void setPuntuacion(int puntuacion) {
 		this.puntuacion = puntuacion;
 	}
+	
+	public Boolean getReset() {
+		return reset;
+	}
+	
+	public void setReset(Boolean reset) {
+		this.reset = reset;
+	}
+
 }

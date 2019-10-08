@@ -21,13 +21,15 @@ public class Controller {
 	public void run() {
 		
 		game.initGame();
-		while (game.getEnd() == false) {
+		while ((game.getEnd() == false) && (game.getReset() == false)) {
 			draw();
 			game.userCommand(comandoMenu());
 			
 			game.setCiclos(game.getCiclos() + 1);
 		}
-		
+		if (game.getReset()) {
+			run();
+		}
 	}
 
 	public void draw() {
