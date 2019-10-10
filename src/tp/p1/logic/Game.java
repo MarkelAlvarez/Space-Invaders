@@ -203,11 +203,12 @@ public class Game {
 			}
 		}
 		//Disparar
-		/*Random freqDisparo = new Random(semilla);
+		Random freqDisparo = new Random(semilla);
+		
 		if (level.getShootFrec() > 0.5)
 		{
 			
-		}*/
+		}
 	}
 	
 	/*UPDATE*/
@@ -218,31 +219,31 @@ public class Game {
 	
 	public String toStringObjectAt(int i, int j) {
 		
-		if((player.getPosicionX() == i) && (player.getPosicionY() == col))
+		if((UCMShip.getPosX() == i) && (UCMShip.getPosY() == j))
 		{
-			return player.toString();
+			return UCMShip.getIcono();
 		}
-		else if(listaRegularShip.isHere(i, j))
+		else if(rList.isFound(i, j))
 		{
-			return listaRegularShip.toString();
+			return RegularShip.getIcono();
 		}
-		else if(listaDestroyerShipList.isHere(i, j))
+		else if(dList.isFound(i, j))
 		{
-			return listaDestroyerShipList.toString();
+			return DestroyerShip.getIcono();
 		}
-		else if(listaBombList.isHere(i, j))
+		else if(bList.isFound(i, j))
 		{
-			return listaBombList.toString();
-		}
-
-		if((ovni.getPosicionX() == i) && (ovni.getPosicionY() == j))
-		{
-			return player.toString();
+			return Bomb.getIcono();
 		}
 
-		if((misil.getPosicionX() == i) && (misil.getPosicionY() == j))
+		if((Ovni.getPosX() == i) && (Ovni.getPosY() == j))
 		{
-			return player.toString();
+			return UCMShip.getIcono();
+		}
+
+		if((UCMShipLaser.getPosX() == i) && (UCMShipLaser.getPosY() == j))
+		{
+			return UCMShip.getIcono();
 		}
 
 		else
