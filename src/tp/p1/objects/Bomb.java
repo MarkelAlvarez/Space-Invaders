@@ -9,6 +9,7 @@ public class Bomb {
 	private String icono;
 	
 	public Bomb(int x, int y, int ident) {
+
 		damage = 1;
 		posX = x;
 		posY = y;
@@ -16,46 +17,55 @@ public class Bomb {
 		icono = "·";
 	}	
 	
-	//gets && sets
+	/*GETS y SETS*/
 	
 	public int getPosX() {
+
 		return posX;
 	}
 	
 	public void setPosX(int posX) {
+
 		this.posX = posX;
 	}
 	
 	public int getPosY() {
+
 		return posY;
 	}
 	
 	public void setPosY(int posY) {
+
 		this.posY = posY;
 	}
 	
 	public int getDamage() {
+
 		return damage;
 	}
 	
 	public void setDamage(int damage) {
+
 		this.damage = damage;
 	}
 	
 	public int getId() {
+
 		return id;
 	}
 	
 	public void setId(int id) {
+
 		this.id = id;
 	}
 	
 	public String getIcono() {
+
 		return icono;
 	}
 	
 	public void setIcono(String icono) {
+
 		this.icono = icono;
 	}
-
 }

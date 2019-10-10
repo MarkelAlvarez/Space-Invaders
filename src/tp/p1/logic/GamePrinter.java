@@ -22,10 +22,10 @@ public class GamePrinter {
 
 		board = new String[numRows][numCols];
 
-		for(int i = 0; i < numRows; i++) {
-
-			for(int j = 0; j < numCols; j++) {
-
+		for(int i = 0; i < numRows; i++)
+		{
+			for(int j = 0; j < numCols; j++)
+			{
 				board[i][j] = game.toStringObjectAt(i, j); //
 			}
 		}
@@ -46,16 +46,16 @@ public class GamePrinter {
 		
 		str.append(lineDelimiter);
 		
-		for(int i = 0; i < numRows; i++) {
+		for(int i = 0; i < numRows; i++)
+		{
+			str.append(margin).append(vDelimiter);
 
-				str.append(margin).append(vDelimiter);
+			for (int j = 0; j < numCols; j++)
+			{
+				str.append( MyStringUtils.centrar(board[i][j], cellSize)).append(vDelimiter); //center: centrar el string de i, j poniendolo en la mitad de la celda
+			}
 
-				for (int j = 0; j < numCols; j++) {
-
-					str.append( MyStringUtils.centrar(board[i][j], cellSize)).append(vDelimiter); //center: centrar el string de i, j poniendolo en la mitad de la celda
-				}
-
-				str.append(lineDelimiter);
+			str.append(lineDelimiter);
 		}
 
 		return str.toString();

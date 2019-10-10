@@ -19,25 +19,27 @@ public class Game {
 	private Boolean end;
 	private Boolean sentido; //false es left y true es derecha
 	private Boolean reset;
-	private Level level;
 	private Boolean existOvni;
+	private Level level;
 	private Move move; 
 	
 	private RegularShipList rList;
 	private DestroyerShipList dList;
 	private BombList bList;
 	
+	private Random rand; 
 	private int ciclos;
 	private int puntuacion;
-	private Random rand; 
 	
 	public Game(Level level, Random rand) {
+
 		this.level = level;
 		this.rand = rand;
 		end = false;
 	}
 	
 	public void initGame() {
+
 		RegularShip = new RegularShip(0, 0);	//inicializamos para tener un modelo para la lista y el toString
 		DestroyerShip = new DestroyerShip(0, 0, 0);
 		Ovni = new Ovni();
@@ -54,33 +56,40 @@ public class Game {
 		reset = false;
 	}
 	
-	public String toString() {
+	public void toString() {
 		
-		return "";
+		
 	}
 	
 	/*USER COMMAND*/
-	
 	public void shoot() {
-		if(UCMShip.getLaser()) {
+
+		if(UCMShip.getLaser())
+		{
 			System.out.println("Ya hay un laser en pantalla.");
 		}
-		else {
+		else
+		{
 			UCMShipLaser = new UCMShipLaser(UCMShip.getPosX(), UCMShip.getPosY());
 			UCMShip.setLaser(true);
 		}
 	}
 	
 	public void shockwave() {
-		for (int i = 0; i < rList.getContador(); i++) {
+
+		for (int i = 0; i < rList.getContador(); i++)
+		{
 			rList.getList()[i].setResist(rList.getList()[i].getResist());
-			if (rList.getList()[i].getResist() == 0) {
+
+			if (rList.getList()[i].getResist() == 0)
+			{
 				rList.deleteRegular(rList.getList()[i].getPosX(), rList.getList()[i].getPosY());
 				--i;	//tenemos que volver a comprobar de nuevo esta posicion
 			}
 		}
 		
-		for (int i = 0; i < dList.getContador(); i++) {		//elimino directamente porque solo tiene 1 de vida
+		for (int i = 0; i < dList.getContador(); i++)
+		{	//elimino directamente porque solo tiene 1 de vida
 			dList.deleteDestroyer(dList.getList()[i].getPosX(), dList.getList()[i].getPosY());
 		}
 		
@@ -88,6 +97,7 @@ public class Game {
 	}
 	
 	public void reset(){
+
 		setReset(true);
 	}
 	
@@ -105,72 +115,94 @@ public class Game {
 	}
 	
 	public void list() {
-		System.out.print("[R]egular ship: Points: " + RegularShip.getPuntos() + " - Harm: 0 - Shield: "
-		+ RegularShip.getResist() + "\n");
-		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.getPuntos() + 
-				" - Harm: " + Bomb.getDamage() + " - Shield: " + DestroyerShip.getResist() + "\n");
+
+		System.out.print("[R]egular ship: Points: " + RegularShip.getPuntos() + " - Harm: 0 - Shield: " + RegularShip.getResist() + "\n");
+		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.getPuntos() + " - Harm: " + Bomb.getDamage() + " - Shield: " + DestroyerShip.getResist() + "\n");
 		System.out.print("[O]vni: Points: " + Ovni.getPuntos() + " - Harm: 0 - Shield: " + Ovni.getResist() + "\n");
-		System.out.print(UCMShip.getIcono() + ": Harm: " + UCMShipLaser.getDamage() + 
-				" - Shield: " + UCMShip.getResist() + "\n");	
+		System.out.print(UCMShip.getIcono() + ": Harm: " + UCMShipLaser.getDamage() + " - Shield: " + UCMShip.getResist() + "\n");	
 	}
 
 	public void exit() {
+
 		System.out.println("Game Over");
+
 		setEnd(true);
 	}
 	
 	/*COMPUTER ACTION*/
 	public void computerAction() {
+
 		int i = 0;
-		if ((ciclos % level.getSpeed()) == 0) {
+
+		if ((ciclos % level.getSpeed()) == 0)
+		{
 			//Para Regular y Destroyer
-			if (!sentido) {
+			if (!sentido)
+			{
 				move = Move.LEFT;
-				while (i < rList.getContador()) {
-					if (rList.getList()[i].getPosY() == 0) {
+
+				while (i < rList.getContador())
+				{
+					if (rList.getList()[i].getPosY() == 0)
+					{
 						move = Move.DOWN;
 						i = rList.getContador();
 					}
 				}
+
 				i = 0;
-				while (i < dList.getContador()) {
-					if (dList.getList()[i].getPosY() == 0) {
+
+				while (i < dList.getContador())
+				{
+					if (dList.getList()[i].getPosY() == 0)
+					{
 						move = Move.DOWN;
 						i = dList.getContador();
 					}
 				}
 			}
-			else {
+			else
+			{
 				move = Move.RIGHT;
-				while (i < rList.getContador()) {
-					if (rList.getList()[i].getPosY() == 8) {
+
+				while (i < rList.getContador())
+				{
+					if (rList.getList()[i].getPosY() == 8)
+					{
 						move = Move.DOWN;
 						i = rList.getContador();
 					}
 				}
+
 				i = 0;
-				while (i < dList.getContador()) {
-					if (dList.getList()[i].getPosY() == 8) {
+
+				while (i < dList.getContador()) 
+				{
+					if (dList.getList()[i].getPosY() == 8)
+					{
 						move = Move.DOWN;
 						i = dList.getContador();
 					}
 				}
 			}
-			switch(move) {
-			case LEFT:
-				moveAliensLeft();
-				break;
-			case RIGHT:
-				moveAliensRight();
-				break;
-			case DOWN:
-				moveAliensDown();
-				break;
-			default:
-				break;
+
+			switch(move)
+			{
+				case LEFT:
+					moveAliensLeft();
+					break;
+				case RIGHT:
+					moveAliensRight();
+					break;
+				case DOWN:
+					moveAliensDown();
+					break;
+				default:
+					break;
 			}
 			//Movemos el Ovni
 			if (existOvni) {
+
 				moveOvni(Ovni);
 			}
 		}
@@ -182,87 +214,115 @@ public class Game {
 	/*UPDATE*/
 	public void update() {
 		
+
 	}
 	
-	public String toStringObjectAt(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
+	public void toStringObjectAt(int i, int j) {
+
+
 	}
 	
-	public void userCommand(String comando)
-	{
-		//String comando = comandoMenu();
+	public void userCommand(String comando) {
+		
+		int foo = 0;
 		String [] number = comando.split(" ");
 
-		if ((number[0].equalsIgnoreCase("move")) || (number[0].equals("M"))) {
-			int foo = Integer.parseInt(number[2]);
-			if (foo > 2) {
+		if ((number[0].equalsIgnoreCase("move")) || (number[0].equals("M")))
+		{
+			foo = Integer.parseInt(number[2]);
+
+			if (foo > 2)
+			{
 				foo = 2;
 			}
-			else if (foo < 1) {
+			else if (foo < 1)
+			{
 				foo = 1;
 			}
-			if (number[1].equals("left")) {
+
+			if (number[1].equals("left"))
+			{
 				moveShipLeft(foo);
 			}
-			else if (number[1].equals("right")) {
+			else if (number[1].equals("right"))
+			{
 				moveShipRight(foo);
 			}
 		}
-		else if ((comando.equalsIgnoreCase("shoot")) || (comando.equals("S"))) {
+		else if ((comando.equalsIgnoreCase("shoot")) || (comando.equals("S")))
+		{
 			shoot();
 		}
-		else if ((comando.equalsIgnoreCase("shockwave")) || (comando.equals("W"))) {
+		else if ((comando.equalsIgnoreCase("shockwave")) || (comando.equals("W")))
+		{
 			shockwave();
 		}
-		else if ((comando.equalsIgnoreCase("none")) || (comando.equals("N"))) {}
-		else if ((comando.equalsIgnoreCase("list")) || (comando.equals("L"))) {
+		else if ((comando.equalsIgnoreCase("none")) || (comando.equals("N")))
+		{
+			//vacio porque no hace nada
+		}
+		else if ((comando.equalsIgnoreCase("list")) || (comando.equals("L")))
+		{
 			list();
 		}
-		else if ((comando.equalsIgnoreCase("reset")) || (comando.equals("R"))) {
+		else if ((comando.equalsIgnoreCase("reset")) || (comando.equals("R")))
+		{
 			reset();
 		}
-		else if ((comando.equalsIgnoreCase("help")) || (comando.equals("H"))) {
+		else if ((comando.equalsIgnoreCase("help")) || (comando.equals("H")))
+		{
 			help();
 		}
-		else if ((comando.equalsIgnoreCase("exit")) || (comando.equals("E"))) {
+		else if ((comando.equalsIgnoreCase("exit")) || (comando.equals("E")))
+		{
 			exit();
 		}
-		else {
+		else
+		{
 			System.out.println("Entrada no valida.");
 		}
 	}
 	
 	public void moveOvni(Ovni ovni) {
+
 		ovni.setPosX(ovni.getPosX() - 1);
 	}
 	
 	public void moveAliensLeft(){
 		
-		for (int i = 0; i < rList.getContador(); i++) {
+		for (int i = 0; i < rList.getContador(); i++)
+		{
 			rList.getList()[i].setPosX(rList.getList()[i].getPosX() - 1);
 		}
-		for (int i = 0; i < dList.getContador(); i++) {
+
+		for (int i = 0; i < dList.getContador(); i++)
+		{
 			dList.getList()[i].setPosX(dList.getList()[i].getPosX() - 1);
 		}
 	}
 	
 	public void moveAliensRight() {
 		
-		for (int i = 0; i < rList.getContador(); i++) {
+		for (int i = 0; i < rList.getContador(); i++)
+		{
 			rList.getList()[i].setPosX(rList.getList()[i].getPosX() + 1);
 		}
-		for (int i = 0; i < dList.getContador(); i++) {
+
+		for (int i = 0; i < dList.getContador(); i++)
+		{
 			dList.getList()[i].setPosX(dList.getList()[i].getPosX() + 1);
 		}
 	}
 	
 	public void moveAliensDown() {
 		
-		for (int i = 0; i < rList.getContador(); i++) {
+		for (int i = 0; i < rList.getContador(); i++)
+		{
 			rList.getList()[i].setPosY(rList.getList()[i].getPosY() + 1);
 		}
-		for (int i = 0; i < dList.getContador(); i++) {
+
+		for (int i = 0; i < dList.getContador(); i++)
+		{
 			dList.getList()[i].setPosY(dList.getList()[i].getPosY() + 1);
 		}
 	}
@@ -278,75 +338,94 @@ public class Game {
 	}
 	
 	public void moveBomb(Bomb bomb) {
+
 		bomb.setPosY(bomb.getPosY() + 1);		
 	}
 	
 	public void moveLaser(UCMShipLaser laser) {
+
 		laser.setPosY(laser.getPosY() - 1);
 	}
 
+	/*GETS y SETS*/
+	
 	public UCMShip getUCMShip() {
+
 		return UCMShip;
 	}
 	
 	public Boolean getEnd() {
+
 		return end;
 	}
 	
 	public void setEnd(Boolean end) {
+
 		this.end = end;
 	}
 	
 	public Boolean getSentido() {
+
 		return sentido;
 	}
 	
 	public void setSentido(Boolean sentido) {
+
 		this.sentido = sentido;
 	}
 	
 	public RegularShipList getrList() {
+
 		return rList;
 	}
 
 	public DestroyerShipList getdList() {
+
 		return dList;
 	}
 	
 	public BombList getbList() {
+
 		return bList;
 	}
 
-	
 	public int getCiclos() {
+
 		return ciclos;
 	}
 	
 	public void setCiclos(int ciclos) {
+
 		this.ciclos = ciclos;
 	}
 	
 	public int getPuntuacion() {
+
 		return puntuacion;
 	}
 	
 	public void setPuntuacion(int puntuacion) {
+
 		this.puntuacion = puntuacion;
 	}
 	
 	public Boolean getReset() {
+
 		return reset;
 	}
 	
 	public void setReset(Boolean reset) {
+
 		this.reset = reset;
 	}
 	
 	public Boolean getExistOvni() {
+
 		return existOvni;
 	}
 	
 	public void setExistOvni(Boolean existOvni) {
+
 		this.existOvni = existOvni;
 	}
 

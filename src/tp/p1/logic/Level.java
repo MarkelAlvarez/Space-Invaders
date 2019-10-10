@@ -8,13 +8,16 @@ public enum Level {
 
 		int num = 0;
 
-		if (this == EASY) {
+		if (this == EASY)
+		{
 			num = 4;
 		}
-		else if (this == HARD) {
+		else if (this == HARD)
+		{
 			num = 8;
 		}
-		else if (this == INSANE) {
+		else if (this == INSANE)
+		{
 			num = 8;
 		}
 		
@@ -25,13 +28,16 @@ public enum Level {
 
 		int num = 0;
 
-		if (this == EASY) {
+		if (this == EASY)
+		{
 			num = 2;
 		}
-		else if (this == HARD) {
+		else if (this == HARD)
+		{
 			num = 2;
 		}
-		else if (this == INSANE) {
+		else if (this == INSANE)
+		{
 			num = 4;
 		}
 		
@@ -42,13 +48,16 @@ public enum Level {
 
 		double freq = 0;
 
-		if (this == EASY) {
+		if (this == EASY)
+		{
 			freq = 0.1;
 		}
-		else if (this == HARD) {
+		else if (this == HARD)
+		{
 			freq = 0.3;
 		}
-		else if (this == INSANE) {
+		else if (this == INSANE)
+		{
 			freq = 0.5;
 		}
 		
@@ -59,13 +68,16 @@ public enum Level {
 
 		int ciclos = 0;
 
-		if (this == EASY) {
+		if (this == EASY)
+		{
 			ciclos = 3;
 		}
-		else if (this == HARD) {
+		else if (this == HARD)
+		{
 			ciclos = 2;
 		}
-		else if (this == INSANE) {
+		else if (this == INSANE)
+		{
 			ciclos = 1;
 		}
 		
@@ -76,13 +88,16 @@ public enum Level {
 
 		double freq = 0;
 
-		if (this == EASY) {
+		if (this == EASY)
+		{
 			freq = 0.5;
 		}
-		else if (this == HARD) {
+		else if (this == HARD)
+		{
 			freq = 0.2;
 		}
-		else if (this == INSANE) {
+		else if (this == INSANE)
+		{
 			freq = 0.1;
 		}
 		
@@ -93,15 +108,19 @@ public enum Level {
 		
 		int num;
 
-		if (this == EASY) {
+		if (this == EASY)
+		{
 			num = 2;
 		}
-		else if(this == HARD || this == INSANE) {
+		else if(this == HARD || this == INSANE)
+		{
 			num = 3;
 		}
-		else {
+		else
+		{
 			num = 0;
 		}
+
 		return num;
 	}
 
@@ -109,15 +128,19 @@ public enum Level {
 		
 		int num;
 		
-		if (this == EASY || this == HARD) {
+		if (this == EASY || this == HARD)
+		{
 			num = 4;
 		}
-		else if (this == INSANE) {
+		else if (this == INSANE)
+		{
 			num = 3;
 		}
-		else {
+		else
+		{
 			num = 0;
 		}
+		
 		return num;
 	}
 }

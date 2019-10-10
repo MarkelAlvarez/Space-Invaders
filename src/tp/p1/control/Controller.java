@@ -13,38 +13,48 @@ public class Controller {
 	final static int numC = 9;
 	
 	public Controller(Game game, Scanner scanner) {
+		
 		this.game = game;
 		in = scanner;
 		printer = new GamePrinter(game, numF, numC);
 	}
 
 	public void run() {
-		
+
 		game.initGame();
-		while ((game.getEnd() == false) && (game.getReset() == false)) {
+
+		while ((game.getEnd() == false) && (game.getReset() == false))
+		{
 			draw();
 			game.userCommand(comandoMenu());
 			
 			game.setCiclos(game.getCiclos() + 1);
 		}
-		if (game.getReset()) {
+
+		if (game.getReset())
+		{
 			run();
 		}
 	}
 
 	public void draw() {
+		
 		System.out.println("Life: " + game.getUCMShip().getResist());
 		System.out.println("Number of cycles: " + game.getCiclos());
 		System.out.println("Points: " + game.getPuntuacion());
 		System.out.println("Remaining aliens: " + (game.getdList().getContador() + game.getrList().getContador()));
-		if (game.getUCMShip().getShockwave()) {
+		
+		if (game.getUCMShip().getShockwave())
+		{
 			System.out.println("Shockwave: YES");
 		}
-		else {
+		else
+		{
 			System.out.println("Shockwave: NO");
 		}
 		
 		printer = new GamePrinter(game, numF, numC);
+		
 		System.out.println(printer.toString());
 	}
 	
