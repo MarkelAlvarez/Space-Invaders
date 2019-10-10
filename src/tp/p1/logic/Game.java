@@ -215,7 +215,7 @@ public class Game {
 			}
 		}
 		//Disparar
-		double freqDisparo = new Random(semilla).nextDouble();
+		double freqDisparo = new Random(semilla).nextDouble(); 
 		
 	}
 	
