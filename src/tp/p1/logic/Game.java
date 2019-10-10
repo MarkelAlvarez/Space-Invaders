@@ -215,12 +215,8 @@ public class Game {
 			}
 		}
 		//Disparar
-		Random freqDisparo = new Random(semilla);
+		double freqDisparo = new Random(semilla).nextDouble();
 		
-		if (level.getShootFrec() > 0.5)
-		{
-			
-		}
 	}
 	
 	/*UPDATE*/
