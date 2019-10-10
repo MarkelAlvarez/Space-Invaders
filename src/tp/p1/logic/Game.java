@@ -108,7 +108,6 @@ public class Game {
 				"help: Prints this help message.\r\n" +
 				"exit: Terminates the program.\r\n"+
 				"[none]: Skips one cycle.");
-
 	}
 	
 	public void list() {
@@ -213,7 +212,8 @@ public class Game {
 	
 	/*UPDATE*/
 	public void update() {
-		//TODO: 
+		
+		
 	}
 	
 	public String toStringObjectAt(int i, int j) {

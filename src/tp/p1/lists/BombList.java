@@ -20,9 +20,7 @@ public class BombList {
 	}
 	
 	public void deleteBomb(int x, int y) {
-
 		int i = 0;
-
 		while (i < contador)
 		{
 			if(list[i].getPosX() == x && list[i].getPosY() == y)
@@ -33,11 +31,22 @@ public class BombList {
 					i++;
 				}
 			}
-			
 			i++;
 		}
-
 		contador--;
+	}
+	
+	public Boolean isFound(int x, int y) {
+		Boolean found = false;
+		int i = 0;
+		while((i < contador) && (!found)) {
+			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			{
+				found = true;
+			}
+			i++;
+		}
+		return found;
 	}
 	
 	/*GETS y SETS*/
