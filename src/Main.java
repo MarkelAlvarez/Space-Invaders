@@ -49,7 +49,7 @@ public class Main {
 				//Crea un objeto aleatorio
 				rand = new Random(semilla);
 				//Crea un objeto de game
-				game = new Game(nivel, rand);
+				game = new Game(nivel, rand, semilla);
 				//Crea un objeto de scanner para leer lo que pone el usuario
 				scanner = new Scanner(System.in);
 				//Crea un objeto de controlador

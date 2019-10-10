@@ -30,11 +30,13 @@ public class Game {
 	private Random rand; 
 	private int ciclos;
 	private int puntuacion;
+	private int semilla;
 	
-	public Game(Level level, Random rand) {
+	public Game(Level level, Random rand, int semilla) {
 
 		this.level = level;
 		this.rand = rand;
+		this.semilla = semilla;
 		end = false;
 	}
 	
@@ -55,8 +57,6 @@ public class Game {
 		sentido = false;
 		reset = false;
 	}
-	
-
 	
 	/*USER COMMAND*/
 	public void shoot() {
@@ -108,7 +108,6 @@ public class Game {
 				"help: Prints this help message.\r\n" +
 				"exit: Terminates the program.\r\n"+
 				"[none]: Skips one cycle.");
-
 	}
 	
 	public void list() {
@@ -216,20 +215,53 @@ public class Game {
 			}
 		}
 		//Disparar
-		//double freqDisparo = new Random().nextDouble(); //pendiente
-		//if (level.getShootFrec() > )
+		Random freqDisparo = new Random(semilla);
+		
+		if (level.getShootFrec() > 0.5)
+		{
+			
+		}
 	}
 	
 	/*UPDATE*/
 	public void update() {
 		
-
+		
 	}
 	
 	public String toStringObjectAt(int i, int j) {
-		String icon;
 		
-		return icon;
+		if((UCMShip.getPosX() == i) && (UCMShip.getPosY() == j))
+		{
+			return UCMShip.getIcono();
+		}
+		else if(rList.isFound(i, j))
+		{
+			return RegularShip.getIcono();
+		}
+		else if(dList.isFound(i, j))
+		{
+			return DestroyerShip.getIcono();
+		}
+		else if(bList.isFound(i, j))
+		{
+			return Bomb.getIcono();
+		}
+
+		if((Ovni.getPosX() == i) && (Ovni.getPosY() == j))
+		{
+			return UCMShip.getIcono();
+		}
+
+		if((UCMShipLaser.getPosX() == i) && (UCMShipLaser.getPosY() == j))
+		{
+			return UCMShip.getIcono();
+		}
+
+		else
+		{
+			return "";
+		}
 	}
 	
 	public void userCommand(String comando) {

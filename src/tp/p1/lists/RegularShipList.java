@@ -51,15 +51,20 @@ public class RegularShipList {
 	}
 	
 	public Boolean isFound(int x, int y) {
-		Boolean found = false;
+
 		int i = 0;
-		while((i < contador) && (!found)) {
+		Boolean found = false;
+
+		while((i < contador) && (!found)) 
+		{
 			if(list[i].getPosX() == x && list[i].getPosY() == y)
 			{
 				found = true;
 			}
+			
 			i++;
 		}
+		
 		return found;
 	}
 	
