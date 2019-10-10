@@ -56,10 +56,7 @@ public class Game {
 		reset = false;
 	}
 	
-	public void toString() {
-		
-		
-	}
+
 	
 	/*USER COMMAND*/
 	public void shoot() {
@@ -217,9 +214,10 @@ public class Game {
 
 	}
 	
-	public void toStringObjectAt(int i, int j) {
-
-
+	public String toStringObjectAt(int i, int j) {
+		String icon;
+		
+		return icon;
 	}
 	
 	public void userCommand(String comando) {
