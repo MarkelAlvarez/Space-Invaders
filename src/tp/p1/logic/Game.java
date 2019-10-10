@@ -30,11 +30,13 @@ public class Game {
 	private Random rand; 
 	private int ciclos;
 	private int puntuacion;
+	private int semilla;
 	
-	public Game(Level level, Random rand) {
+	public Game(Level level, Random rand, int semilla) {
 
 		this.level = level;
 		this.rand = rand;
+		this.semilla = semilla;
 		end = false;
 	}
 	
@@ -54,11 +56,6 @@ public class Game {
 		existOvni = false;
 		sentido = false;
 		reset = false;
-	}
-	
-	public void toString() {
-		
-		
 	}
 	
 	/*USER COMMAND*/
@@ -207,19 +204,51 @@ public class Game {
 			}
 		}
 		//Disparar
-		//double freqDisparo = new Random().nextDouble(); //pendiente
-		//if (level.getShootFrec() > )
+		/*Random freqDisparo = new Random(semilla);
+		if (level.getShootFrec() > 0.5)
+		{
+			
+		}*/
 	}
 	
 	/*UPDATE*/
 	public void update() {
-		
-
+		//TODO: 
 	}
 	
-	public void toStringObjectAt(int i, int j) {
+	public String toStringObjectAt(int i, int j) {
+		
+		if((player.getPosicionX() == i) && (player.getPosicionY() == col))
+		{
+			return player.toString();
+		}
+		else if(listaRegularShip.isHere(i, j))
+		{
+			return listaRegularShip.toString();
+		}
+		else if(listaDestroyerShipList.isHere(i, j))
+		{
+			return listaDestroyerShipList.toString();
+		}
+		else if(listaBombList.isHere(i, j))
+		{
+			return listaBombList.toString();
+		}
 
+		if((ovni.getPosicionX() == i) && (ovni.getPosicionY() == j))
+		{
+			return player.toString();
+		}
 
+		if((misil.getPosicionX() == i) && (misil.getPosicionY() == j))
+		{
+			return player.toString();
+		}
+
+		else
+		{
+			return "";
+		}
 	}
 	
 	public void userCommand(String comando) {
