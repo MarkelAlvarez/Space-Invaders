@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Game {
 
-	private Ovni Ovni;
+	private Ovni Ovni;  
 	private RegularShip RegularShip;
 	private DestroyerShip DestroyerShip;
 	private UCMShip UCMShip;
@@ -17,7 +17,7 @@ public class Game {
 	private Bomb Bomb;
 	
 	private Boolean end;
-	private Boolean sentido; //false es left y true es derecha
+	private Boolean sentido; //false = left / true = derecha
 	private Boolean reset;
 	private Boolean existOvni;
 	private Level level;
@@ -73,24 +73,38 @@ public class Game {
 	}
 	
 	public void shockwave() {
-
-		for (int i = 0; i < rList.getContador(); i++)
+		
+		if (UCMShip.getShockwave())
 		{
-			rList.getList()[i].setResist(rList.getList()[i].getResist());
-
-			if (rList.getList()[i].getResist() == 0)
+			for (int i = 0; i < rList.getContador(); i++)
 			{
-				rList.deleteRegular(rList.getList()[i].getPosX(), rList.getList()[i].getPosY());
-				--i;	//tenemos que volver a comprobar de nuevo esta posicion
+				rList.getList()[i].setResist(rList.getList()[i].getResist() - 1);
+	
+				if (rList.getList()[i].getResist() == 0)
+				{
+					rList.deleteRegular(rList.getList()[i].getPosX(), rList.getList()[i].getPosY());
+					--i; //tenemos que volver a comprobar de nuevo esta posicion
+				}
 			}
+			
+			for (i = 0; i < dList.getContador(); i++)
+			{	
+				dList.getList()[i].setResist(dList.getList()[i].getResist() - 1);
+				
+				if (dList.getList()[i].getResist() == 0)
+				{
+					dList.deleteDestroyer(dList.getList()[i].getPosX(), dList.getList()[i].getPosY());
+					--i; //tenemos que volver a comprobar de nuevo esta posicion
+				}
+			}
+			
+			UCMShip.setShockwave(false);
 		}
 		
-		for (int i = 0; i < dList.getContador(); i++)
-		{	//elimino directamente porque solo tiene 1 de vida
-			dList.deleteDestroyer(dList.getList()[i].getPosX(), dList.getList()[i].getPosY());
+		else 
+		{
+			System.out.println("No hay shockwave disponible.");
 		}
-		
-		UCMShip.setShockwave(false);
 	}
 	
 	public void reset(){
@@ -144,6 +158,7 @@ public class Game {
 						move = Move.DOWN;
 						i = rList.getContador();
 					}
+					i++;
 				}
 
 				i = 0;
@@ -155,6 +170,7 @@ public class Game {
 						move = Move.DOWN;
 						i = dList.getContador();
 					}
+					i++;
 				}
 			}
 			else
@@ -168,6 +184,7 @@ public class Game {
 						move = Move.DOWN;
 						i = rList.getContador();
 					}
+					i++;
 				}
 
 				i = 0;
@@ -179,6 +196,7 @@ public class Game {
 						move = Move.DOWN;
 						i = dList.getContador();
 					}
+					i++;
 				}
 			}
 
@@ -196,65 +214,181 @@ public class Game {
 				default:
 					break;
 			}
-			//Movemos el Ovni
-			if (existOvni) {
-				moveOvni(Ovni);
-				if (UCMShip.getLaser()) {
-					if((UCMShipLaser.getPosX() == Ovni.getPosX()) && (UCMShipLaser.getPosY() == Ovni.getPosY())) {
-						existOvni = false;
-						puntuacion += Ovni.getPuntos();
-						UCMShip.setLaser(false);
-					}
-				}
-			}
-			else {
-				if() {		//Random
-					existOvni = true;
-					Ovni = new Ovni();
-				}
+		}
+		//Movemos el Ovni
+		if (existOvni)
+		{
+			moveOvni(Ovni);
+		}
+		else
+		{
+			if(rand.nextDouble() < level.getFrecOvni())
+			{
+				existOvni = true;
+				Ovni = new Ovni();
 			}
 		}
 		//Disparar
-		double freqDisparo = new Random(semilla).nextDouble();
-		
+		for (int j = 0; j < dList.getContador(); j++)
+		{
+			if((!dList.getList()[j].getBomb()) && (rand.nextDouble() < level.getShootFrec()))
+			{
+				bList.addBomb(dList.getList()[j].getPosX(), dList.getList()[j].getPosY(), dList.getList()[j].getId());
+				dList.updateBomb(dList.getList()[j].getId(), true);
+			}
+		}
 	}
 	
 	/*UPDATE*/
 	public void update() {
+
+		int i = 0, j;
 		
+		colisiones();
 		
+		while((!end) && (i < 9))
+		{
+			end = rList.isFound(7, i);
+			i++;
+		}
+
+		i = 0;
+		
+		while((!end) && (i < 9))
+		{
+			end = dList.isFound(7, i);
+			i++;
+		}
+
+		if (!end)
+		{
+			if  (Ovni.getPosY() < 0)
+			{
+				existOvni = false; 
+			}
+
+			if (UCMShip.getLaser()) 
+			{
+				moveLaser(UCMShipLaser);
+
+				if (UCMShipLaser.getPosX() < 0) //Comprueba si se va a salir del tablero
+				{	
+					UCMShip.setLaser(false);
+				}
+				else 
+				{
+					colisiones();
+				}
+			}
+
+			for (j = 0; j < bList.getContador(); j++) 
+			{
+				moveBomb(bList.getList()[j]);
+				
+				if (bList.getList()[j].getPosX() > 7) //Comprueba si se va a salir del tablero
+				{
+					dList.updateBomb(bList.getList()[j].getId(), false);
+					bList.deleteBomb(bList.getList()[j].getPosX(), bList.getList()[j].getPosY());
+				}
+			}
+
+			colisiones();
+		}	
+	}
+	
+	public void colisiones() {
+		
+		if (UCMShip.getLaser() && bList.deleteBomb(UCMShipLaser.getPosX(), UCMShipLaser.getPosY())) //laser con bomba 
+		{
+			UCMShip.setLaser(false);
+		}
+		
+		if(bList.deleteBomb(UCMShip.getPosX(), UCMShip.getPosY())) //nave con bomba
+		{
+			UCMShip.setResist(UCMShip.getResist() - 1);
+
+			if (UCMShip.getResist() == 0) 
+			{
+				end = true;
+				UCMShip.setIcono(UCMShip.getDeath());
+			}
+		}
+		
+		if (!end)
+		{
+			if (UCMShip.getLaser() && dList.isFound(UCMShipLaser.getPosX(), UCMShipLaser.getPosY()))  //laser con destroyer
+			{
+				dList.decreaseLife(UCMShipLaser.getPosX(), UCMShipLaser.getPosY(), UCMShipLaser.getDamage());
+				UCMShip.setLaser(false);
+
+				for (int i = 0; i < dList.getContador(); i++)
+				{
+					if(dList.getList()[i].getResist() <= 0) //si está muerto, se suman puntos
+					{
+						puntuacion += DestroyerShip.getPuntos();
+						dList.deleteDestroyer(UCMShipLaser.getPosX(), UCMShipLaser.getPosY());
+					}
+				}
+			}
+			
+			else if(UCMShip.getLaser() && rList.isFound(UCMShipLaser.getPosX(), UCMShipLaser.getPosY())) //laser con regular
+			{
+				rList.decreaseLife(UCMShipLaser.getPosX(), UCMShipLaser.getPosY(), UCMShipLaser.getDamage());
+				UCMShip.setLaser(false);
+
+				for (int i = 0; i < rList.getContador(); i++) 
+				{
+					if(rList.getList()[i].getResist() <= 0) //si está muerto, se suman puntos
+					{
+						puntuacion += RegularShip.getPuntos();
+						rList.deleteRegular(UCMShipLaser.getPosX(), UCMShipLaser.getPosY());
+					}
+				}
+			}
+			
+			else if (UCMShip.getLaser() && existOvni) //laser con ovni
+			{	
+				if ((Ovni.getPosX() == UCMShipLaser.getPosX()) && (Ovni.getPosY() == UCMShipLaser.getPosY()))
+				{
+					Ovni.decreaseLife(UCMShipLaser.getDamage());
+					UCMShip.setLaser(false);
+
+					if(Ovni.getResist() <= 0) //si está muerto, sumo puntos
+					{
+						puntuacion += Ovni.getPuntos();
+						existOvni = false;
+					}
+				}
+			}
+		}
 	}
 	
 	public String toStringObjectAt(int i, int j) {
-		
+
 		if((UCMShip.getPosX() == i) && (UCMShip.getPosY() == j))
 		{
 			return UCMShip.getIcono();
 		}
 		else if(rList.isFound(i, j))
 		{
-			return RegularShip.getIcono();
+			return rList.iconFrom(i, j);
 		}
 		else if(dList.isFound(i, j))
 		{
-			return DestroyerShip.getIcono();
+			return dList.iconFrom(i, j);
 		}
 		else if(bList.isFound(i, j))
 		{
 			return Bomb.getIcono();
 		}
-
-		if((Ovni.getPosX() == i) && (Ovni.getPosY() == j))
+		else if(existOvni && (Ovni.getPosX() == i) && (Ovni.getPosY() == j))
 		{
-			return UCMShip.getIcono();
+			return Ovni.getIcono();
 		}
-
-		if((UCMShipLaser.getPosX() == i) && (UCMShipLaser.getPosY() == j))
+		else if(UCMShip.getLaser() && (UCMShipLaser.getPosX() == i) && (UCMShipLaser.getPosY() == j))
 		{
-			return UCMShip.getIcono();
-		}
-
-		else
+			return UCMShipLaser.getIcono();
+		}		else
 		{
 			return "";
 		}
@@ -267,24 +401,29 @@ public class Game {
 
 		if ((number[0].equalsIgnoreCase("move")) || (number[0].equals("M")))
 		{
-			foo = Integer.parseInt(number[2]);
-
-			if (foo > 2)
-			{
-				foo = 2;
+			if (number.length == 3) {
+				foo = Integer.parseInt(number[2]);
+	
+				if (foo > 2)
+				{
+					foo = 2;
+				}
+				else if (foo < 1)
+				{
+					foo = 1;
+				}
+	
+				if (number[1].equals("left"))
+				{
+					moveShipLeft(foo);
+				}
+				else if (number[1].equals("right"))
+				{
+					moveShipRight(foo);
+				}
 			}
-			else if (foo < 1)
-			{
-				foo = 1;
-			}
-
-			if (number[1].equals("left"))
-			{
-				moveShipLeft(foo);
-			}
-			else if (number[1].equals("right"))
-			{
-				moveShipRight(foo);
+			else {
+				System.out.println("No hay suficientes parametros.");
 			}
 		}
 		else if ((comando.equalsIgnoreCase("shoot")) || (comando.equals("S")))
@@ -319,23 +458,24 @@ public class Game {
 		{
 			System.out.println("Entrada no valida.");
 		}
+		System.out.println();
 	}
 	
 	public void moveOvni(Ovni ovni) {
 
-		ovni.setPosX(ovni.getPosX() - 1);
+		ovni.setPosY(ovni.getPosY() - 1);
 	}
 	
 	public void moveAliensLeft(){
 		
 		for (int i = 0; i < rList.getContador(); i++)
 		{
-			rList.getList()[i].setPosX(rList.getList()[i].getPosX() - 1);
+			rList.getList()[i].setPosY(rList.getList()[i].getPosY() - 1);
 		}
 
 		for (int i = 0; i < dList.getContador(); i++)
 		{
-			dList.getList()[i].setPosX(dList.getList()[i].getPosX() - 1);
+			dList.getList()[i].setPosY(dList.getList()[i].getPosY() - 1);
 		}
 	}
 	
@@ -343,12 +483,12 @@ public class Game {
 		
 		for (int i = 0; i < rList.getContador(); i++)
 		{
-			rList.getList()[i].setPosX(rList.getList()[i].getPosX() + 1);
+			rList.getList()[i].setPosY(rList.getList()[i].getPosY() + 1);
 		}
 
-		for (int i = 0; i < dList.getContador(); i++)
+		for (i = 0; i < dList.getContador(); i++)
 		{
-			dList.getList()[i].setPosX(dList.getList()[i].getPosX() + 1);
+			dList.getList()[i].setPosY(dList.getList()[i].getPosY() + 1);
 		}
 	}
 	
@@ -356,33 +496,42 @@ public class Game {
 		
 		for (int i = 0; i < rList.getContador(); i++)
 		{
-			rList.getList()[i].setPosY(rList.getList()[i].getPosY() + 1);
+			rList.getList()[i].setPosX(rList.getList()[i].getPosX() + 1);
 		}
 
-		for (int i = 0; i < dList.getContador(); i++)
+		for (i = 0; i < dList.getContador(); i++)
 		{
-			dList.getList()[i].setPosY(dList.getList()[i].getPosY() + 1);
+			dList.getList()[i].setPosX(dList.getList()[i].getPosX() + 1);
+		}
+		
+		if(getSentido())
+		{
+			setSentido(false);
+		}
+		else
+		{
+			setSentido(true);
 		}
 	}
 	
 	public void moveShipLeft(int pasos) {
 		
-		UCMShip.setPosX(UCMShip.getPosX() - pasos);
+		UCMShip.setPosY(UCMShip.getPosY() - pasos);
 	}
 
 	public void moveShipRight (int pasos) {
 
-		UCMShip.setPosX(UCMShip.getPosX() + pasos);
+		UCMShip.setPosY(UCMShip.getPosY() + pasos);
 	}
 	
 	public void moveBomb(Bomb bomb) {
 
-		bomb.setPosY(bomb.getPosY() + 1);		
+		bomb.setPosX(bomb.getPosX() + 1);		
 	}
 	
 	public void moveLaser(UCMShipLaser laser) {
 
-		laser.setPosY(laser.getPosY() - 1);
+		laser.setPosX(laser.getPosX() - 1);
 	}
 
 	/*GETS y SETS*/

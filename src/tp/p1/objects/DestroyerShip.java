@@ -84,6 +84,8 @@ public class DestroyerShip {
 	}
 	
 	public String getIcono() {
+
+		icono = "D[" + resist + "]";
 		
 		return icono;
 	}

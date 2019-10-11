@@ -10,12 +10,12 @@ public class UCMShip {
 	private String icono;
 	private String death;
 	
-	public UCMShip() {
+	public UCMShip() { 
 		
 		posX = 7;
 		posY = 4;
 		resist = 3;
-		shockwave = false;
+		shockwave = true;
 		laser = false;
 		icono = "^__^";
 		death = "!xx!";

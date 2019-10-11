@@ -16,24 +16,37 @@ public class Controller {
 		
 		this.game = game;
 		in = scanner;
-		printer = new GamePrinter(game, numF, numC);
+		game.initGame();
 	}
 
 	public void run() {
-
-		game.initGame();
 
 		while ((game.getEnd() == false) && (game.getReset() == false))
 		{
 			draw();
 			game.userCommand(comandoMenu());
-			
+			game.computerAction();
+			game.update();
 			game.setCiclos(game.getCiclos() + 1);
 		}
 
 		if (game.getReset())
 		{
+			game.initGame();
 			run();
+		}
+		else if (game.getEnd())
+		{
+			draw();
+
+			if (game.getdList().getContador() + game.getrList().getContador() == 0)
+			{
+				System.out.println("YOU WIN! POINTS OBTAINED: " + game.getPuntuacion());
+			}
+			else
+			{
+				System.out.println("GAME OVER");
+			}
 		}
 	}
 
@@ -58,14 +71,14 @@ public class Controller {
 		System.out.println(printer.toString());
 	}
 	
-	public String comandoMenu() {
-		
+	public String comandoMenu()
+	{
 		String comando;
 		
 		System.out.print("Command > ");
 		comando = this.in.nextLine();
-		
+		System.out.println();
+
 		return comando;
 	}
-
 }

@@ -60,7 +60,9 @@ public class RegularShip {
 	}
 	
 	public String getIcono() {
-
+		
+		icono = "C[" + resist + "]";
+		
 		return icono;
 	}
 	

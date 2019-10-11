@@ -2,7 +2,7 @@ package tp.p1.lists;
 
 import tp.p1.objects.RegularShip;
 
-public class RegularShipList {
+public class RegularShipList { 
 
 	private RegularShip[] list;
 	private int contador;
@@ -34,20 +34,21 @@ public class RegularShipList {
 	
 	public void deleteRegular(int x, int y) {
 		
-		int i = 0;
+		int i = 0, j;
+
 		while (i < contador)
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
-				for (int j = i + 1; j < contador; j++)
+				for (j = i + 1; j < contador; j++)
 				{
 					list[i] = list[j];
 					i++;
 				}
+				contador--;
 			}
 			i++;
 		}
-		contador--;
 	}
 	
 	public Boolean isFound(int x, int y) {
@@ -57,7 +58,7 @@ public class RegularShipList {
 
 		while((i < contador) && (!found)) 
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
 				found = true;
 			}
@@ -66,6 +67,39 @@ public class RegularShipList {
 		}
 		
 		return found;
+	}
+	
+	public void decreaseLife(int x, int y, int damage) {
+
+		int i = 0;
+		
+		while (i < contador)
+		{
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
+			{
+				list[i].setResist(list[i].getResist() - damage);
+				i = contador;
+			}
+			i++;
+		}
+	}
+	
+	public String iconFrom(int x, int y) {
+
+		int i = 0;
+		String icon = "";
+
+		while (i < contador)
+		{
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
+			{
+				icon = list[i].getIcono();
+				i = contador;
+			}
+			i++;
+		}
+		
+		return icon;
 	}
 	
 	/*GETS y SETS*/

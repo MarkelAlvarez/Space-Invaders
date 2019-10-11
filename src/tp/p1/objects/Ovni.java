@@ -15,8 +15,12 @@ public class Ovni {
 		resist = 1;
 		puntos = 25;
 		icono = "O[" + resist + "]";
+	} 
+	
+	public void decreaseLife(int damage) {
+		resist -= damage;
 	}
-
+	
 	/*GETS y SETS*/
 
 	public int getPosX() {
@@ -61,6 +65,8 @@ public class Ovni {
 	
 	public String getIcono() {
 
+		icono = "O[" + resist + "]";
+		
 		return icono;
 	}
 

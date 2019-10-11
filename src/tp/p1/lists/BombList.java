@@ -19,31 +19,42 @@ public class BombList {
 		contador++;
 	}
 	
-	public void deleteBomb(int x, int y) {
-		int i = 0;
+	/*
+	* Borra bomba si la encuentra y devuelve si se ha eliminado ya que solo tiene 1 de vida
+	*/
+	public Boolean deleteBomb(int x, int y) {
+
+		int i = 0, j;
+		Boolean found = false;					
+		
 		while (i < contador)
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
-				for (int j = i + 1; j < contador; j++)
+				for (j = i + 1; j < contador; j++)
 				{
 					list[i] = list[j];
 					i++;
 				}
+
+				found = true;
+				contador--;
 			}
+
 			i++;
 		}
-		contador--;
+
+		return found;
 	}
 	
-	public Boolean isFound(int x, int y) {
+	public Boolean isFound(int x, int y) {	//para ObjectToString
 
 		int i = 0;
 		Boolean found = false;
 		
 		while((i < contador) && (!found))
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
 				found = true;
 			}
@@ -52,7 +63,7 @@ public class BombList {
 		}
 		
 		return found;
-	}
+	} 
 	
 	/*GETS y SETS*/
 	
