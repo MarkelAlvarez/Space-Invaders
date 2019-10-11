@@ -35,6 +35,7 @@ public class RegularShipList {
 	public void deleteRegular(int x, int y) {
 		
 		int i = 0;
+		
 		while (i < contador)
 		{
 			if(list[i].getPosX() == x && list[i].getPosY() == y)
@@ -57,7 +58,7 @@ public class RegularShipList {
 
 		while((i < contador) && (!found)) 
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
 				found = true;
 			}

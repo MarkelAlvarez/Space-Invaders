@@ -20,10 +20,12 @@ public class BombList {
 	}
 	
 	public void deleteBomb(int x, int y) {
+
 		int i = 0;
+
 		while (i < contador)
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
 				for (int j = i + 1; j < contador; j++)
 				{
@@ -31,8 +33,10 @@ public class BombList {
 					i++;
 				}
 			}
+
 			i++;
 		}
+
 		contador--;
 	}
 	
@@ -43,7 +47,7 @@ public class BombList {
 		
 		while((i < contador) && (!found))
 		{
-			if(list[i].getPosX() == x && list[i].getPosY() == y)
+			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{
 				found = true;
 			}
