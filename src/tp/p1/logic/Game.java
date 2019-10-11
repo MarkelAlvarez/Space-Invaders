@@ -353,6 +353,7 @@ public class Game {
 					{
 						puntuacion += Ovni.getPuntos();
 						existOvni = false;
+						UCMShip.setShockwave(true);
 					}
 				}
 			}
@@ -384,7 +385,8 @@ public class Game {
 		else if(UCMShip.getLaser() && (UCMShipLaser.getPosX() == i) && (UCMShipLaser.getPosY() == j))
 		{
 			return UCMShipLaser.getIcono();
-		}		else
+		}	
+		else
 		{
 			return "";
 		}
@@ -513,11 +515,23 @@ public class Game {
 	public void moveShipLeft(int pasos) {
 		
 		UCMShip.setPosY(UCMShip.getPosY() - pasos);
+		
+		if (UCMShip.getPosY() < 0)
+		{
+			
+			UCMShip.setPosY(0);
+		}
 	}
 
 	public void moveShipRight (int pasos) {
 
 		UCMShip.setPosY(UCMShip.getPosY() + pasos);
+		
+		if (UCMShip.getPosY() > 8)
+		{
+			
+			UCMShip.setPosY(8);
+		}
 	}
 	
 	public void moveBomb(Bomb bomb) {
