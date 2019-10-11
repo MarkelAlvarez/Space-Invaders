@@ -1,11 +1,9 @@
 package tp.p1.logic;
 
 import tp.p1.objects.*;
-import tp.p1.control.Controller;
 import tp.p1.lists.*;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Game {
 
@@ -30,13 +28,11 @@ public class Game {
 	private Random rand; 
 	private int ciclos;
 	private int puntuacion;
-	private int semilla;
 	
-	public Game(Level level, Random rand, int semilla) {
+	public Game(Level level, Random rand) {
 
 		this.level = level;
 		this.rand = rand;
-		this.semilla = semilla;
 		end = false;
 	}
 	
@@ -87,7 +83,7 @@ public class Game {
 				}
 			}
 			
-			for (i = 0; i < dList.getContador(); i++)
+			for (int i = 0; i < dList.getContador(); i++)
 			{	
 				dList.getList()[i].setResist(dList.getList()[i].getResist() - 1);
 				
@@ -486,7 +482,7 @@ public class Game {
 			rList.getList()[i].setPosY(rList.getList()[i].getPosY() + 1);
 		}
 
-		for (i = 0; i < dList.getContador(); i++)
+		for (int i = 0; i < dList.getContador(); i++)
 		{
 			dList.getList()[i].setPosY(dList.getList()[i].getPosY() + 1);
 		}
@@ -499,7 +495,7 @@ public class Game {
 			rList.getList()[i].setPosX(rList.getList()[i].getPosX() + 1);
 		}
 
-		for (i = 0; i < dList.getContador(); i++)
+		for (int i = 0; i < dList.getContador(); i++)
 		{
 			dList.getList()[i].setPosX(dList.getList()[i].getPosX() + 1);
 		}

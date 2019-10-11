@@ -15,7 +15,7 @@ public class UCMShip {
 		posX = 7;
 		posY = 4;
 		resist = 3;
-		shockwave = true;
+		shockwave = false;
 		laser = false;
 		icono = "^__^";
 		death = "!xx!";

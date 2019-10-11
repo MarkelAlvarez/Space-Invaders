@@ -18,38 +18,47 @@ public class Main {
 		String nivelStr;
 		
 		//Parametros erroneos?
-		if (args.length < 1 || args.length > 2) {
-			error(); //System.out.println("Los parametros establecidos son erroneos.");
+		if (args.length < 1 || args.length > 2)
+		{
+			System.out.println("Los parametros establecidos son erroneos.");
 		}
-		else {
+		else
+		{
 			//Obtener nivel
 			nivelStr = args[0].toLowerCase();
 			//Comprueba si es el nivel correcto
-			if ((!nivelStr.equals("easy")) && (!nivelStr.equals("hard")) && (!nivelStr.equals("insane"))) {
-				error(); //System.out.println("Los parametros establecidos son erroneos.");
+			if ((!nivelStr.equals("easy")) && (!nivelStr.equals("hard")) && (!nivelStr.equals("insane")))
+			{
+				System.out.println("Los parametros establecidos son erroneos.");
 			}
-			else {
+			else
+			{
 				//Asignar nivel al enumerado
-				if (nivelStr.equals("easy")) {
+				if (nivelStr.equals("easy"))
+				{
 					nivel = Level.EASY;
 				}
-				else if (nivelStr.equals("hard")) {
+				else if (nivelStr.equals("hard"))
+				{
 					nivel = Level.HARD;
 				}
-				else if (nivelStr.equals("insane")) {
+				else if (nivelStr.equals("insane"))
+				{
 					nivel = Level.INSANE;
 				}
 				//Comprueba semilla
-				if (args.length > 1) {
+				if (args.length > 1)
+				{
 					semilla = Integer.parseInt(args[1]);
 				}
-				else {
-					semilla = new Random().nextInt((int)System.currentTimeMillis());
+				else
+				{
+					semilla = new Random().nextInt((int)System.currentTimeMillis()*(-1)); //Parche cutre
 				}
 				//Crea un objeto aleatorio
 				rand = new Random(semilla);
 				//Crea un objeto de game
-				game = new Game(nivel, rand, semilla);
+				game = new Game(nivel, rand);
 				//Crea un objeto de scanner para leer lo que pone el usuario
 				scanner = new Scanner(System.in);
 				//Crea un objeto de controlador
@@ -59,9 +68,4 @@ public class Main {
 			}
 		}
 	}
-
-	private static void error() {
-		System.out.println("Los parametros establecidos son erroneos.");
-	}
-
 }
