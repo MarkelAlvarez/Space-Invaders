@@ -196,34 +196,27 @@ public class Game {
 				default:
 					break;
 			}
-
 			//Movemos el Ovni
-			if (existOvni)
-			{
+			if (existOvni) {
 				moveOvni(Ovni);
-
-				if (UCMShip.getLaser())
-				{
-					if((UCMShipLaser.getPosX() == Ovni.getPosX()) && (UCMShipLaser.getPosY() == Ovni.getPosY()))
-					{
+				if (UCMShip.getLaser()) {
+					if((UCMShipLaser.getPosX() == Ovni.getPosX()) && (UCMShipLaser.getPosY() == Ovni.getPosY())) {
 						existOvni = false;
 						puntuacion += Ovni.getPuntos();
 						UCMShip.setLaser(false);
 					}
 				}
 			}
-			else
-			{
-				if()
-				{	//Random
+			else {
+				if() {		//Random
 					existOvni = true;
 					Ovni = new Ovni();
 				}
 			}
-
-			//Disparar
-			double freqDisparo = new Random(semilla).nextDouble();
 		}
+		//Disparar
+		double freqDisparo = new Random(semilla).nextDouble();
+		
 	}
 	
 	/*UPDATE*/
