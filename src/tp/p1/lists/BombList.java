@@ -22,7 +22,7 @@ public class BombList {
 	/*
 	* Borra bomba si la encuentra y devuelve si se ha eliminado ya que solo tiene 1 de vida
 	*/
-	public Boolean deleteBomb(int x, int y) {
+	public Boolean deleteBomb(int x, int y, DestroyerShipList dList) {
 
 		int i = 0, j;
 		Boolean found = false;					
@@ -30,7 +30,8 @@ public class BombList {
 		while (i < contador)
 		{
 			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
-			{
+			{	
+				dList.updateBomb(list[i].getId(), false);	//Actualizo el booleano de su destroyer
 				for (j = i + 1; j < contador; j++)
 				{
 					list[i] = list[j];

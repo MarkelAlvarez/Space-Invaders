@@ -25,9 +25,12 @@ public class Controller {
 		{
 			draw();
 			game.userCommand(comandoMenu());
-			game.computerAction();
-			game.update();
-			game.setCiclos(game.getCiclos() + 1);
+			
+			if(game.getEnd() == false) {
+				game.computerAction();
+				game.update();
+				game.setCiclos(game.getCiclos() + 1);
+			}
 		}
 
 		if (game.getReset())
