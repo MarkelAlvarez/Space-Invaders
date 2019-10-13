@@ -283,8 +283,8 @@ public class Game {
 				
 				if (bList.getList()[j].getPosX() > 7) //Comprueba si se va a salir del tablero
 				{
-					dList.updateBomb(bList.getList()[j].getId(), false);
-					bList.deleteBomb(bList.getList()[j].getPosX(), bList.getList()[j].getPosY());
+					bList.deleteBomb(bList.getList()[j].getPosX(), bList.getList()[j].getPosY(), dList);
+					j--;	//vuelvo a comprobar esta posicion en la siguiente vuelta
 				}
 			}
 
@@ -294,12 +294,12 @@ public class Game {
 	
 	public void colisiones() {
 		
-		if (UCMShip.getLaser() && bList.deleteBomb(UCMShipLaser.getPosX(), UCMShipLaser.getPosY())) //laser con bomba 
+		if (UCMShip.getLaser() && bList.deleteBomb(UCMShipLaser.getPosX(), UCMShipLaser.getPosY(), dList)) //laser con bomba 
 		{
 			UCMShip.setLaser(false);
 		}
 		
-		if(bList.deleteBomb(UCMShip.getPosX(), UCMShip.getPosY())) //nave con bomba
+		if(bList.deleteBomb(UCMShip.getPosX(), UCMShip.getPosY(), dList)) //nave con bomba
 		{
 			UCMShip.setResist(UCMShip.getResist() - 1);
 
