@@ -456,6 +456,7 @@ public class Game {
 		{
 			System.out.println("Entrada no valida.");
 		}
+		
 		System.out.println();
 	}
 	
@@ -518,7 +519,6 @@ public class Game {
 		
 		if (UCMShip.getPosY() < 0)
 		{
-			
 			UCMShip.setPosY(0);
 		}
 	}
@@ -529,7 +529,6 @@ public class Game {
 		
 		if (UCMShip.getPosY() > 8)
 		{
-			
 			UCMShip.setPosY(8);
 		}
 	}
