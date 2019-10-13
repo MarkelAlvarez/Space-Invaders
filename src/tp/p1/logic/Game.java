@@ -130,8 +130,6 @@ public class Game {
 
 	public void exit() {
 
-		System.out.println("Game Over");
-
 		setEnd(true);
 	}
 	
