@@ -1,15 +1,20 @@
 package tp.p1.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class DestroyerShip {
 
 	private int posX;
 	private int posY;
-	private int id;		//Ayuda a identificar cada nave y su proyectil lanzado
+	private int id;	//Ayuda a identificar cada nave y su proyectil lanzado
 	private int resist;
 	private int puntos;
 	private Boolean bomb;
 	private String icono;
 	
+	/*Inicializa los atributos de la clase*/
 	public DestroyerShip(int x, int y, int ident) {
 
 		posX = x;

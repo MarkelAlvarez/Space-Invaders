@@ -1,9 +1,14 @@
 package tp.p1.logic;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public enum Level {
 
 	EASY, HARD, INSANE;
 
+	/*Cantidad de regular ships dependiento de la dificultad elegida*/
 	public int getNumRegularAliens() {
 
 		int num = 0;
@@ -24,6 +29,7 @@ public enum Level {
 		return num;
 	}
 
+	/*Cantidad de destroyer ships dependiento de la dificultad elegida*/
 	public int getNumDestroyerAliens() {
 
 		int num = 0;
@@ -44,6 +50,7 @@ public enum Level {
 		return num;
 	}
 	
+	/*Frecuencia de tiro dependiento de la dificultad elegida*/
 	public double getShootFrec() {
 
 		double freq = 0;
@@ -64,6 +71,7 @@ public enum Level {
 		return freq;
 	}
 	
+	/*Velocidad de movimiento dependiento de la dificultad elegida*/
 	public int getSpeed() {
 
 		int ciclos = 0;
@@ -84,6 +92,7 @@ public enum Level {
 		return ciclos;
 	}
 	
+	/*Frecuencia de aparicieón del ovni dependiento de la dificultad elegida*/
 	public double getFrecOvni() {
 
 		double freq = 0;
@@ -104,6 +113,7 @@ public enum Level {
 		return freq;
 	}
 
+	/*Posicion de la destroyer en la fila dependiento de la dificultad elegida*/
 	public int getLineDestroyer() {
 		
 		int num;
@@ -124,6 +134,7 @@ public enum Level {
 		return num;
 	}
 
+	/*Posicion de la destroyer en la columna dependiento de la dificultad elegida*/
 	public int getColDestroyerAliens() {
 		
 		int num;

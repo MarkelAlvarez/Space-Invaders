@@ -1,5 +1,9 @@
 package tp.p1.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class Bomb {
 
 	private int damage;
@@ -8,6 +12,7 @@ public class Bomb {
 	private int id;
 	private String icono;
 	
+	/*Inicializa los atributos de la clase*/
 	public Bomb(int x, int y, int ident) {
 
 		damage = 1;

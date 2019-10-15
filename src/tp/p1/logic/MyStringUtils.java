@@ -1,7 +1,12 @@
 package tp.p1.logic;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class MyStringUtils {
 
+	/*Repite el elemento*/
 	public static String repetir(String elemento, int longitud) {
 		
 		int i;
@@ -15,6 +20,7 @@ public class MyStringUtils {
 		return resultado;
 	}
 
+	/*Centra los objetos*/
 	public static String centrar(String texto, int longitud) {
 
 		String out = String.format("%"+ longitud + "s%s%" + longitud + "s", "", texto, "");

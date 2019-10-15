@@ -1,5 +1,9 @@
 package tp.p1.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class UCMShipLaser {
 
 	private int posX;
@@ -7,6 +11,7 @@ public class UCMShipLaser {
 	private int damage;
 	private String icono;
 	
+	/*Inicializa los atributos de la clase*/
 	public UCMShipLaser(int x, int y) {
 		
 		posX = x;

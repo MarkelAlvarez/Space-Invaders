@@ -1,5 +1,9 @@
 package tp.p1.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class RegularShip {
 
 	private int posX;
@@ -8,6 +12,7 @@ public class RegularShip {
 	private int puntos;
 	private String icono;
 	
+	/*Inicializa los atributos de la clase*/
 	public RegularShip (int x, int y) {
 
 		posX = x;

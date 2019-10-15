@@ -1,5 +1,9 @@
 package tp.p1.logic;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 import tp.p1.logic.MyStringUtils;
 
 public class GamePrinter {
@@ -9,7 +13,7 @@ public class GamePrinter {
 	String[][] board;
 	final String space = " ";
 	
-	
+	/*Inicializa los atributos de la clase*/
 	public GamePrinter(Game game, int rows, int cols) {
 
 		this.numRows = rows;
@@ -17,7 +21,7 @@ public class GamePrinter {
 
 		encodeGame(game);
 	}
-	
+	/*Situa a las naves y objetos del juego en el tablero*/
 	private void encodeGame(Game game) {
 
 		board = new String[numRows][numCols];
@@ -31,6 +35,7 @@ public class GamePrinter {
 		}
 	}
 	
+	/*Dibuja el tablero*/
 	public String toString() {
 
 		int cellSize = 7;

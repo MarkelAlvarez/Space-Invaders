@@ -1,5 +1,9 @@
 package tp.p1.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class Ovni {
 
 	private int posX;
@@ -8,6 +12,7 @@ public class Ovni {
 	private int puntos;
 	private String icono;
 	
+	/*Inicializa los atributos de la clase*/
 	public Ovni() {
 
 		posX = 0;

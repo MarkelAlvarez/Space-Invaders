@@ -1,5 +1,9 @@
 package tp.p1.lists;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 import tp.p1.objects.Bomb;
 
 public class BombList {
@@ -7,31 +11,32 @@ public class BombList {
 	private Bomb[] list;
 	private int contador;
 	
+	/*Inicializa la lista de bombas y el contador de las mismas*/
 	public BombList(int naves) {
 
 		list = new Bomb[naves];
 		contador = 0;
 	}
 	
+	/*Añade una bomba a la lista de bombas*/
 	public void addBomb(int x, int y, int id) {
 
 		list[contador] = new Bomb(x, y, id);
 		contador++;
 	}
 	
-	/*
-	* Borra bomba si la encuentra y devuelve si se ha eliminado ya que solo tiene 1 de vida
-	*/
+	/*Borra bomba si la encuentra y devuelve si se ha eliminado ya que solo tiene 1 de vida*/
 	public Boolean deleteBomb(int x, int y, DestroyerShipList dList) {
 
 		int i = 0, j;
 		Boolean found = false;					
-		
+		/*Realiza la busqueda de la bomba*/
 		while (i < contador)
 		{
 			if((list[i].getPosX() == x) && (list[i].getPosY() == y))
 			{	
-				dList.updateBomb(list[i].getId(), false);	//Actualizo el booleano de su destroyer
+				/*Actualiza el booleano de su destroyer*/
+				dList.updateBomb(list[i].getId(), false);
 				for (j = i + 1; j < contador; j++)
 				{
 					list[i] = list[j];
@@ -48,7 +53,8 @@ public class BombList {
 		return found;
 	}
 	
-	public Boolean isFound(int x, int y) {	//para ObjectToString
+	/*Indica a toStringObjectAt() si se ha encontrado la bomba*/
+	public Boolean isFound(int x, int y) {
 
 		int i = 0;
 		Boolean found = false;

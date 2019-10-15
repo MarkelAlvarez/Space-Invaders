@@ -1,5 +1,9 @@
 package tp.p1.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB) 
+*/
+
 public class UCMShip {
 
 	private int posX;
@@ -10,6 +14,7 @@ public class UCMShip {
 	private String icono;
 	private String death;
 	
+	/*Inicializa los atributos de la clase*/
 	public UCMShip() { 
 		
 		posX = 7;
