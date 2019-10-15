@@ -26,8 +26,10 @@ public class Controller {
 
 	public void run() {
 
-		/*Mientras que no se acabe el juego ni se ejecute la opcion 'reset'
-		el juego hara un ciclo (draw, user command, computer action y update)*/
+		/*
+		* Mientras que no se acabe el juego ni se ejecute la opcion 'reset'
+		* el juego hara un ciclo (draw, user command, computer action y update)
+		*/
 		while ((game.getEnd() == false) && (game.getReset() == false))
 		{
 			draw();
@@ -41,9 +43,11 @@ public class Controller {
 			}
 		}
 
-		/*Cuando se ejecuta la opcion 'reset' se inicia el juego de nuevo volviendo
-		a ejecutar initGame(). Si getEnd es true se ejecuta 'draw' y te muestra un
-		texto dependiendo de como haya terminado el juego*/
+		/*
+		* Cuando se ejecuta la opcion 'reset' se inicia el juego de nuevo volviendo
+		* a ejecutar initGame(). Si getEnd es true se ejecuta 'draw' y te muestra un
+		* texto dependiendo de como haya terminado el juego.
+		*/
 		if (game.getReset())
 		{
 			game.initGame();

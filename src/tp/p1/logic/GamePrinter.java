@@ -21,6 +21,7 @@ public class GamePrinter {
 
 		encodeGame(game);
 	}
+	
 	/*Situa a las naves y objetos del juego en el tablero*/
 	private void encodeGame(Game game) {
 

@@ -57,7 +57,7 @@ public class Main {
 				}
 				else
 				{
-					semilla = new Random().nextInt((int)System.currentTimeMillis()*(-1)); //Parche cutre
+					semilla = new Random().nextInt((int)System.currentTimeMillis()*(-1));
 				}
 				//Crea un objeto aleatorio
 				rand = new Random(semilla);

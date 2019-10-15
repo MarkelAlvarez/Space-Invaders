@@ -81,8 +81,10 @@ public class Game {
 		
 		if (UCMShip.getShockwave())
 		{
-			/*Busca en la lista de naves y resta el daño de shockwave a las naves.
-			Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida*/
+			/*
+			* Busca en la lista de naves y resta el daño de shockwave a las naves.
+			* Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida.
+			*/
 			for (int i = 0; i < rList.getContador(); i++)
 			{
 				/*Resta la vida a la nave*/
@@ -96,8 +98,10 @@ public class Game {
 				}
 			}
 			
-			/*Busca en la lista de naves y resta el daño de shockwave a las naves.
-			Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida*/
+			/*
+			* Busca en la lista de naves y resta el daño de shockwave a las naves.
+			* Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida.
+			*/
 			for (int i = 0; i < dList.getContador(); i++)
 			{	
 				/*Resta la vida a la nave*/
@@ -287,8 +291,10 @@ public class Game {
 				existOvni = false; 
 			}
 
-			/*Si hay un laser en el tablero se mueve y se comprueba que no se sale del tablero.
-			* Si no sale del tablero se comprueban las colisiones con los objetos del tablero*/
+			/*
+			* Si hay un laser en el tablero se mueve y se comprueba que no se sale del tablero.
+			* Si no sale del tablero se comprueban las colisiones con los objetos del tablero.
+			*/
 			if (UCMShip.getLaser()) 
 			{
 				moveLaser(UCMShipLaser);
