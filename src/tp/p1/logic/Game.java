@@ -399,6 +399,11 @@ public class Game {
 				}
 			}
 		}
+		
+		if((rList.getContador() == 0) && (dList.getContador() == 0))
+		{	
+			end = true;
+		}
 	}
 	
 	/*Coloca objetos en tablero*/
