@@ -1,4 +1,0 @@
-Es extrictamente necesario meter update y demas dentro de los execute de los command?
-MoveCommand
-Comando cuando metes enter
-Comando Shockwave
