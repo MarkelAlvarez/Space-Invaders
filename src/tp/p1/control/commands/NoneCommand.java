@@ -3,22 +3,27 @@ package tp.p1.control.commands;
 import tp.p1.control.Command;
 import tp.p1.logic.Game;
 
-public class UpdateCommand extends Command {
+public class NoneCommand extends Command {
 
-	public UpdateCommand(String name, String shortcut, String details, String help) {
+	public NoneCommand(String name, String shortcut, String details, String help) {
 		super(name, shortcut, details, help);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO Auto-generated method stub
-		return false;
+
+		return true;
 	}
 
 	@Override
 	public Command parse(String[] commandWords) {
-		// TODO Auto-generated method stub
+
+		if (matchCommandName(commandWords[0]))
+		{
+			return this;
+		}
+
 		return null;
 	}
 

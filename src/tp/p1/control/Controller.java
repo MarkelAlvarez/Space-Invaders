@@ -1,7 +1,7 @@
 package tp.p1.control;
 
 /*
-* Juan Pablo Corella y Markel Alvarez (2ºB) 
+* Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
 import java.util.Scanner;
@@ -16,53 +16,45 @@ public class Controller {
 	private GamePrinter printer;
 	final static int numF = 8;
 	final static int numC = 9;
-	
+
 	String unknownCommandMsg = "Wrong input.";
-	
+
 	/*Inicializa los atributos de la clase e initGame()*/
 	public Controller(Game game, Scanner scanner) {
-		
+
 		this.game = game;
 		in = scanner;
 		game.initGame();
 	}
 
 	public void run() {
-		
+
 		/*
 		* Mientras que no se acabe el juego ni se ejecute la opcion 'reset'
 		* el juego hara un ciclo (draw, user command, computer action y update)
 		*/
-		/*while ((game.getEnd() == false) && (game.getReset() == false))
+		while ((game.getEnd() == false) && (game.getReset() == false))
 		{
 			draw();
-			game.userCommand(comandoMenu());
+
+			System.out.print("Command > ");
+			String[] words = in.nextLine().toLowerCase().trim().split ("\\s+");
+
+			Command command = CommandGenerator.parseCommand(words);
+
+			if (command != null)
+			{
+				if (!command.execute(game))
+				{
+					System.out.format(unknownCommandMsg);
+				}
+			}
 			
 			if(game.getEnd() == false)
 			{
 				game.computerAction();
 				game.update();
 				game.setCiclos(game.getCiclos() + 1);
-			}
-		}*/
-		while ((game.getEnd() == false) && (game.getReset() == false)) 
-		{
-			draw();
-			
-			System.out.print("Command > ");
-			String[] words = in.nextLine().toLowerCase().trim().split ("\\s+");
-
-			Command command = CommandGenerator.parseCommand(words);
-			if (command != null)
-			{
-				if (command.execute(game)) 
-				{
-					System.out.println(game);
-				}
-				else
-				{
-					System.out.format(unknownCommandMsg );
-				}
 			}
 		}
 
@@ -93,12 +85,12 @@ public class Controller {
 
 	/*Te refleja la información de la partida y pinta el tableror*/
 	public void draw() {
-		
+
 		System.out.println("Life: " + game.getUCMShip().getResist());
 		System.out.println("Number of cycles: " + game.getCiclos());
 		System.out.println("Points: " + game.getPuntuacion());
 		System.out.println("Remaining aliens: " + (game.getdList().getContador() + game.getrList().getContador()));
-		
+
 		if (game.getUCMShip().getShockwave())
 		{
 			System.out.println("Shockwave: YES");
@@ -109,15 +101,15 @@ public class Controller {
 		}
 		/*Pinta el tablero*/
 		printer = new GamePrinter(game, numF, numC);
-		
+
 		System.out.println(printer.toString());
 	}
-	
+
 	/*Lee el comando introducido por el usuario*/
 	public String comandoMenu()
 	{
 		String comando;
-		
+
 		System.out.print("Command > ");
 		comando = this.in.nextLine();
 		System.out.println();

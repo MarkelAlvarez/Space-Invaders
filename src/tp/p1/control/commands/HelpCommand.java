@@ -1,6 +1,7 @@
 package tp.p1.control.commands;
 
 import tp.p1.control.Command;
+import tp.p1.control.CommandGenerator;
 import tp.p1.logic.Game;
 
 public class HelpCommand extends Command {
@@ -12,13 +13,20 @@ public class HelpCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO Auto-generated method stub
-		return false;
+
+		System.out.println(CommandGenerator.commandHelp());
+
+		return true;
 	}
 
 	@Override
 	public Command parse(String[] commandWords) {
-		// TODO Auto-generated method stub
+
+		if (matchCommandName(commandWords[0]))
+		{
+			return this;
+		}
+
 		return null;
 	}
 
