@@ -49,13 +49,6 @@ public class Controller {
 					System.out.format(unknownCommandMsg);
 				}
 			}
-			
-			if(game.getEnd() == false)
-			{
-				game.computerAction();
-				game.update();
-				game.setCiclos(game.getCiclos() + 1);
-			}
 		}
 
 		/*

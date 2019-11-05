@@ -147,7 +147,7 @@ public class Game {
 		System.out.print("[R]egular ship: Points: " + RegularShip.getPuntos() + " - Harm: 0 - Shield: " + RegularShip.getResist() + "\n");
 		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.getPuntos() + " - Harm: " + Bomb.getDamage() + " - Shield: " + DestroyerShip.getResist() + "\n");
 		System.out.print("[O]vni: Points: " + Ovni.getPuntos() + " - Harm: 0 - Shield: " + Ovni.getResist() + "\n");
-		System.out.print(UCMShip.getIcono() + ": Harm: " + UCMShipLaser.getDamage() + " - Shield: " + UCMShip.getResist() + "\n");	
+		System.out.print(UCMShip.getIcono() + ": Harm: " + UCMShipLaser.getDamage() + " - Shield: " + UCMShip.getResist() + "\n\n");	
 	}
 
 	public void exit() {

@@ -13,7 +13,14 @@ public class ResetCommand extends Command {
 	public boolean execute(Game game) {
 
 		game.reset();
-
+		
+		if(game.getEnd() == false)
+		{
+			game.computerAction();
+			game.update();
+			game.setCiclos(game.getCiclos() + 1);
+		}
+		
 		return true;
 	}
 

@@ -14,7 +14,14 @@ public class ShockwaveCommand extends Command {
 	public boolean execute(Game game) {
 
 		game.shockwave();
-
+		
+		if(game.getEnd() == false)
+		{
+			game.computerAction();
+			game.update();
+			game.setCiclos(game.getCiclos() + 1);
+		}
+		
 		return true;
 	}
 

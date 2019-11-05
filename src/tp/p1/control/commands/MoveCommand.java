@@ -14,6 +14,14 @@ public class MoveCommand extends Command {
 	public boolean execute(Game game) {
 
 		//PENDIENTE
+		
+		if(game.getEnd() == false)
+		{
+			game.computerAction();
+			game.update();
+			game.setCiclos(game.getCiclos() + 1);
+		}
+		
 		return true;
 	}
 
