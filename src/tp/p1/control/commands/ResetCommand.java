@@ -1,10 +1,11 @@
-package tp.p1.control;
+package tp.p1.control.commands;
 
+import tp.p1.control.Command;
 import tp.p1.logic.Game;
 
-public class ExitCommand extends Command {
+public class ResetCommand extends Command {
 
-	public ExitCommand(String name, String shortcut, String details, String help) {
+	public ResetCommand(String name, String shortcut, String details, String help) {
 		super(name, shortcut, details, help);
 		// TODO Auto-generated constructor stub
 	}
@@ -17,7 +18,12 @@ public class ExitCommand extends Command {
 
 	@Override
 	public Command parse(String[] commandWords) {
-		// TODO Auto-generated method stub
+
+		if (matchCommandName(name))
+		{
+			
+		}
+		
 		return null;
 	}
 

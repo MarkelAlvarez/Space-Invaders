@@ -1,10 +1,11 @@
-package tp.p1.control;
+package tp.p1.control.commands;
 
+import tp.p1.control.Command;
 import tp.p1.logic.Game;
 
-public class ShootCommand extends Command {
+public class ListCommand extends Command {
 
-	public ShootCommand(String name, String shortcut, String details, String help) {
+	public ListCommand(String name, String shortcut, String details, String help) {
 		super(name, shortcut, details, help);
 		// TODO Auto-generated constructor stub
 	}

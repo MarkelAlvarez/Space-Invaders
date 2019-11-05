@@ -1,5 +1,13 @@
 package tp.p1.control;
 
+import tp.p1.control.commands.ExitCommand;
+import tp.p1.control.commands.HelpCommand;
+import tp.p1.control.commands.ListCommand;
+import tp.p1.control.commands.MoveCommand;
+import tp.p1.control.commands.ResetCommand;
+import tp.p1.control.commands.ShockwaveCommand;
+import tp.p1.control.commands.ShootCommand;
+
 public class CommandGenerator {
 
 	private static Command[] availableCommands = {

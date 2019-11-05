@@ -1,10 +1,11 @@
-package tp.p1.control;
+package tp.p1.control.commands;
 
+import tp.p1.control.Command;
 import tp.p1.logic.Game;
 
-public class ShockwaveCommand extends Command {
+public class ShootCommand extends Command {
 
-	public ShockwaveCommand(String name, String shortcut, String details, String help) {
+	public ShootCommand(String name, String shortcut, String details, String help) {
 		super(name, shortcut, details, help);
 		// TODO Auto-generated constructor stub
 	}
@@ -20,4 +21,5 @@ public class ShockwaveCommand extends Command {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

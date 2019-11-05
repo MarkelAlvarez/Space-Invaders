@@ -1,10 +1,11 @@
-package tp.p1.control;
+package tp.p1.control.commands;
 
+import tp.p1.control.Command;
 import tp.p1.logic.Game;
 
-public class UpdateCommand extends Command {
+public class HelpCommand extends Command {
 
-	public UpdateCommand(String name, String shortcut, String details, String help) {
+	public HelpCommand(String name, String shortcut, String details, String help) {
 		super(name, shortcut, details, help);
 		// TODO Auto-generated constructor stub
 	}
