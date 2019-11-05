@@ -12,10 +12,10 @@ public abstract class Command {
 	protected static final String incorrectNumArgsMsg = "Incorrect number of arguments";
 	protected static final String incorrectArgsMsg = "Incorrect argument format";
 	
-	public Command(String name, String shortcut, String details, String help){
+	public Command(String name, String shortcut, String details, String help) {
 	
 		this.name = name;
-		this. shortcut = shortcut;
+		this.shortcut = shortcut;
 		this.details = details;
 		this.help = help;
 	}

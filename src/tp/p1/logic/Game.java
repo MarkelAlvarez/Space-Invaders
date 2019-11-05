@@ -135,7 +135,7 @@ public class Game {
 				"shoot: UCM-Ship launches a missile.\r\n" + 
 				"shockWave: UCM-Ship releases a shock wave.\r\n" + 
 				"list: Prints the list of available ships.\r\n" + 
-				"reset: Starts a new \r\n" + 
+				"reset: Starts a new game.\r\n" + 
 				"help: Prints this help message.\r\n" +
 				"exit: Terminates the program.\r\n"+
 				"[none]: Skips one cycle.");
