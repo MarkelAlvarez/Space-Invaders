@@ -1,7 +1,7 @@
 package tp.p1.control;
 
 public class CommandGenerator {
-	
+
 	private static Command[] availableCommands = {
 		new ListCommand("list", "L", "List", "Prints the list of available ships."),
 		new HelpCommand("help", "H", "Help", "Prints this help message."),
@@ -21,19 +21,20 @@ public class CommandGenerator {
 		int i = 0;
 		while (i < getAvailableCommands().length)
 		{
-			if (condition)
+			if (getAvailableCommands()[i].name.equ)
 			{
+				
 				i = getAvailableCommands().length;
 			}
 		}
 
 		return null;
 	}
-	
+
 	public static String commandHelp() {
 		return null;
 	}
-	
+
 	public static Command[] getAvailableCommands() {
 		return availableCommands;
 	}

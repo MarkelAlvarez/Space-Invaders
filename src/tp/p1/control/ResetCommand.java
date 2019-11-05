@@ -17,7 +17,11 @@ public class ResetCommand extends Command {
 
 	@Override
 	public Command parse(String[] commandWords) {
-		// TODO Auto-generated method stub
+
+		if (matchCommandName(name))
+		{
+			
+		}
 		return null;
 	}
 
