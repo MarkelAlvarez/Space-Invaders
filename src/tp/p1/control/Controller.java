@@ -49,7 +49,8 @@ public class Controller {
 					System.out.format(unknownCommandMsg);
 				}
 			}
-			else {
+			else
+			{
 				System.out.format(unknownCommandMsg);
 			}
 		}
