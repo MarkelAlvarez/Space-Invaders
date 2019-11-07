@@ -14,8 +14,8 @@ public class MoveCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		
-		boolean ret = false;
 		int foo;
+		boolean ret = false;
 		
 		if (comando.length == 3)
 		{
