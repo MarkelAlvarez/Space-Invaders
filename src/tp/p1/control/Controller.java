@@ -17,7 +17,7 @@ public class Controller {
 	final static int numF = 8;
 	final static int numC = 9;
 
-	String unknownCommandMsg = "Wrong input.";
+	String unknownCommandMsg = "Wrong input.\n";
 
 	/*Inicializa los atributos de la clase e initGame()*/
 	public Controller(Game game, Scanner scanner) {
@@ -48,6 +48,9 @@ public class Controller {
 				{
 					System.out.format(unknownCommandMsg);
 				}
+			}
+			else {
+				System.out.format(unknownCommandMsg);
 			}
 		}
 
@@ -98,15 +101,4 @@ public class Controller {
 		System.out.println(printer.toString());
 	}
 
-	/*Lee el comando introducido por el usuario*/
-	public String comandoMenu()
-	{
-		String comando;
-
-		System.out.print("Command > ");
-		comando = this.in.nextLine();
-		System.out.println();
-
-		return comando;
-	}
 }

@@ -10,9 +10,9 @@ public class CommandGenerator {
 		new ResetCommand("reset", "R", "[R]eset", "Starts a new game."),
 		new ExitCommand("exit", "E", "[E]xit", "Terminates the program."),
 		new ShootCommand("shoot", "S", "[S]hoot", "UCM-Ship launches a missile."),
-		new NoneCommand(null, null, null, null),
 		new MoveCommand("move", "M", "[M]ove", "Moves UCM-Ship to the indicated direction."),
-		new ShockwaveCommand("shockwave", "W", "Shock[W]ave", "UCM-Ship releases a shock wave.")
+		new ShockwaveCommand("shockwave", "W", "Shock[W]ave", "UCM-Ship releases a shock wave."),
+		new NoneCommand("none", "N", "[N]one", "Skips cycle.")
 	};
 
 	public static Command parseCommand(String[] commandWords) {
