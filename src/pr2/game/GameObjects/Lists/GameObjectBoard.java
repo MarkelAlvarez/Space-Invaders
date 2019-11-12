@@ -8,27 +8,62 @@ public class GameObjectBoard {
 	private int currentObjects;
 	
 	public GameObjectBoard (int width, int height) {
-	// TODO implement
+		objects = new GameObject[width * height];
+		for (int i = 0; i < width * height; i++) {
+			objects[i] = null;
+		}
+		currentObjects = 0;
 	}
 	
 	private int getCurrentObjects () {
-	// TODO implement
+	return currentObjects;
 	}
 	
 	public void add (GameObject object) {
-	// TODO implement
+	objects[currentObjects] = object;
+	currentObjects++;
 	}
 	
 	private GameObject getObjectInPosition (int x, int y) {
-	// TODO implement
+		
+		int i = 0;
+		while (i < currentObjects) {
+			if ((objects[i].getX() == x) && (objects[i].getY() == y)) {
+				return objects[i];
+			}
+			i++;
+		}
+		return null;
 	}
 	
 	private int getIndex(int x, int y) {
-	// TODO implement
+		int i = 0;
+		while (i < currentObjects) {
+			if ((objects[i].getX() == x) && (objects[i].getY() == y)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
 	}
 	
 	private void remove (GameObject object) {
-	// TODO implement
+		
+		int i = 0;
+		while (i < currentObjects)
+		{
+			if ((objects[i].getX() == object.getX()) && (objects[i].getY() == object.getY()))
+			{
+				for (int j = i + 1; j < currentObjects; j++)
+				{
+					objects[i] = objects[j];
+					i++;
+				}
+				objects[currentObjects - 1] = null;
+				currentObjects--;
+			}
+			i++;
+		}
 	}
 	
 	public void update() {
