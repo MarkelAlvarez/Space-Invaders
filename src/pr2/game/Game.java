@@ -4,7 +4,7 @@ import java.util.Random;
 
 import pr2.game.lists.*;
 import pr2.game.logic.Move;
-import pr2.game.objects.*;
+import pr2.game.GameObjects.objects.*;
 
 public class Game {
 

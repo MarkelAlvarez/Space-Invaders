@@ -1,6 +1,6 @@
 package pr2.game.lists;
 
-import pr2.game.objects.RegularShip;
+import pr2.game.GameObjects.objects.*;
 
 public class RegularShipList { 
 
