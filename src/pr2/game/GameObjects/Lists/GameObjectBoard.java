@@ -35,7 +35,7 @@ public class GameObjectBoard {
 
 		while (i < currentObjects)
 		{
-			if ((objects[i].getX() == x) && (objects[i].getY() == y))
+			if (objects[i].isOnPosition(x, y))
 			{
 				return objects[i];
 			}
@@ -51,7 +51,7 @@ public class GameObjectBoard {
 
 		while (i < currentObjects)
 		{
-			if ((objects[i].getX() == x) && (objects[i].getY() == y))
+			if (objects[i].isOnPosition(x, y))
 			{
 				return i;
 			}
@@ -67,7 +67,7 @@ public class GameObjectBoard {
 
 		while (i < currentObjects)
 		{
-			if ((objects[i].getX() == object.getX()) && (objects[i].getY() == object.getY()))
+			if (objects[i] == object)
 			{
 				for (int j = i + 1; j < currentObjects; j++)
 				{
@@ -76,6 +76,7 @@ public class GameObjectBoard {
 				}
 				objects[currentObjects - 1] = null;
 				currentObjects--;
+				i = currentObjects;
 			}
 			i++;
 		}
@@ -94,46 +95,38 @@ public class GameObjectBoard {
 	}
 
 	private void removeDead() {
-
-		for (int i = 0; i < currentObjects; i++)
+		
+		if(objects[0].getActive() && (!objects[0].isAlive()))
 		{
-			if(objects[i].getLive() == 0)
+			objects[0].setActive(false);
+		}
+
+		for (int i = 1; i < currentObjects; i++)
+		{
+			if(!objects[i].isAlive())
 			{
 				remove(objects[i]);
 				i--;
+				currentObjects--;
 			}
 		}
 	}
 
 	public String toString(int i, int j) {
-
-		if((UCMShip.getPosX() == i) && (UCMShip.getPosY() == j))
+		
+		if(objects[0].getActive() && objects[0].isOnPosition(i, j))
 		{
-			return UCMShip.getIcono();
+			return objects[0].toString();
 		}
-		else if(rList.isFound(i, j))
+		
+		for (int aux = 1; aux < currentObjects; aux++)
 		{
-			return rList.iconFrom(i, j);
+			if (objects[aux].isOnPosition(i, j));
+			{
+				return objects[aux].toString();
+			}
 		}
-		else if(dList.isFound(i, j))
-		{
-			return dList.iconFrom(i, j);
-		}
-		else if(bList.isFound(i, j))
-		{
-			return Bomb.getIcono();
-		}
-		else if(existOvni && (Ovni.getPosX() == i) && (Ovni.getPosY() == j))
-		{
-			return Ovni.getIcono();
-		}
-		else if(UCMShip.getLaser() && (UCMShipLaser.getPosX() == i) && (UCMShipLaser.getPosY() == j))
-		{
-			return UCMShipLaser.getIcono();
-		}
-		else
-		{
-			return "";
-		}
+		
+		return "";
 	}
 }

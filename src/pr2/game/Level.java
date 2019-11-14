@@ -1,157 +1,74 @@
 package pr2.game;
 
-/*
-* Juan Pablo Corella y Markel Alvarez (2ºB) 
-*/
-
 public enum Level {
-
-	EASY, HARD, INSANE;
-
-	/*Cantidad de regular ships dependiento de la dificultad elegida*/
+	
+	EASY(4, 2, 0.2, 3, 0.5, 1),
+	HARD(8, 4, 0.3, 2, 0.2, 2),
+	INSANE(12, 4, 0.5, 1, 0.1, 3);
+	
+	private int numRegularAliens;
+	private int numDestroyerAliens;
+	private int numCyclesToMoveOneCell;
+	private double ovniFrequency;
+	private double shootFrequency;
+	private int numRowsOfRegularAliens;
+	
+	private Level(
+		int numRegularAliens,
+		int numDestroyerAliens,
+		double shootFrequency,
+		int numCyclesToMoveOneCell,
+		double ovniFrequency,
+		int numRowsOfRegularAliens)
+	{
+		
+		this.numRegularAliens = numRegularAliens;
+		this.numDestroyerAliens = numDestroyerAliens;
+		this.shootFrequency = shootFrequency;
+		this.numCyclesToMoveOneCell = numCyclesToMoveOneCell;
+		this.ovniFrequency = ovniFrequency;
+		this.numRowsOfRegularAliens = numRowsOfRegularAliens;
+	}
+	
 	public int getNumRegularAliens() {
-
-		int num = 0;
-
-		if (this == EASY)
-		{
-			num = 4;
-		}
-		else if (this == HARD)
-		{
-			num = 8;
-		}
-		else if (this == INSANE)
-		{
-			num = 8;
-		}
-		
-		return num;
+		return numRegularAliens;
 	}
-
-	/*Cantidad de destroyer ships dependiento de la dificultad elegida*/
+	
 	public int getNumDestroyerAliens() {
-
-		int num = 0;
-
-		if (this == EASY)
-		{
-			num = 2;
-		}
-		else if (this == HARD)
-		{
-			num = 2;
-		}
-		else if (this == INSANE)
-		{
-			num = 4;
-		}
-		
-		return num;
+		return numDestroyerAliens;
 	}
 	
-	/*Frecuencia de tiro dependiento de la dificultad elegida*/
-	public double getShootFrec() {
-
-		double freq = 0;
-
-		if (this == EASY)
-		{
-			freq = 0.1;
-		}
-		else if (this == HARD)
-		{
-			freq = 0.3;
-		}
-		else if (this == INSANE)
-		{
-			freq = 0.5;
-		}
-		
-		return freq;
+	public Double getShootFrequency() {
+		return shootFrequency;
 	}
 	
-	/*Velocidad de movimiento dependiento de la dificultad elegida*/
-	public int getSpeed() {
-
-		int ciclos = 0;
-
-		if (this == EASY)
-		{
-			ciclos = 3;
-		}
-		else if (this == HARD)
-		{
-			ciclos = 2;
-		}
-		else if (this == INSANE)
-		{
-			ciclos = 1;
-		}
-		
-		return ciclos;
+	public int getNumCyclesToMoveOneCell() {
+		return numCyclesToMoveOneCell;
 	}
 	
-	/*Frecuencia de aparicieón del ovni dependiento de la dificultad elegida*/
-	public double getFrecOvni() {
-
-		double freq = 0;
-
-		if (this == EASY)
-		{
-			freq = 0.5;
-		}
-		else if (this == HARD)
-		{
-			freq = 0.2;
-		}
-		else if (this == INSANE)
-		{
-			freq = 0.1;
-		}
-		
-		return freq;
+	public Double getOvniFrequency() {
+		return ovniFrequency;
+	}
+	
+	public int getNumRowsOfRegularAliens() {
+		return numRowsOfRegularAliens;
+	}
+	
+	public int getNumRegularAliensPerRow() {
+		return numRegularAliens / numRowsOfRegularAliens;
 	}
 
-	/*Posicion de la destroyer en la fila dependiento de la dificultad elegida*/
-	public int getLineDestroyer() {
-		
-		int num;
-
-		if (this == EASY)
-		{
-			num = 2;
-		}
-		else if(this == HARD || this == INSANE)
-		{
-			num = 3;
-		}
-		else
-		{
-			num = 0;
-		}
-
-		return num;
+	public int getNumDestroyerAliensPerRow() {
+		return getNumDestroyerAliens();
+	}
+	
+	public static Level fromParam(String param) {
+		for (Level level : Level.values() )
+			if (level . name().equalsIgnoreCase(param)) return level;
+				return EASY;
 	}
 
-	/*Posicion de la destroyer en la columna dependiento de la dificultad elegida*/
-	public int getColDestroyerAliens() {
-		
-		int num;
-		
-		if (this == EASY || this == HARD)
-		{
-			num = 4;
-		}
-		else if (this == INSANE)
-		{
-			num = 3;
-		}
-		else
-		{
-			num = 0;
-		}
-		
-		return num;
+	public Double getTurnExplodeFreq(){
+		return 0.05;
 	}
 }
