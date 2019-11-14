@@ -1,58 +1,28 @@
 package pr2.game.GameObjects.objects;
 
+import pr2.game.Game;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB) 
 */
 
-public class RegularShip {
+import pr2.game.GameObjects.*;
 
-	private int posX;
-	private int posY;
-	private int resist;
+public class RegularShip extends AlienShip {
+
 	private int puntos;
 	private String icono;
 	
 	/*Inicializa los atributos de la clase*/
-	public RegularShip (int x, int y) {
+	public RegularShip (Game game, int x, int y) {
 
-		posX = x;
-		posY = y;
-		resist = 3;
+		super(game, x, y, 3);
 		puntos = 5;
-		icono = "C[" + resist + "]";
+		icono = "C[" + live + "]";
 	}
 
 	/*GETS y SETS*/
 	
-	public int getPosX() {
-
-		return posX;
-	}
-	
-	public void setPosX(int posX) {
-
-		this.posX = posX;
-	}
-	
-	public int getPosY() {
-
-		return posY;
-	}
-	
-	public void setPosY(int posY) {
-
-		this.posY = posY;
-	}
-	
-	public int getResist() {
-
-		return resist;
-	}
-	
-	public void setResist(int resist) {
-
-		this.resist = resist;
-	}
 	
 	public int getPuntos() {
 
@@ -66,13 +36,16 @@ public class RegularShip {
 	
 	public String getIcono() {
 		
-		icono = "C[" + resist + "]";
-		
 		return icono;
 	}
 	
 	public void setIcono(String icono) {
 
 		this.icono = icono;
+	}
+	
+	public String toString() {
+		
+		return icono = "C[" + live + "]";
 	}
 }

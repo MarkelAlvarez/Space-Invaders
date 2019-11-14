@@ -1,49 +1,29 @@
 package pr2.game.GameObjects.objects;
 
+import pr2.game.Game;
+import pr2.game.GameObjects.Weapon;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB) 
 */
 
-public class Bomb {
+public class Bomb extends Weapon{
 
-	private int damage;
-	private int posX;
-	private int posY;
+	
 	private int id;
 	private String icono;
 	
 	/*Inicializa los atributos de la clase*/
-	public Bomb(int x, int y, int ident) {
+	public Bomb(Game game, int x, int y, int ident) {
 
-		damage = 1;
-		posX = x;
-		posY = y;
+		super(game, x, y, 1, 1);
 		id = ident;
 		icono = "·";
 	}	
 	
 	/*GETS y SETS*/
 	
-	public int getPosX() {
 
-		return posX;
-	}
-	
-	public void setPosX(int posX) {
-
-		this.posX = posX;
-	}
-	
-	public int getPosY() {
-
-		return posY;
-	}
-	
-	public void setPosY(int posY) {
-
-		this.posY = posY;
-	}
-	
 	public int getDamage() {
 
 		return damage;
@@ -72,5 +52,9 @@ public class Bomb {
 	public void setIcono(String icono) {
 
 		this.icono = icono;
+	}
+	
+	public String toString() {
+		return icono;
 	}
 }

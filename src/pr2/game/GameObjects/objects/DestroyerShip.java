@@ -1,52 +1,31 @@
 package pr2.game.GameObjects.objects;
 
+import pr2.game.Game;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB) 
 */
 
-public class DestroyerShip {
+import pr2.game.GameObjects.*;
 
-	private int posX;
-	private int posY;
+public class DestroyerShip extends AlienShip {
+
 	private int id;	//Ayuda a identificar cada nave y su proyectil lanzado
-	private int resist;
 	private int puntos;
 	private Boolean bomb;
 	private String icono;
 	
 	/*Inicializa los atributos de la clase*/
-	public DestroyerShip(int x, int y, int ident) {
+	public DestroyerShip(Game game, int x, int y, int ident) {
 
-		posX = x;
-		posY = y;
+		super(game, x, y, 1);
 		id = ident;
-		resist = 1;
 		puntos = 10;
 		bomb = false;
-		icono = "D[" + resist + "]";
+		icono = "D[" + live + "]";
 	}
 	
 	/*GETS y SETS*/
-	
-	public int getPosX() {
-		
-		return posX;
-	}
-	
-	public void setPosX(int posX) {
-		
-		this.posX = posX;
-	}
-	
-	public int getPosY() {
-		
-		return posY;
-	}
-	
-	public void setPosY(int posY) {
-		
-		this.posY = posY;
-	}
 	
 	public int getId() {
 		
@@ -56,16 +35,6 @@ public class DestroyerShip {
 	public void setId(int ident) {
 		
 		this.id = ident;
-	}
-	
-	public int getResist() {
-		
-		return resist;
-	}
-	
-	public void setResist(int resist) {
-		
-		this.resist = resist;
 	}
 	
 	public int getPuntos() {
@@ -89,8 +58,6 @@ public class DestroyerShip {
 	}
 	
 	public String getIcono() {
-
-		icono = "D[" + resist + "]";
 		
 		return icono;
 	}
@@ -98,5 +65,10 @@ public class DestroyerShip {
 	public void setIcono(String icono) {
 		
 		this.icono = icono;
+	}
+	
+	public String toString() {
+		
+		return icono = "D[" + live + "]";
 	}
 }

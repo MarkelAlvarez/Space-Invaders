@@ -1,63 +1,30 @@
 package pr2.game.GameObjects.objects;
 
+import pr2.game.Game;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB) 
 */
 
-public class Ovni {
+import pr2.game.GameObjects.*;
 
-	private int posX;
-	private int posY;
-	private int resist;
+public class Ovni extends EnemyShip{
+
+	private Boolean active;
 	private int puntos;
 	private String icono;
 	
 	/*Inicializa los atributos de la clase*/
-	public Ovni() {
-
-		posX = 0;
-		posY = 8;
-		resist = 1;
+	public Ovni(Game game, int x, int y) {
+		
+		super(game, x, y, 1);
 		puntos = 25;
-		icono = "O[" + resist + "]";
+		icono = "O[" + live + "]";
+		setActive(false);
 	} 
-	
-	public void decreaseLife(int damage) {
-		resist -= damage;
-	}
-	
+
 	/*GETS y SETS*/
 
-	public int getPosX() {
-
-		return posX;
-	}
-
-	public void setPosX(int posX) {
-
-		this.posX = posX;
-	}
-	
-	public int getPosY() {
-
-		return posY;
-	}
-	
-	public void setPosY(int posY) {
-
-		this.posY = posY;
-	}
-	
-	public int getResist() {
-
-		return resist;
-	}
-	
-	public void setResist(int resist) {
-
-		this.resist = resist;
-	}
-	
 	public int getPuntos() {
 
 		return puntos;
@@ -69,8 +36,6 @@ public class Ovni {
 	}
 	
 	public String getIcono() {
-
-		icono = "O[" + resist + "]";
 		
 		return icono;
 	}
@@ -78,5 +43,18 @@ public class Ovni {
 	public void setIcono(String icono) {
 
 		this.icono = icono;
+	}
+	
+	public String toString() {
+		
+		return icono = "O[" + live + "]";
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 }

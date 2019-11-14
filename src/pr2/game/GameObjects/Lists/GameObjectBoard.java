@@ -95,8 +95,8 @@ public class GameObjectBoard {
 	}
 
 	private void removeDead() {
-		
-		if(objects[0].getActive() && (!objects[0].isAlive()))
+
+		if((objects[0].getActive()) && (!objects[0].isAlive()))
 		{
 			objects[0].setActive(false);
 		}
@@ -113,12 +113,12 @@ public class GameObjectBoard {
 	}
 
 	public String toString(int i, int j) {
-		
-		if(objects[0].getActive() && objects[0].isOnPosition(i, j))
+
+		if((objects[0].getActive()) && (objects[0].isOnPosition(i, j)))
 		{
 			return objects[0].toString();
 		}
-		
+
 		for (int aux = 1; aux < currentObjects; aux++)
 		{
 			if (objects[aux].isOnPosition(i, j));
@@ -126,7 +126,7 @@ public class GameObjectBoard {
 				return objects[aux].toString();
 			}
 		}
-		
+
 		return "";
 	}
 }

@@ -1,63 +1,29 @@
 package pr2.game.GameObjects.objects;
 
+import pr2.game.Game;
+import pr2.game.GameObjects.*;
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB) 
 */
 
-public class UCMShip {
+public class UCMShip extends Ship{
 
-	private int posX;
-	private int posY;
-	private int resist;
 	private boolean shockwave;
 	private boolean laser;
 	private String icono;
 	private String death;
 	
 	/*Inicializa los atributos de la clase*/
-	public UCMShip() { 
+	public UCMShip(Game game, int x, int y) {
 		
-		posX = 7;
-		posY = 4;
-		resist = 3;
+		super(game, x, y , 3);		//el 3 es la vida
 		shockwave = false;
 		laser = false;
 		icono = "^__^";
 		death = "!xx!";
 	}
 	
-	/*GETS y SETS*/
 
-	public int getPosX() {
-		
-		return this.posX;
-	}
-	
-	public void setPosX(int x) {
-		
-		this.posX = x;
-	}
-	
-	public int getPosY() {
-		
-		return posY;
-	}
-	
-	public void setPosY(int posY) {
-		
-		this.posY = posY;
-	}
-	
-	public int getResist() {
-		
-		return resist;
-	}
-	
-	public void setResist(int resist) {
-		
-		this.resist = resist;
-	}
-	
 	public boolean getLaser() {
 		
 		return laser;
@@ -96,5 +62,9 @@ public class UCMShip {
 	public void setIcono(String icono) {
 		
 		this.icono = icono;
+	}
+	
+	public String toString() {
+		return getIcono();
 	}
 }
