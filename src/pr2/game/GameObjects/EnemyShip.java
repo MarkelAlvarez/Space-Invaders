@@ -1,12 +1,18 @@
 package pr2.game.GameObjects;
 
 import pr2.game.Game;
+import pr2.game.logic.Move;
 
 public class EnemyShip extends Ship {
+	
+	protected Move move;
+	protected int points;
 
-	public EnemyShip(Game game, int x, int y, int live) {
+	public EnemyShip(Game game, int x, int y, int live, int points) {
+		
 		super(game, x, y, live);
-		// TODO Auto-generated constructor stub
+		this.move = Move.LEFT;
+		this.points = points;
 	}
 
 	@Override
@@ -17,14 +23,12 @@ public class EnemyShip extends Ship {
 
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
-
+		game.receivePoints(points);
 	}
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

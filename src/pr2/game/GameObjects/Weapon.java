@@ -1,14 +1,16 @@
 package pr2.game.GameObjects;
 
 import pr2.game.Game;
+import pr2.game.logic.Move;
 
 public class Weapon extends GameObject {
 
 	protected int damage;
-	public Weapon(Game game, int x, int y, int live, int damage) {
+	private Move move;
+	public Weapon(Game game, int x, int y, int live, int damage, Move move) {
 		super(game, x, y, live);
 		this.damage = damage;
-		// TODO Auto-generated constructor stub
+		this.move = move;
 	}
 
 	@Override
@@ -25,8 +27,12 @@ public class Weapon extends GameObject {
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
-
+		if (move == Move.UP) {
+			x--;
+		}
+		else {
+			x++;
+		}
 	}
 
 	@Override

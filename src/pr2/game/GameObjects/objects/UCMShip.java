@@ -8,40 +8,49 @@ import pr2.game.GameObjects.*;
 
 public class UCMShip extends Ship{
 
-	private boolean shockwave;
-	private boolean laser;
+	private boolean hasShockwave;
+	private boolean canShootLaser;
 	private String icono;
 	private String death;
+	private int points;
 	
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
 		
 		super(game, x, y , 3);		//el 3 es la vida
-		shockwave = false;
-		laser = false;
+		hasShockwave = false;
+		canShootLaser = true;
 		icono = "^__^";
 		death = "!xx!";
+		points = 0;
 	}
 	
-
+	public String stateToString() {
+		return "Points: " + points + "\n";
+	}
+	
+	public void setState(int points) {
+		this.points += points;
+	}
+	
 	public boolean getLaser() {
 		
-		return laser;
+		return canShootLaser;
 	}
 	
 	public void setLaser(boolean laser) {
 		
-		this.laser = laser;
+		this.canShootLaser = laser;
 	}
 	
 	public boolean getShockwave() {
 		
-		return shockwave;
+		return hasShockwave;
 	}
 	
 	public void setShockwave(boolean shockwave) {
 		
-		this.shockwave = shockwave;
+		this.hasShockwave = shockwave;
 	}
 	
 	public String getDeath() {

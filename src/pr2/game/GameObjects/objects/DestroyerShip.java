@@ -11,16 +11,14 @@ import pr2.game.GameObjects.*;
 public class DestroyerShip extends AlienShip {
 
 	private int id;	//Ayuda a identificar cada nave y su proyectil lanzado
-	private int puntos;
 	private Boolean bomb;
 	private String icono;
 	
 	/*Inicializa los atributos de la clase*/
 	public DestroyerShip(Game game, int x, int y, int ident) {
 
-		super(game, x, y, 1);
+		super(game, x, y, 1, 10);
 		id = ident;
-		puntos = 10;
 		bomb = false;
 		icono = "D[" + live + "]";
 	}
@@ -35,16 +33,6 @@ public class DestroyerShip extends AlienShip {
 	public void setId(int ident) {
 		
 		this.id = ident;
-	}
-	
-	public int getPuntos() {
-		
-		return puntos;
-	}
-	
-	public void setPuntos(int puntos) {
-		
-		this.puntos = puntos;
 	}
 	
 	public Boolean getBomb() {

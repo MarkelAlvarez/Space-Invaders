@@ -32,12 +32,17 @@ public class Game {
 	private int ciclos;
 	private int puntuacion;
 	
+	
 	/*Inicializa los atributos basicos de la clase*/
 	public Game(Level level, Random rand) {
 
 		this.level = level;
 		this.rand = rand;
 		end = false;
+	}
+	
+	public Level getLevel() {
+		return level;
 	}
 	
 	/*Inicializa los atributos y objetos que son necesarios para el funcionamiento del juego*/

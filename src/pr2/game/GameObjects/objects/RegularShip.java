@@ -10,29 +10,17 @@ import pr2.game.GameObjects.*;
 
 public class RegularShip extends AlienShip {
 
-	private int puntos;
 	private String icono;
 	
 	/*Inicializa los atributos de la clase*/
 	public RegularShip (Game game, int x, int y) {
 
-		super(game, x, y, 3);
-		puntos = 5;
+		super(game, x, y, 3, 5);
 		icono = "C[" + live + "]";
 	}
 
 	/*GETS y SETS*/
 	
-	
-	public int getPuntos() {
-
-		return puntos;
-	}
-	
-	public void setPuntos(int puntos) {
-
-		this.puntos = puntos;
-	}
 	
 	public String getIcono() {
 		

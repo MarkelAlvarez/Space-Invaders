@@ -25,12 +25,14 @@ public class BoardInitializer {
 	}
 	
 	private void initializeRegularAliens () {
+		
 		int inic = Game.DIM_Y/2 - level.getNumRegularAliensPerRow()/2 + 1;	//mismo numero de naves en cada lado
 		
 		int fila = 1;
 		while (fila <= level.getNumRowsOfRegularAliens()) {
 			for (int i = 0; i < level.getNumRegularAliensPerRow(); i++) {
-				board.add(new RegularShip(game, fila, inic + i));
+				AlienShip aux = new RegularShip(game, fila, inic + i);
+				board.add(aux);
 			}
 			fila ++;
 		}
@@ -40,7 +42,8 @@ public class BoardInitializer {
 		int inic = Game.DIM_Y/2 - level.getNumRegularAliensPerRow()/2 + 1;	//mismo numero de naves en cada lado
 		
 		for (int i = 0; i < level.getNumRegularAliensPerRow(); i++) {
-			board.add(new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i, i));
+			AlienShip aux = new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i, i);
+			board.add(aux);
 		}
 	}
 }
