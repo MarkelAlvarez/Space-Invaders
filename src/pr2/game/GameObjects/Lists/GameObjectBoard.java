@@ -1,6 +1,7 @@
 package pr2.game.GameObjects.Lists;
 
 import pr2.game.GameObjects.GameObject;
+import pr2.game.GameObjects.objects.Ovni;
 
 public class GameObjectBoard {
 
@@ -96,9 +97,9 @@ public class GameObjectBoard {
 
 	private void removeDead() {
 
-		if((objects[0].getActive()) && (!objects[0].isAlive()))
+		if(((Ovni) objects[0]).getActive() && (!objects[0].isAlive()))
 		{
-			objects[0].setActive(false);
+			((Ovni) objects[0]).setActive(false);
 		}
 
 		for (int i = 1; i < currentObjects; i++)
@@ -114,7 +115,7 @@ public class GameObjectBoard {
 
 	public String toString(int i, int j) {
 
-		if((objects[0].getActive()) && (objects[0].isOnPosition(i, j)))
+		if(((Ovni) objects[0]).getActive() && (objects[0].isOnPosition(i, j)))
 		{
 			return objects[0].toString();
 		}

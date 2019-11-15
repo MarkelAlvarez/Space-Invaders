@@ -8,6 +8,8 @@ import pr2.game.GameObjects.objects.*;
 
 public class Game {
 
+	public static final int DIM_X = 8;
+	public static final int DIM_Y = 9;
 	private Ovni Ovni;  
 	private RegularShip RegularShip;
 	private DestroyerShip DestroyerShip;

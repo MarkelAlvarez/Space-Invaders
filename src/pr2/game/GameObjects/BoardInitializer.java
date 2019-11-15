@@ -1,8 +1,8 @@
 package pr2.game.GameObjects;
 
-import pr2.game.Game;
-import pr2.game.Level;
+import pr2.game.*;
 import pr2.game.GameObjects.Lists.GameObjectBoard;
+import pr2.game.GameObjects.objects.*;
 
 public class BoardInitializer {
 	private Level level ;
@@ -21,14 +21,26 @@ public class BoardInitializer {
 	}
 	
 	private void initializeOvni () {
-	// TODO implement
+		board.add(new Ovni(game, 0, Game.DIM_Y));
 	}
 	
 	private void initializeRegularAliens () {
-	// TODO implement
+		int inic = Game.DIM_Y/2 - level.getNumRegularAliensPerRow()/2 + 1;	//mismo numero de naves en cada lado
+		
+		int fila = 1;
+		while (fila <= level.getNumRowsOfRegularAliens()) {
+			for (int i = 0; i < level.getNumRegularAliensPerRow(); i++) {
+				board.add(new RegularShip(game, fila, inic + i));
+			}
+			fila ++;
+		}
 	}
 	
 	private void initializeDestroyerAliens () {
-	// TODO implement
+		int inic = Game.DIM_Y/2 - level.getNumRegularAliensPerRow()/2 + 1;	//mismo numero de naves en cada lado
+		
+		for (int i = 0; i < level.getNumRegularAliensPerRow(); i++) {
+			board.add(new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i, i));
+		}
 	}
 }
