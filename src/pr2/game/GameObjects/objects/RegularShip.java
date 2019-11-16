@@ -21,6 +21,11 @@ public class RegularShip extends AlienShip {
 
 	/*GETS y SETS*/
 	
+	@Override
+	public String toString() {
+		
+		return icono = "C[" + live + "]";
+	}
 	
 	public String getIcono() {
 		
@@ -32,8 +37,4 @@ public class RegularShip extends AlienShip {
 		this.icono = icono;
 	}
 	
-	public String toString() {
-		
-		return icono = "C[" + live + "]";
-	}
 }

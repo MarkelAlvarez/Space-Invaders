@@ -35,7 +35,7 @@ public class DestroyerShip extends AlienShip {
 		this.id = ident;
 	}
 	
-	public Boolean getBomb() {
+	public Boolean canShootBomb() {
 		
 		return bomb;
 	}
@@ -43,6 +43,12 @@ public class DestroyerShip extends AlienShip {
 	public void setBomb(Boolean bomb) {
 		
 		this.bomb = bomb;
+	}
+	
+	@Override
+	public String toString() {
+		
+		return icono = "D[" + live + "]";
 	}
 	
 	public String getIcono() {
@@ -55,8 +61,4 @@ public class DestroyerShip extends AlienShip {
 		this.icono = icono;
 	}
 	
-	public String toString() {
-		
-		return icono = "D[" + live + "]";
-	}
 }

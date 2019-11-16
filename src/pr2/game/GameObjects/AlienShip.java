@@ -18,6 +18,7 @@ public class AlienShip extends EnemyShip {
 		cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 	}
 	
+	@Override
 	public void move() {	//esto está mal porque no se entiende cómo se mueven, si en bloque o una a una
 		if (cyclesToMove== 0) {
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
@@ -39,5 +40,29 @@ public class AlienShip extends EnemyShip {
 		else{
 			cyclesToMove--;
 		}
+	}
+	
+	@Override
+	public void computerAction() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public boolean haveLanded() {
+		return IS_IN_FINAL_ROW;
+	}
+	
+	public boolean allDead() {
+		return REMAINING_ALIENS == 0;
+	}
+	
+	public int getRemainingAliens() {
+		return REMAINING_ALIENS;
 	}
 }

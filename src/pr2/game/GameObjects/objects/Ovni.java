@@ -22,7 +22,13 @@ public class Ovni extends EnemyShip{
 	} 
 
 	/*GETS y SETS*/
-
+	
+	@Override
+	public String toString() {
+		
+		return icono = "O[" + live + "]";
+	}
+	
 	public String getIcono() {
 		
 		return icono;
@@ -33,11 +39,6 @@ public class Ovni extends EnemyShip{
 		this.icono = icono;
 	}
 	
-	public String toString() {
-		
-		return icono = "O[" + live + "]";
-	}
-
 	public Boolean getActive() {
 		return active;
 	}

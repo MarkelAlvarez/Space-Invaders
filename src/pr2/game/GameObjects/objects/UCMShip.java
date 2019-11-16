@@ -25,6 +25,11 @@ public class UCMShip extends Ship{
 		points = 0;
 	}
 	
+	@Override
+	public String toString() {
+		return getIcono();
+	}
+		
 	public String stateToString() {
 		return "Points: " + points + "\n";
 	}
@@ -73,7 +78,5 @@ public class UCMShip extends Ship{
 		this.icono = icono;
 	}
 	
-	public String toString() {
-		return getIcono();
-	}
+
 }

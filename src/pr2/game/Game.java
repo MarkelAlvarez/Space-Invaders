@@ -130,7 +130,7 @@ public class Game {
 	
 	public void reset(){
 
-		setReset(true);
+		initGame();
 	}
 	
 	public void help() {
