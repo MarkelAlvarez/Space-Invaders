@@ -54,11 +54,11 @@ public class AlienShip extends EnemyShip {
 		return super.toString();
 	}
 
-	public boolean haveLanded() {
+	public static boolean haveLanded() {
 		return IS_IN_FINAL_ROW;
 	}
 
-	public boolean allDead() {
+	public static boolean allDead() {
 		return REMAINING_ALIENS == 0;
 	}
 

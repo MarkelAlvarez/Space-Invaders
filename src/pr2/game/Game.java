@@ -2,11 +2,158 @@ package pr2.game;
 
 import java.util.Random;
 
+import pr2.game.Level;
+import pr2.game.GameObjects.*;
+import pr2.game.GameObjects.objects.*;
+import pr2.game.GameObjects.Lists.GameObjectBoard;
+
+public class Game implements IPlayerController{
+
+	public final static int DIM_X = 9;
+	public final static int DIM_Y = 8;
+	private int currentCycle;
+	private Random rand;
+	private Level level;
+	GameObjectBoard board;
+	private UCMShip player;
+	private boolean doExit;
+	private BoardInitializer initializer ;
+
+	public Game (Level level, Random random) {
+		
+		this. rand = random;
+		this.level = level;
+		initializer = new BoardInitializer();
+		initGame();
+	}
+
+	public void initGame () {
+
+		currentCycle = 0;
+		board = initializer.initialize (this, level );
+		player = new UCMShip(this, DIM_X / 2, DIM_Y - 1);
+		board.add(player);
+	}
+
+	public Random getRandom() {
+
+		return rand;
+	}
+
+	public Level getLevel() {
+
+		return level;
+	}
+
+	public void reset() {
+
+		initGame();
+	}
+
+	public void addObject(GameObject object) {
+
+		board.add(object);
+	}
+
+	public String positionToString(int x, int y) {
+
+		return board.toString(x, y);
+	}
+
+	public boolean isFinished() {
+
+		return playerWin() || aliensWin() || doExit;
+	}
+
+	public boolean aliensWin() {
+
+		return !player.isAlive () || AlienShip.haveLanded();
+	}
+
+	private boolean playerWin () {
+
+		return AlienShip.allDead();
+	}
+
+	public void update() {
+
+		board.computerAction();
+		board.update();
+		currentCycle += 1;
+	}
+
+	public boolean isOnBoard(int x, int y) {
+
+		return x >= 0 && y >= 0 && x < DIM_X && y < DIM_Y;
+	}
+
+	public void exit() {
+
+		doExit = true;
+	}
+
+	public String infoToString() {
+
+		return "Cycles: " + currentCycle + "\n" +
+		player. stateToString() +
+		"Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
+	}
+
+	public String getWinnerMessage () {
+
+		if (playerWin()) return "Player win!";
+		else if (aliensWin()) return "Aliens win!";
+		else if (doExit) return "Player exits the game";
+		else return "This should not happen";
+	}
+
+	@Override
+	public boolean move(int numCells) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean shootLaser() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean shockWave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void receivePoints(int points) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enableShockWave() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enableMissile() {
+		// TODO Auto-generated method stub
+		
+	}
+	// TODO implementar los métodos del interfaz IPlayerController
+}
+
+/*package pr2.game;
+
+import java.util.Random;
+
 import pr2.game.lists.*;
 import pr2.game.logic.Move;
 import pr2.game.GameObjects.objects.*;
 
-public class Game {
+public class Game implements IPlayerController {
 
 	public static final int DIM_X = 8;
 	public static final int DIM_Y = 9;
@@ -33,7 +180,7 @@ public class Game {
 	private int puntuacion;
 
 
-	/*Inicializa los atributos basicos de la clase*/
+	//Inicializa los atributos basicos de la clase
 	public Game(Level level, Random rand) {
 
 		this.level = level;
@@ -45,9 +192,9 @@ public class Game {
 		return level;
 	}
 
-	/*Inicializa los atributos y objetos que son necesarios para el funcionamiento del juego*/
+	//Inicializa los atributos y objetos que son necesarios para el funcionamiento del juego
 	public void initGame() {
-		
+
 		ciclos = 0;
 		puntuacion = 0;
 		existOvni = false;
@@ -55,7 +202,7 @@ public class Game {
 		reset = false;
 	}
 
-	/*USER COMMAND (Los siguientes metodos ejecutan los comandos introducidos)*/
+	//USER COMMAND (Los siguientes metodos ejecutan los comandos introducidos)
 	public void shoot() {
 
 		if(UCMShip.getLaser())
@@ -64,7 +211,7 @@ public class Game {
 		}
 		else
 		{
-			/*Ubica el laser en las cordenadas de la nave y lo activa*/
+			//Ubica el laser en las cordenadas de la nave y lo activa
 			UCMShipLaser = new UCMShipLaser(UCMShip.getPosX(), UCMShip.getPosY());
 			UCMShip.setLaser(true);
 		}
@@ -74,35 +221,35 @@ public class Game {
 
 		if (UCMShip.getShockwave())
 		{
-			/*
-			* Busca en la lista de naves y resta el daño de shockwave a las naves.
-			* Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida.
-			*/
+			//
+			// Busca en la lista de naves y resta el daño de shockwave a las naves.
+			// Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida.
+
 			for (int i = 0; i < rList.getContador(); i++)
 			{
-				/*Resta la vida a la nave*/
+				//Resta la vida a la nave
 				rList.getList()[i].setResist(rList.getList()[i].getResist() - 1);
 
 				if (rList.getList()[i].getResist() == 0)
 				{
-					/*Si la vida es 0 elimina la nave y vuelve a leer la posicion por si hay otra nave*/
+					//Si la vida es 0 elimina la nave y vuelve a leer la posicion por si hay otra nave
 					rList.deleteRegular(rList.getList()[i].getPosX(), rList.getList()[i].getPosY());
 					--i; //tenemos que volver a comprobar de nuevo esta posicion
 				}
 			}
 
-			/*
-			* Busca en la lista de naves y resta el daño de shockwave a las naves.
-			* Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida.
-			*/
+			//
+			// Busca en la lista de naves y resta el daño de shockwave a las naves.
+			// Si la vida se queda a 0 elimina la/las nave(s) con 0 de vida.
+
 			for (int i = 0; i < dList.getContador(); i++)
 			{
-				/*Resta la vida a la nave*/
+				//Resta la vida a la nave
 				dList.getList()[i].setResist(dList.getList()[i].getResist() - 1);
 
 				if (dList.getList()[i].getResist() == 0)
 				{
-					/*Si la vida es 0 elimina la nave y vuelve a leer la posicion por si hay otra nave*/
+					//Si la vida es 0 elimina la nave y vuelve a leer la posicion por si hay otra nave
 					dList.deleteDestroyer(dList.getList()[i].getPosX(), dList.getList()[i].getPosY());
 					--i; //tenemos que volver a comprobar de nuevo esta posicion
 				}
@@ -134,7 +281,7 @@ public class Game {
 				"[none]: Skips one cycle.");
 	}
 
-	/*Proporciona dinamicamente la información sobre los objetos del juego*/
+	//Proporciona dinamicamente la información sobre los objetos del juego
 	public void list() {
 
 		System.out.print("[R]egular ship: Points: " + RegularShip.getPuntos() + " - Harm: 0 - Shield: " + RegularShip.getResist() + "\n");
@@ -148,19 +295,19 @@ public class Game {
 		setEnd(true);
 	}
 
-	/*COMPUTER ACTION*/
+	//COMPUTER ACTION
 	public void computerAction() {
 
 		int i = 0;
 
-		/*Comprueba la dificultad del juego*/
+		//Comprueba la dificultad del juego
 		if ((ciclos % level.getSpeed()) == 0)
 		{
-			/*Para Regular y Destroyer*/
+			//Para Regular y Destroyer
 			if (!sentido) //Si el sentido es hacia la izquierda
 			{
 				move = Move.LEFT;
-				/*Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo*/
+				//Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo
 				while (i < rList.getContador())
 				{
 					if (rList.getList()[i].getPosY() == 0)
@@ -172,7 +319,7 @@ public class Game {
 				}
 
 				i = 0;
-				/*Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo*/
+				//Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo
 				while (i < dList.getContador())
 				{
 					if (dList.getList()[i].getPosY() == 0)
@@ -186,7 +333,7 @@ public class Game {
 			else
 			{
 				move = Move.RIGHT;
-				/*Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo*/
+				//Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo
 				while (i < rList.getContador())
 				{
 					if (rList.getList()[i].getPosY() == 8)
@@ -198,7 +345,7 @@ public class Game {
 				}
 
 				i = 0;
-				/*Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo*/
+				//Si la nave ha llegado a uno de los bordes 'move' se iguala a 'DOWN' para asi moverla hacia abajo
 				while (i < dList.getContador())
 				{
 					if (dList.getList()[i].getPosY() == 8)
@@ -210,7 +357,7 @@ public class Game {
 				}
 			}
 
-			/*Depende de que valor tenga 'move' los aliens se moverán a un lado o a otro*/
+			//Depende de que valor tenga 'move' los aliens se moverán a un lado o a otro
 			switch(move)
 			{
 				case LEFT:
@@ -227,7 +374,7 @@ public class Game {
 			}
 		}
 
-		/*Movemos el ovni*/
+		//Movemos el ovni
 		if (existOvni)
 		{
 			moveOvni(Ovni);
@@ -241,28 +388,28 @@ public class Game {
 			}
 		}
 
-		/*Disparar*/
+		//Disparar
 		for (int j = 0; j < dList.getContador(); j++)
 		{
-			/*Si la destroyer ship puede lanzar una bomba y la propababilidad lo permite se dispara*/
+			//Si la destroyer ship puede lanzar una bomba y la propababilidad lo permite se dispara
 			if((!dList.getList()[j].getBomb()) && (rand.nextDouble() < level.getShootFrec()))
 			{
-				/*Se añade una bomba a la destroyer y se actualiza el estado de la bomba*/
+				//Se añade una bomba a la destroyer y se actualiza el estado de la bomba
 				bList.addBomb(dList.getList()[j].getPosX(), dList.getList()[j].getPosY(), dList.getList()[j].getId());
 				dList.updateBomb(dList.getList()[j].getId(), true);
 			}
 		}
 	}
 
-	/*UPDATE*/
+	//UPDATE
 	public void update() {
 
 		int i = 0, j;
 
-		/*Se comprueba la colisión entre objetos del juego*/
+		//Se comprueba la colisión entre objetos del juego
 		colisiones();
 
-		/*Se comprueba si tanto destroyer como regular ship han llegado a la altura de UCMShip*/
+		//Se comprueba si tanto destroyer como regular ship han llegado a la altura de UCMShip
 		while((!end) && (i < 9))
 		{
 			end = rList.isFound(7, i);
@@ -276,7 +423,7 @@ public class Game {
 			end = dList.isFound(7, i);
 			i++;
 		}
-		/*Si no se acaba el juego se ejecuta la siguinte...*/
+		//Si no se acaba el juego se ejecuta la siguinte...
 		if (!end)
 		{
 			if  (Ovni.getPosY() < 0)
@@ -284,10 +431,10 @@ public class Game {
 				existOvni = false;
 			}
 
-			/*
-			* Si hay un laser en el tablero se mueve y se comprueba que no se sale del tablero.
-			* Si no sale del tablero se comprueban las colisiones con los objetos del tablero.
-			*/
+			//
+			// Si hay un laser en el tablero se mueve y se comprueba que no se sale del tablero.
+			// Si no sale del tablero se comprueban las colisiones con los objetos del tablero.
+
 			if (UCMShip.getLaser())
 			{
 				moveLaser(UCMShipLaser);
@@ -302,12 +449,12 @@ public class Game {
 				}
 			}
 
-			/*Se mueve la bomba y si se sale del tablero se elimina*/
+			//Se mueve la bomba y si se sale del tablero se elimina
 			for (j = 0; j < bList.getContador(); j++)
 			{
 				moveBomb(bList.getList()[j]);
 
-				/*Comprueba si se va a salir del tablero*/
+				//Comprueba si se va a salir del tablero
 				if (bList.getList()[j].getPosX() > 7)
 				{
 					bList.deleteBomb(bList.getList()[j].getPosX(), bList.getList()[j].getPosY(), dList);
@@ -315,20 +462,20 @@ public class Game {
 				}
 			}
 
-			/*Se comprueba la colisión entre objetos del juego*/
+			//Se comprueba la colisión entre objetos del juego
 			colisiones();
 		}
 	}
 
 	public void colisiones() {
 
-		/*Colisión de laser con bomba*/
+		//Colisión de laser con bomba
 		if (UCMShip.getLaser() && bList.deleteBomb(UCMShipLaser.getPosX(), UCMShipLaser.getPosY(), dList))
 		{
 			UCMShip.setLaser(false);
 		}
 
-		/*Colisión de nave con bomba*/
+		//Colisión de nave con bomba
 		if(bList.deleteBomb(UCMShip.getPosX(), UCMShip.getPosY(), dList))
 		{
 			UCMShip.setResist(UCMShip.getResist() - 1);
@@ -342,7 +489,7 @@ public class Game {
 
 		if (!end)
 		{
-			/*Colisión de laser con destroyer*/
+			//Colisión de laser con destroyer
 			if (UCMShip.getLaser() && dList.isFound(UCMShipLaser.getPosX(), UCMShipLaser.getPosY()))
 			{
 				dList.decreaseLife(UCMShipLaser.getPosX(), UCMShipLaser.getPosY(), UCMShipLaser.getDamage());
@@ -350,7 +497,7 @@ public class Game {
 
 				for (int i = 0; i < dList.getContador(); i++)
 				{
-					/*Si está muerto, se suman puntos*/
+					//Si está muerto, se suman puntos
 					if(dList.getList()[i].getResist() <= 0)
 					{
 						puntuacion += DestroyerShip.getPuntos();
@@ -358,7 +505,7 @@ public class Game {
 					}
 				}
 			}
-			/*Colisión de laser con regular*/
+			//Colisión de laser con regular
 			else if(UCMShip.getLaser() && rList.isFound(UCMShipLaser.getPosX(), UCMShipLaser.getPosY()))
 			{
 				rList.decreaseLife(UCMShipLaser.getPosX(), UCMShipLaser.getPosY(), UCMShipLaser.getDamage());
@@ -366,7 +513,7 @@ public class Game {
 
 				for (int i = 0; i < rList.getContador(); i++)
 				{
-					/*Si está muerto, se suman puntos*/
+					//Si está muerto, se suman puntos
 					if(rList.getList()[i].getResist() <= 0)
 					{
 						puntuacion += RegularShip.getPuntos();
@@ -374,7 +521,7 @@ public class Game {
 					}
 				}
 			}
-			/*Colisión de laser con ovni*/
+			//Colisión de laser con ovni
 			else if (UCMShip.getLaser() && existOvni)
 			{
 				if ((Ovni.getPosX() == UCMShipLaser.getPosX()) && (Ovni.getPosY() == UCMShipLaser.getPosY()))
@@ -382,7 +529,7 @@ public class Game {
 					Ovni.decreaseLife(UCMShipLaser.getDamage());
 					UCMShip.setLaser(false);
 
-					/*Si está muerto, suman puntos*/
+					//Si está muerto, suman puntos
 					if(Ovni.getResist() <= 0)
 					{
 						puntuacion += Ovni.getPuntos();
@@ -399,7 +546,7 @@ public class Game {
 		}
 	}
 
-	/*Coloca objetos en tablero*/
+	//Coloca objetos en tablero
 	public String toStringObjectAt(int i, int j) {
 
 		if((UCMShip.getPosX() == i) && (UCMShip.getPosY() == j))
@@ -432,13 +579,13 @@ public class Game {
 		}
 	}
 
-	/*Mueve el ovni una posición*/
+	//Mueve el ovni una posición
 	public void moveOvni(Ovni ovni) {
 
 		ovni.setPosY(ovni.getPosY() - 1);
 	}
 
-	/*Mueve los aliens a la izquierda*/
+	//Mueve los aliens a la izquierda
 	public void moveAliensLeft(){
 
 		for (int i = 0; i < rList.getContador(); i++)
@@ -452,7 +599,7 @@ public class Game {
 		}
 	}
 
-	/*Mueve los aliens a la derecha*/
+	//Mueve los aliens a la derecha
 	public void moveAliensRight() {
 
 		for (int i = 0; i < rList.getContador(); i++)
@@ -466,7 +613,7 @@ public class Game {
 		}
 	}
 
-	/*Mueve los aliens hacia abajo*/
+	//Mueve los aliens hacia abajo
 	public void moveAliensDown() {
 
 		for (int i = 0; i < rList.getContador(); i++)
@@ -489,7 +636,7 @@ public class Game {
 		}
 	}
 
-	/*Mueve UCMShip hacia la izquierda 'cantidad' pasos*/
+	//Mueve UCMShip hacia la izquierda 'cantidad' pasos
 	public void moveShipLeft(int pasos) {
 
 		UCMShip.setPosY(UCMShip.getPosY() - pasos);
@@ -500,7 +647,7 @@ public class Game {
 		}
 	}
 
-	/*Mueve UCMShip hacia la derecha 'cantidad' pasos*/
+	//Mueve UCMShip hacia la derecha 'cantidad' pasos
 	public void moveShipRight (int pasos) {
 
 		UCMShip.setPosY(UCMShip.getPosY() + pasos);
@@ -511,19 +658,19 @@ public class Game {
 		}
 	}
 
-	/*Mueve la bomba hacia abajo*/
+	//Mueve la bomba hacia abajo
 	public void moveBomb(Bomb bomb) {
 
 		bomb.setPosX(bomb.getPosX() + 1);
 	}
 
-	/*Mueve el laser de UCMShip hacia arriba*/
+	//Mueve el laser de UCMShip hacia arriba
 	public void moveLaser(UCMShipLaser laser) {
 
 		laser.setPosX(laser.getPosX() - 1);
 	}
 
-	/*GETS y SETS*/
+	//GETS y SETS
 
 	public UCMShip getUCMShip() {
 
@@ -604,5 +751,4 @@ public class Game {
 
 		this.existOvni = existOvni;
 	}
-
-}
+}*/

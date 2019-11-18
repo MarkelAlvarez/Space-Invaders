@@ -45,7 +45,7 @@ public class RegularShip extends AlienShip {
 
 	public void setIcono(String icono) {
 
-		this.icono = icono;
+		RegularShip.icono = icono;
 	}
 
 }

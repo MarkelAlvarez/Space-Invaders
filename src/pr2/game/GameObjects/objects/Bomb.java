@@ -9,7 +9,7 @@ import pr2.game.logic.Move;
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
-public class Bomb extends Weapon{
+public class Bomb extends Weapon implements IExecuteRandomActions{
 
 	private DestroyerShip ship;
 	private int id;
