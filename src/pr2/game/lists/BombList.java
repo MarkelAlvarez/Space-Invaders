@@ -1,5 +1,9 @@
 package pr2.game.lists;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.GameObjects.objects.*;
 
 public class BombList {

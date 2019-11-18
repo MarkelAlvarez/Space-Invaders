@@ -1,5 +1,9 @@
 package pr2.game.control;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 
 public abstract class Command {

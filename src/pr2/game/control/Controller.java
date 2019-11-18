@@ -5,7 +5,6 @@ package pr2.game.control;
 */
 
 import java.util.Scanner;
-
 import pr2.game.Game;
 import pr2.game.logic.GamePrinter;
 

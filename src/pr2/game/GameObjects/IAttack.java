@@ -1,5 +1,9 @@
 package pr2.game.GameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 public interface IAttack {
 	
 	default boolean performAttack(GameObject other) {return false;};

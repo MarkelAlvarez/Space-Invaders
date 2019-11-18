@@ -1,5 +1,9 @@
 package pr2.game;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 public enum Level {
 	
 	EASY(4, 2, 0.2, 3, 0.5, 1),
@@ -13,14 +17,7 @@ public enum Level {
 	private double shootFrequency;
 	private int numRowsOfRegularAliens;
 	
-	private Level(
-		int numRegularAliens,
-		int numDestroyerAliens,
-		double shootFrequency,
-		int numCyclesToMoveOneCell,
-		double ovniFrequency,
-		int numRowsOfRegularAliens)
-	{
+	private Level(int numRegularAliens, int numDestroyerAliens, double shootFrequency, int numCyclesToMoveOneCell, double ovniFrequency, int numRowsOfRegularAliens) {
 		
 		this.numRegularAliens = numRegularAliens;
 		this.numDestroyerAliens = numDestroyerAliens;
@@ -29,6 +26,8 @@ public enum Level {
 		this.ovniFrequency = ovniFrequency;
 		this.numRowsOfRegularAliens = numRowsOfRegularAliens;
 	}
+	
+	/*GETS & SETS*/
 	
 	public int getNumRegularAliens() {
 		return numRegularAliens;
@@ -63,6 +62,7 @@ public enum Level {
 	}
 	
 	public static Level fromParam(String param) {
+		
 		for (Level level : Level.values() )
 			if (level . name().equalsIgnoreCase(param)) return level;
 				return EASY;

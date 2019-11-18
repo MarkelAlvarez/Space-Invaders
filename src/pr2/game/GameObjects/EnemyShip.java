@@ -1,5 +1,9 @@
 package pr2.game.GameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 import pr2.game.logic.Move;
 
@@ -33,8 +37,7 @@ public class EnemyShip extends Ship {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
+
 		return "[" + live + "]";
 	}
-
 }

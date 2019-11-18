@@ -1,10 +1,15 @@
 package pr2.game.control;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.control.commands.*;
 
 public class CommandGenerator {
 
 	private static Command[] availableCommands = {
+			
 		new ListCommand("list", "L", "[L]ist", "Prints the list of available ships."),
 		new HelpCommand("help", "H", "[H]elp", "Prints this help message."),
 		new ResetCommand("reset", "R", "[R]eset", "Starts a new game."),

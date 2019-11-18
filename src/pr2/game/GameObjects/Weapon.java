@@ -1,5 +1,9 @@
 package pr2.game.GameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 import pr2.game.logic.Move;
 
@@ -9,6 +13,7 @@ public class Weapon extends GameObject {
 	private Move move;
 
 	public Weapon(Game game, int x, int y, int live, int damage, Move move) {
+		
 		super(game, x, y, live);
 		this.damage = damage;
 		this.move = move;
@@ -28,10 +33,13 @@ public class Weapon extends GameObject {
 
 	@Override
 	public void move() {
-		if (move == Move.UP) {
+		
+		if (move == Move.UP)
+		{
 			x--;
 		}
-		else {
+		else
+		{
 			x++;
 		}
 	}
@@ -41,5 +49,4 @@ public class Weapon extends GameObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

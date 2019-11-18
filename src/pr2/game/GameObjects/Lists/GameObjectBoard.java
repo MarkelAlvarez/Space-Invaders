@@ -1,5 +1,9 @@
 package pr2.game.GameObjects.Lists;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.GameObjects.GameObject;
 import pr2.game.GameObjects.objects.Ovni;
 

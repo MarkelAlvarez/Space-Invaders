@@ -1,13 +1,17 @@
 package pr2.game.control.commands;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 import pr2.game.control.Command;
 
 public class ListCommand extends Command {
 
 	public ListCommand(String name, String shortcut, String details, String help) {
+		
 		super(name, shortcut, details, help);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -35,5 +39,4 @@ public class ListCommand extends Command {
 
 		return null;
 	}
-
 }

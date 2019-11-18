@@ -1,7 +1,10 @@
 package pr2.game;
 
-import java.util.Random;
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
 
+import java.util.Random;
 import pr2.game.Level;
 import pr2.game.GameObjects.*;
 import pr2.game.GameObjects.objects.*;
@@ -12,12 +15,12 @@ public class Game implements IPlayerController{
 	public final static int DIM_X = 9;
 	public final static int DIM_Y = 8;
 	private int currentCycle;
+	private boolean doExit;
 	private Random rand;
 	private Level level;
-	GameObjectBoard board;
 	private UCMShip player;
-	private boolean doExit;
 	private BoardInitializer initializer ;
+	GameObjectBoard board;
 
 	public Game (Level level, Random random) {
 		
@@ -31,22 +34,20 @@ public class Game implements IPlayerController{
 
 		currentCycle = 0;
 		board = initializer.initialize (this, level );
-		player = new UCMShip(this, DIM_X / 2, DIM_Y - 1);
+		player = new UCMShip(this, DIM_X/2, DIM_Y-1);
 		board.add(player);
 	}
-
+	
 	public Random getRandom() {
-
 		return rand;
 	}
 
 	public Level getLevel() {
-
 		return level;
 	}
 
 	public void reset() {
-
+		
 		initGame();
 	}
 
@@ -62,12 +63,12 @@ public class Game implements IPlayerController{
 
 	public boolean isFinished() {
 
-		return playerWin() || aliensWin() || doExit;
+		return ((playerWin()) || (aliensWin()) || (doExit));
 	}
 
 	public boolean aliensWin() {
 
-		return !player.isAlive () || AlienShip.haveLanded();
+		return ( (!player.isAlive ()) || (AlienShip.haveLanded()) );
 	}
 
 	private boolean playerWin () {
@@ -84,7 +85,7 @@ public class Game implements IPlayerController{
 
 	public boolean isOnBoard(int x, int y) {
 
-		return x >= 0 && y >= 0 && x < DIM_X && y < DIM_Y;
+		return ( (x >= 0) && (y >= 0) && (x < DIM_X) && (y < DIM_Y) );
 	}
 
 	public void exit() {
@@ -94,9 +95,7 @@ public class Game implements IPlayerController{
 
 	public String infoToString() {
 
-		return "Cycles: " + currentCycle + "\n" +
-		player. stateToString() +
-		"Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
+		return "Cycles: " + currentCycle + "\n" + player. stateToString() + "Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
 	}
 
 	public String getWinnerMessage () {

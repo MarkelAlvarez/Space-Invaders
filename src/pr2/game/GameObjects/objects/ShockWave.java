@@ -1,5 +1,9 @@
 package pr2.game.GameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 import pr2.game.GameObjects.GameObject;
 import pr2.game.GameObjects.Weapon;
@@ -8,6 +12,7 @@ import pr2.game.logic.Move;
 public class ShockWave extends Weapon {
 
 	public ShockWave(Game game) {
+		
 		super(game, -1, -1, 1, 1, Move.NONE);
 	}
 
@@ -16,5 +21,5 @@ public class ShockWave extends Weapon {
 		other.receiveShockWaveAttack(this.damage);
 
 		return true;
-	};
+	}
 }

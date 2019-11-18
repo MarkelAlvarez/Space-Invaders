@@ -1,5 +1,9 @@
 package pr2.game.GameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 
 public abstract class GameObject implements IAttack {
@@ -48,6 +52,5 @@ public abstract class GameObject implements IAttack {
 	public abstract void computerAction();
 	public abstract void onDelete();
 	public abstract void move();
-	public abstract String toString();
-	
+	public abstract String toString();	
 }

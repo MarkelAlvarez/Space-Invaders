@@ -1,11 +1,10 @@
 package pr2.game.GameObjects.objects;
 
-import pr2.game.Game;
-
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
+import pr2.game.Game;
 import pr2.game.GameObjects.*;
 
 public class RegularShip extends AlienShip {
@@ -47,5 +46,4 @@ public class RegularShip extends AlienShip {
 
 		RegularShip.icono = icono;
 	}
-
 }

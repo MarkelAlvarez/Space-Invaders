@@ -1,5 +1,9 @@
 package pr2.game.GameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 import pr2.game.logic.Move;
 
@@ -12,6 +16,7 @@ public class AlienShip extends EnemyShip {
 
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
+		
 		super(game, x, y, live, points);
 		REMAINING_ALIENS += 1;
 		SHIPS_ON_BORDER = 0;
@@ -19,25 +24,29 @@ public class AlienShip extends EnemyShip {
 	}
 
 	@Override
-	public void move() {	//esto está mal porque no se entiende cómo se mueven, si en bloque o una a una
-		if (cyclesToMove== 0) {
+	public void move() { //esto está mal porque no se entiende cómo se mueven, si en bloque o una a una
+		
+		if (cyclesToMove== 0)
+		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 			super.move();
-			if(x == 0) {
+			if(x == 0)
+			{
 				IS_IN_FINAL_ROW = true;
 			}
-			if ((move == Move.LEFT && y == 0) || (move == Move.RIGHT && y == Game.DIM_Y)) {
+			if ((move == Move.LEFT && y == 0) || (move == Move.RIGHT && y == Game.DIM_Y))
+			{
 				SHIPS_ON_BORDER = REMAINING_ALIENS;
 			}
 		}
-
-		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW) {	//bajar y cambiar de
+		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW) //bajar y cambiar de
+		{
 			x++;
 			move.flip();
 			SHIPS_ON_BORDER -= 1;
 		}
-
-		else{
+		else
+		{
 			cyclesToMove--;
 		}
 	}

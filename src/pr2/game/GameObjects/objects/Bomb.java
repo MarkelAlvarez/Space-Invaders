@@ -1,12 +1,12 @@
 package pr2.game.GameObjects.objects;
 
-import pr2.game.Game;
-import pr2.game.GameObjects.*;
-import pr2.game.logic.Move;
-
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
+
+import pr2.game.Game;
+import pr2.game.GameObjects.*;
+import pr2.game.logic.Move;
 
 public class Bomb extends Weapon implements IExecuteRandomActions{
 
@@ -26,7 +26,7 @@ public class Bomb extends Weapon implements IExecuteRandomActions{
 		other.receiveBombAttack(this.damage);
 
 		return true;
-	};
+	}
 
 	public boolean receiveMissileAttack(int damage) {
 

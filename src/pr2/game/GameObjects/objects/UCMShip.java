@@ -1,18 +1,19 @@
 package pr2.game.GameObjects.objects;
 
-import pr2.game.Game;
-import pr2.game.GameObjects.*;
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
-public class UCMShip extends Ship{
+import pr2.game.Game;
+import pr2.game.GameObjects.*;
 
+public class UCMShip extends Ship{
+	
+	private int points;
 	private boolean hasShockwave;
 	private boolean canShootLaser;
 	static String icono = "^__^";;
 	static String death = "!xx!";
-	private int points;
 
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
@@ -81,6 +82,4 @@ public class UCMShip extends Ship{
 
 		UCMShip.icono = icono;
 	}
-
-
 }
