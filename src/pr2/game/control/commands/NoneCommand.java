@@ -13,11 +13,9 @@ public class NoneCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 
-		if(game.getEnd() == false)
+		if(game.isFinished() == false)
 		{
-			game.computerAction();
 			game.update();
-			game.setCiclos(game.getCiclos() + 1);
 		}
 		
 		return true;

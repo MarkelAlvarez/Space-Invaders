@@ -15,11 +15,9 @@ public class ExitCommand extends Command {
 
 		game.exit();
 		
-		if(game.getEnd() == false)
+		if(game.isFinished() == false)
 		{
-			game.computerAction();
 			game.update();
-			game.setCiclos(game.getCiclos() + 1);
 		}
 
 		return true;

@@ -62,7 +62,7 @@ public class AlienShip extends EnemyShip {
 		return REMAINING_ALIENS == 0;
 	}
 
-	public int getRemainingAliens() {
+	public static int getRemainingAliens() {
 		return REMAINING_ALIENS;
 	}
 }
