@@ -12,12 +12,16 @@ public class NoneCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 6a60db94b509a22af0e2faf69b0a675225d88a54
 		if(game.isFinished() == false)
 		{
 			game.update();
 		}
-		
+
 		return true;
 	}
 

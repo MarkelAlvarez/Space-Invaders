@@ -20,7 +20,7 @@ public class HelpCommand extends Command {
 		{
 			game.update();
 		}
-
+		
 		return true;
 	}
 

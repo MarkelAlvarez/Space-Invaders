@@ -19,7 +19,7 @@ public class ExitCommand extends Command {
 		{
 			game.update();
 		}
-
+		
 		return true;
 	}
 
