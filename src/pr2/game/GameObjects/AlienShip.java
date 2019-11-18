@@ -4,12 +4,12 @@ import pr2.game.Game;
 import pr2.game.logic.Move;
 
 public class AlienShip extends EnemyShip {
-	
+
 	protected static int REMAINING_ALIENS = 0;
 	private static boolean IS_IN_FINAL_ROW;
 	private static int SHIPS_ON_BORDER;
 	protected int cyclesToMove;
-	
+
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
 		super(game, x, y, live, points);
@@ -17,7 +17,7 @@ public class AlienShip extends EnemyShip {
 		SHIPS_ON_BORDER = 0;
 		cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 	}
-	
+
 	@Override
 	public void move() {	//esto está mal porque no se entiende cómo se mueven, si en bloque o una a una
 		if (cyclesToMove== 0) {
@@ -30,38 +30,38 @@ public class AlienShip extends EnemyShip {
 				SHIPS_ON_BORDER = REMAINING_ALIENS;
 			}
 		}
-		
-		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW) {	//bajar y cambiar de 
+
+		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW) {	//bajar y cambiar de
 			x++;
 			move.flip();
 			SHIPS_ON_BORDER -= 1;
 		}
-		
+
 		else{
 			cyclesToMove--;
 		}
 	}
-	
+
 	@Override
 	public void computerAction() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		return super.toString();
 	}
-	
+
 	public boolean haveLanded() {
 		return IS_IN_FINAL_ROW;
 	}
-	
+
 	public boolean allDead() {
 		return REMAINING_ALIENS == 0;
 	}
-	
+
 	public int getRemainingAliens() {
 		return REMAINING_ALIENS;
 	}

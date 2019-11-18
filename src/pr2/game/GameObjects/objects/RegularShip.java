@@ -3,38 +3,49 @@ package pr2.game.GameObjects.objects;
 import pr2.game.Game;
 
 /*
-* Juan Pablo Corella y Markel Alvarez (2ºB) 
+* Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
 import pr2.game.GameObjects.*;
 
 public class RegularShip extends AlienShip {
 
-	private String icono;
-	
+	public static String icono = "C";
+
 	/*Inicializa los atributos de la clase*/
 	public RegularShip (Game game, int x, int y) {
 
 		super(game, x, y, 3, 5);
-		icono = "C[" + live + "]";
+	}
+
+	public boolean receiveMissileAttack(int damage) {
+
+		getDamage(damage);
+		return true;
+	}
+
+	public boolean receiveShockWaveAttack(int damage) {
+
+		getDamage(damage);
+		return true;
 	}
 
 	/*GETS y SETS*/
-	
+
 	@Override
 	public String toString() {
-		
-		return icono = "C[" + live + "]";
+
+		return RegularShip.icono + super.toString();
 	}
-	
+
 	public String getIcono() {
-		
+
 		return icono;
 	}
-	
+
 	public void setIcono(String icono) {
 
 		this.icono = icono;
 	}
-	
+
 }

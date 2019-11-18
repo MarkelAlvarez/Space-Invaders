@@ -1,6 +1,10 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.Game;
 import pr2.game.Level;
 import pr2.game.control.Controller;

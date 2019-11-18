@@ -7,6 +7,7 @@ public class Weapon extends GameObject {
 
 	protected int damage;
 	private Move move;
+
 	public Weapon(Game game, int x, int y, int live, int damage, Move move) {
 		super(game, x, y, live);
 		this.damage = damage;
