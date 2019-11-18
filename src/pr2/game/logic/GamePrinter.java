@@ -28,7 +28,7 @@ public class GamePrinter {
 		{
 			for(int j = 0; j < numCols; j++)
 			{
-				board[i][j] = game.toStringObjectAt(i, j);
+				board[i][j] = game.positionToString(i, j);
 			}
 		}
 	}

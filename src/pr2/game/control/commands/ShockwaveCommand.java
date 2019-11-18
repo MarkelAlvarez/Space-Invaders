@@ -13,13 +13,11 @@ public class ShockwaveCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 
-		game.shockwave();
+		game.shockWave();
 		
-		if(game.getEnd() == false)
+		if(game.isFinished() == false)
 		{
-			game.computerAction();
 			game.update();
-			game.setCiclos(game.getCiclos() + 1);
 		}
 		
 		return true;
