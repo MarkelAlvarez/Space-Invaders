@@ -27,6 +27,7 @@ public class EnemyShip extends Ship {
 
 	@Override
 	public void onDelete() {
+		
 		game.receivePoints(points);
 	}
 

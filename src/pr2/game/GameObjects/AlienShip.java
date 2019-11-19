@@ -24,7 +24,7 @@ public class AlienShip extends EnemyShip {
 	}
 
 	@Override
-	public void move() { //esto está mal porque no se entiende cómo se mueven, si en bloque o una a una
+	public void move() {
 		
 		if (cyclesToMove== 0)
 		{
@@ -34,12 +34,12 @@ public class AlienShip extends EnemyShip {
 			{
 				IS_IN_FINAL_ROW = true;
 			}
-			if ((move == Move.LEFT && y == 0) || (move == Move.RIGHT && y == Game.DIM_Y))
+			if ((move == Move.LEFT && y == 0) || (move == Move.RIGHT && y == (Game.DIM_Y - 1)))
 			{
 				SHIPS_ON_BORDER = REMAINING_ALIENS;
 			}
 		}
-		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW) //bajar y cambiar de
+		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW)
 		{
 			x++;
 			move.flip();

@@ -143,9 +143,16 @@ public class Game implements IPlayerController{
 	}
 
 	@Override
-	public void enableShockWave() {
-		// TODO Auto-generated method stub
+	public void enableShockWave() { //pasa a ser enable shockwave
 		
+		if (player.getShockwave())
+		{
+			player.setShockwave(false);
+		}
+		else
+		{
+			player.setShockwave(true);
+		}
 	}
 
 	@Override

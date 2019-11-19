@@ -22,4 +22,10 @@ public class ShockWave extends Weapon {
 
 		return true;
 	}
+	
+	@Override
+	public void onDelete() {
+
+		
+	}
 }
