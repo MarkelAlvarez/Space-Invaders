@@ -4,8 +4,8 @@ package pr2.game.GameObjects.Lists;
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
-import pr2.game.GameObjects.GameObject;
-import pr2.game.GameObjects.objects.Ovni;
+import pr2.game.GameObjects.*;
+import pr2.game.GameObjects.objects.*;
 
 public class GameObjectBoard {
 
@@ -88,11 +88,27 @@ public class GameObjectBoard {
 	}
 
 	public void update() {
-		// TODO implement
+		
+		for (int i = 0; i < currentObjects; i++) {
+			if(objects[i].isAlive()) {
+				checkAttacks(objects[i]);
+			}
+		}
 	}
 
 	private void checkAttacks(GameObject object) {
-		// TODO implement
+		int i = 0;
+		while(i < currentObjects) {
+			if(objects[i].isOnPosition(object.getX(), object.getY())) {
+				if (object instanceof Weapon) {
+					if(object.performAttack(objects[i])) {
+						object.getDamage(object.getLive());
+					}
+					i = currentObjects;
+				}
+			}
+			i++;	
+		}
 	}
 
 	public void computerAction() {
@@ -101,15 +117,16 @@ public class GameObjectBoard {
 
 	private void removeDead() {
 
-		if(((Ovni) objects[0]).getActive() && (!objects[0].isAlive()))
-		{
-			((Ovni) objects[0]).setActive(false);
-		}
-
-		for (int i = 1; i < currentObjects; i++)
+		for (int i = 0; i < currentObjects; i++)
 		{
 			if(!objects[i].isAlive())
 			{
+				objects[i].onDelete();
+				if(objects[i] instanceof Ovni) {
+					if(((Ovni) objects[i]).getActive()) {
+						((Ovni) objects[i]).setActive(false);
+					}
+				}
 				remove(objects[i]);
 				i--;
 				currentObjects--;

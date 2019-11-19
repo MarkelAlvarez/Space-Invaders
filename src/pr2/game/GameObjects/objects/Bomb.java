@@ -23,9 +23,7 @@ public class Bomb extends Weapon implements IExecuteRandomActions{
 
 	public boolean performAttack(GameObject other) {
 
-		other.receiveBombAttack(this.damage);
-
-		return true;
+		return other.receiveBombAttack(this.damage);
 	}
 
 	public boolean receiveMissileAttack(int damage) {

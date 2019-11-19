@@ -21,9 +21,7 @@ public class UCMShipLaser extends Weapon {
 
 	public boolean performAttack(GameObject other) {
 
-		other.receiveMissileAttack(this.damage);
-
-		return true;
+		return other.receiveMissileAttack(this.damage);
 	}
 
 	public boolean receiveBombAttack(int damage) {

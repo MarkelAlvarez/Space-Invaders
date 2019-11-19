@@ -18,8 +18,11 @@ public class ShockWave extends Weapon {
 
 	public boolean performAttack(GameObject other) {
 
-		other.receiveShockWaveAttack(this.damage);
-
-		return true;
+		return other.receiveShockWaveAttack(this.damage);
+	}
+	
+	@Override
+	public void onDelete() {
+		game.enableShockWave();
 	}
 }
