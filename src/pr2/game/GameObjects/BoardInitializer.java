@@ -34,7 +34,7 @@ public class BoardInitializer {
 	private void initializeRegularAliens () {
 		
 		int fila = 1;
-		int inic = Game.DIM_Y/2 - (level.getNumRegularAliensPerRow()/2) + 1; //mismo numero de naves en cada lado
+		int inic = Game.DIM_Y/2 - level.getNumRegularAliensPerRow()/2 + 1; //mismo numero de naves en cada lado
 		
 		while (fila <= level.getNumRowsOfRegularAliens())
 		{
@@ -49,9 +49,9 @@ public class BoardInitializer {
 	
 	private void initializeDestroyerAliens () {
 		
-		int inic = Game.DIM_Y/2 - level.getNumRegularAliensPerRow()/2 + 1; //mismo numero de naves en cada lado
+		int inic = Game.DIM_Y/2 - level.getNumDestroyerAliensPerRow()/2 + 1; //mismo numero de naves en cada lado
 		
-		for (int i = 0; i < level.getNumRegularAliensPerRow(); i++)
+		for (int i = 0; i < level.getNumDestroyerAliensPerRow(); i++)
 		{
 			AlienShip aux = new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i, i);
 			board.add(aux);

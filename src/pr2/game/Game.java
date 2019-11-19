@@ -12,8 +12,8 @@ import pr2.game.GameObjects.Lists.GameObjectBoard;
 
 public class Game implements IPlayerController{
 
-	public final static int DIM_X = 9;
-	public final static int DIM_Y = 8;
+	public final static int DIM_X = 8;
+	public final static int DIM_Y = 9;
 	private int currentCycle;
 	private boolean doExit;
 	private Random rand;
@@ -34,7 +34,7 @@ public class Game implements IPlayerController{
 
 		currentCycle = 0;
 		board = initializer.initialize (this, level );
-		player = new UCMShip(this, DIM_X/2, DIM_Y-1);
+		player = new UCMShip(this, DIM_X - 1, DIM_Y/2);
 		board.add(player);
 	}
 	
@@ -94,13 +94,25 @@ public class Game implements IPlayerController{
 	}
 
 	public String infoToString() {
-
-		return "Cycles: " + currentCycle + "\n" + player. stateToString() + "Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
+		
+		String chain = "Life: " + player.getLive() + "\n" + "Cycles: " + currentCycle + "\n" + player.stateToString()
+		+ "Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
+		
+		if (player.getShockwave())
+		{
+			chain += "Shockwave: YES\n";
+		}
+		else
+		{
+			chain += "Shockwave: NO\n";
+		}
+		
+		return chain;
 	}
 
 	public String getWinnerMessage () {
 
-		if (playerWin()) return "Player win!";
+		if (playerWin()) return "Player win! Points obtained: " + player.getPoints();
 		else if (aliensWin()) return "Aliens win!";
 		else if (doExit) return "Player exits the game";
 		else return "This should not happen";

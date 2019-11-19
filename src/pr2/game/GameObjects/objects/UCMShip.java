@@ -82,4 +82,8 @@ public class UCMShip extends Ship{
 
 		UCMShip.icono = icono;
 	}
+	
+	public int getPoints() {
+		return points;
+	}
 }

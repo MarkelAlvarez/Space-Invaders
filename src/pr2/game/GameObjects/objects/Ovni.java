@@ -29,8 +29,12 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 
 	@Override
 	public String toString() {
-
-		return Ovni.icono + super.toString();
+	
+		if (active) {
+			return Ovni.icono + super.toString();
+		}
+		
+		return "";
 	}
 
 	public String getIcono() {

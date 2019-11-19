@@ -11,7 +11,7 @@ public class DestroyerShip extends AlienShip {
 
 	private int id;	//Ayuda a identificar cada nave y su proyectil lanzado
 	private Boolean bomb;
-	public static String icono;
+	public static String icono = "D";
 
 	/*Inicializa los atributos de la clase*/
 	public DestroyerShip(Game game, int x, int y, int ident) {

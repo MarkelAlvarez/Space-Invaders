@@ -17,8 +17,8 @@ public class GamePrinter {
 	/*Inicializa los atributos de la clase*/
 	public GamePrinter(Game game, int rows, int cols) {
 
-		this.numRows = rows;
-		this.numCols = cols;	
+		this.numRows = Game.DIM_X;
+		this.numCols = Game.DIM_Y;	
 
 		encodeGame(game);
 	}

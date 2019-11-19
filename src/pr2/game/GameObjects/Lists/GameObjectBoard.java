@@ -119,14 +119,9 @@ public class GameObjectBoard {
 
 	public String toString(int i, int j) {
 
-		if(((Ovni) objects[0]).getActive() && (objects[0].isOnPosition(i, j)))
+		for (int aux = 0; aux < currentObjects; aux++)
 		{
-			return objects[0].toString();
-		}
-
-		for (int aux = 1; aux < currentObjects; aux++)
-		{
-			if (objects[aux].isOnPosition(i, j));
+			if (objects[aux].isOnPosition(i, j))
 			{
 				return objects[aux].toString();
 			}
