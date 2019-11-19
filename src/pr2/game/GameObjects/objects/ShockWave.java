@@ -25,4 +25,10 @@ public class ShockWave extends Weapon {
 	public void onDelete() {
 		game.enableShockWave();
 	}
+	
+	@Override
+	public void onDelete() {
+
+		
+	}
 }

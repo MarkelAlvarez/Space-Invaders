@@ -27,8 +27,8 @@ public class Weapon extends GameObject {
 
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
-
+		
+		game.enableShockWave();
 	}
 
 	@Override

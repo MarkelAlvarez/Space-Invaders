@@ -16,7 +16,7 @@ public class AlienShip extends EnemyShip {
 
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
-		
+
 		super(game, x, y, live, points);
 		REMAINING_ALIENS += 1;
 		SHIPS_ON_BORDER = 0;
@@ -25,7 +25,7 @@ public class AlienShip extends EnemyShip {
 
 	@Override
 	public void move() {
-		
+
 		if (cyclesToMove== 0)
 		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
@@ -39,7 +39,7 @@ public class AlienShip extends EnemyShip {
 				SHIPS_ON_BORDER = REMAINING_ALIENS;
 			}
 		}
-		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW) //bajar y cambiar de
+		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW)
 		{
 			x++;
 			move.flip();

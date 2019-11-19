@@ -23,7 +23,7 @@ public class Game implements IPlayerController{
 	GameObjectBoard board;
 
 	public Game (Level level, Random random) {
-		
+
 		this. rand = random;
 		this.level = level;
 		initializer = new BoardInitializer();
@@ -37,7 +37,7 @@ public class Game implements IPlayerController{
 		player = new UCMShip(this, DIM_X - 1, DIM_Y/2);
 		board.add(player);
 	}
-	
+
 	public Random getRandom() {
 		return rand;
 	}
@@ -47,7 +47,7 @@ public class Game implements IPlayerController{
 	}
 
 	public void reset() {
-		
+
 		initGame();
 	}
 
@@ -94,10 +94,10 @@ public class Game implements IPlayerController{
 	}
 
 	public String infoToString() {
-		
+
 		String chain = "Life: " + player.getLive() + "\n" + "Cycles: " + currentCycle + "\n" + player.stateToString()
 		+ "Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
-		
+
 		if (player.getShockwave())
 		{
 			chain += "Shockwave: YES\n";
@@ -106,7 +106,7 @@ public class Game implements IPlayerController{
 		{
 			chain += "Shockwave: NO\n";
 		}
-		
+
 		return chain;
 	}
 
@@ -139,16 +139,18 @@ public class Game implements IPlayerController{
 	@Override
 	public void receivePoints(int points) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void enableShockWave() {
-		
-		if(player.getShockwave()) {
+	public void enableShockWave() { //pasa a ser enable shockwave
+
+		if (player.getShockwave())
+		{
 			player.setShockwave(false);
 		}
-		else {
+		else
+		{
 			player.setShockwave(true);
 		}
 	}
@@ -156,7 +158,7 @@ public class Game implements IPlayerController{
 	@Override
 	public void enableMissile() {
 		// TODO Auto-generated method stub
-		
+
 	}
 	// TODO implementar los métodos del interfaz IPlayerController
 }
