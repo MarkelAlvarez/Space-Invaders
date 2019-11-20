@@ -74,7 +74,7 @@ public class GameObjectBoard {
 		{
 			if (objects[i] == object)
 			{
-				for (int j = i + 1; j < currentObjects; j++)
+				for (int j = i + 1; j < currentObjects - 1; j++)
 				{
 					objects[i] = objects[j];
 					i++;
@@ -108,18 +108,15 @@ public class GameObjectBoard {
 	}
 
 	private void checkAttacks(GameObject object) {
-		int i = 0;
-		while(i < currentObjects) {
-			if(objects[i].isOnPosition(object.getX(), object.getY())) {
-				if (object instanceof Weapon) {
-					if(((Weapon) object).performAttack(objects[i])) {
-						((Weapon) object).getDamage(object.getLive());
-					}
-					i = currentObjects;
+		GameObject aux = getObjectInPosition(object.getX(), object.getY());
+		if(aux != null) {
+			if(aux.isAlive() && object instanceof Weapon) {
+				if(((Weapon) object).performAttack(aux)) {	//si este weapon afecta a la nave
+					object.getDamage(object.getLive());
 				}
 			}
-			i++;	
 		}
+
 	}
 
 	public void computerAction() {
@@ -148,8 +145,13 @@ public class GameObjectBoard {
 				{
 					
 					if(objects[i] instanceof Ovni) {
-						if(((Ovni) objects[i]).getActive()) {
-							objects[i].onDelete();
+						if(!objects[i].isAlive()) {
+							if(((Ovni) objects[i]).getActive()) {
+								objects[i].onDelete();
+							}
+						}
+						else {
+							((Ovni) objects[i]).deactivate();
 						}
 					}
 					else {
@@ -157,10 +159,13 @@ public class GameObjectBoard {
 						if(!(objects[i] instanceof UCMShip)) {
 							remove(objects[i]);
 							i--;
-							currentObjects--;
 						}
 					}
 				}
+			}
+			else if(!objects[i].isAlive()) {
+				objects[i].onDelete();
+				remove(objects[i]);
 			}
 		}
 	}

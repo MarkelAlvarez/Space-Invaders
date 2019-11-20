@@ -25,12 +25,11 @@ public class AlienShip extends EnemyShip {
 
 	@Override
 	public void move() {
-
 		if (cyclesToMove== 0)
 		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 			super.move();
-			if(x == 0)
+			if(x == Game.DIM_X - 1)
 			{
 				IS_IN_FINAL_ROW = true;
 			}
@@ -42,7 +41,7 @@ public class AlienShip extends EnemyShip {
 		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW)
 		{
 			x++;
-			move.flip();
+			move = move.flip();
 			SHIPS_ON_BORDER -= 1;
 		}
 		else

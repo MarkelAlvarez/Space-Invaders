@@ -20,15 +20,17 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 
 		super(game, x, y, live, puntos);
 		
-		bomb = false;
+		bomb = true;
 	}
-
+	
+	@Override
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
 		return true;
 	}
 
+	@Override
 	public boolean receiveShockWaveAttack(int damage) {
 
 		getDamage(damage);
@@ -42,8 +44,6 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 			bomb = false;
 		}
 	}
-	
-
 	
 	
 	/*GETS y SETS*/

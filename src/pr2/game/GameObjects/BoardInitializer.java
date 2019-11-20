@@ -28,7 +28,7 @@ public class BoardInitializer {
 	
 	private void initializeOvni () {
 		
-		board.add(new Ovni(game, 0, Game.DIM_Y));
+		board.add(new Ovni(game, 0, Game.DIM_Y - 1));
 	}
 	
 	private void initializeRegularAliens () {
@@ -40,8 +40,7 @@ public class BoardInitializer {
 		{
 			for (int i = 0; i < level.getNumRegularAliensPerRow(); i++)
 			{
-				AlienShip aux = new RegularShip(game, fila, inic + i);
-				board.add(aux);
+				board.add(new RegularShip(game, fila, inic + i));
 			}
 			fila ++;
 		}
@@ -53,8 +52,7 @@ public class BoardInitializer {
 		
 		for (int i = 0; i < level.getNumDestroyerAliensPerRow(); i++)
 		{
-			AlienShip aux = new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i);
-			board.add(aux);
+			board.add(new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i));
 		}
 	}
 }

@@ -6,9 +6,9 @@ package pr2.game;
 
 public enum Level {
 	
-	EASY(4, 2, 3, 3, 0.5, 1),
-	HARD(8, 4, 2, 2, 0.2, 2),
-	INSANE(12, 4, 1, 1, 0.1, 3);
+	EASY(4, 2, 3, 0.2, 0.5, 1),
+	HARD(8, 4, 2, 0.3, 0.2, 2),
+	INSANE(12, 4, 1, 0.5, 0.1, 3);
 	
 	private int numRegularAliens;
 	private int numDestroyerAliens;
@@ -17,7 +17,7 @@ public enum Level {
 	private double shootFrequency;
 	private int numRowsOfRegularAliens;
 	
-	private Level(int numRegularAliens, int numDestroyerAliens, double shootFrequency, int numCyclesToMoveOneCell, double ovniFrequency, int numRowsOfRegularAliens) {
+	private Level(int numRegularAliens, int numDestroyerAliens, int numCyclesToMoveOneCell, double shootFrequency, double ovniFrequency, int numRowsOfRegularAliens) {
 		
 		this.numRegularAliens = numRegularAliens;
 		this.numDestroyerAliens = numDestroyerAliens;

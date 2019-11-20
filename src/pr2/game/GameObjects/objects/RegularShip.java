@@ -18,13 +18,15 @@ public class RegularShip extends AlienShip {
 
 		super(game, x, y, live, puntos);
 	}
-
+	
+	@Override
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
 		return true;
 	}
 
+	@Override
 	public boolean receiveShockWaveAttack(int damage) {
 
 		getDamage(damage);

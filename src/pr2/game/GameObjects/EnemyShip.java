@@ -33,7 +33,12 @@ public class EnemyShip extends Ship {
 
 	@Override
 	public void move() {
-
+		if (move == Move.LEFT) {
+			y--;
+		}
+		else if (move == Move.RIGHT) {
+			y++;
+		}
 	}
 
 	@Override

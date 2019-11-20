@@ -53,7 +53,7 @@ public class Controller {
 				System.out.format(unknownCommandMsg);
 			}
 		}
-
+		draw();
 		System.out.println(game.getWinnerMessage());
 	}
 

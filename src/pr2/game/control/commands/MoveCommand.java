@@ -44,7 +44,6 @@ public class MoveCommand extends Command {
 			{
 				ret = game.move(foo);
 			}
-			return ret;
 		}
 		
 		if(!game.isFinished())

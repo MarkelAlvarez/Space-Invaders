@@ -21,22 +21,22 @@ public class Bomb extends Weapon{
 		this.ship = ship;
 	}
 
+	@Override
 	public boolean performAttack(GameObject other) {
 		
-		if(other.receiveBombAttack(damage)) {
-			ship.setBomb(true);
-		}
-		return false;
+		return other.receiveBombAttack(damage);
 	}
 
+	@Override
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
 		return true;
 	}
-	
-	public boolean generate() {
-		return IExecuteRandomActions.canGenerateRandomBomb(game);
+
+	@Override
+	public void onDelete() {
+		ship.setBomb(true);
 	}
 
 	/*GETS y SETS*/

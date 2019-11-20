@@ -30,8 +30,17 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	@Override
 	public void computerAction() {
 		if(!active) {
-			active = IExecuteRandomActions.canGenerateRandomOvni(game);
+			if(IExecuteRandomActions.canGenerateRandomOvni(game)) {
+				x = 0;
+				y = Game.DIM_Y - 1;
+				super.live = live;
+				active = true;
+			}
 		}
+	}
+	
+	public void deactivate() {
+		active = false;
 	}
 	
 
@@ -56,8 +65,10 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	@Override
 	public void onDelete() {
-		super.onDelete();
-		active = false;
+		if(active) {		//para que no lo compruebe cuando está muerto
+			super.onDelete();
+			active = false;
+		}
 	}
 
 	public String getIcono() {

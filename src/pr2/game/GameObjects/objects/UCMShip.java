@@ -38,7 +38,7 @@ public class UCMShip extends Ship{
 	public boolean shootLaser() {
 		if(canShootLaser) {
 			
-			game.addObject(new UCMShipLaser(game, x, y));
+			game.addObject(new UCMShipLaser(game, x, y, this));
 			canShootLaser = false;
 			return true;
 		}
