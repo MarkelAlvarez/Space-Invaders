@@ -10,11 +10,13 @@ import pr2.game.GameObjects.*;
 public class RegularShip extends AlienShip {
 
 	public static String icono = "C";
+	public static int live = 3;
+	public static int puntos = 5;
 
 	/*Inicializa los atributos de la clase*/
 	public RegularShip (Game game, int x, int y) {
 
-		super(game, x, y, 3, 5);
+		super(game, x, y, live, puntos);
 	}
 
 	public boolean receiveMissileAttack(int damage) {

@@ -56,6 +56,12 @@ public class AlienShip extends EnemyShip {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public void onDelete() {
+		super.onDelete();
+		REMAINING_ALIENS--;
+	}
 
 	@Override
 	public String toString() {

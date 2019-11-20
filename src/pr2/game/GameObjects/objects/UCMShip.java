@@ -12,13 +12,14 @@ public class UCMShip extends Ship{
 	private int points;
 	private boolean hasShockwave;
 	private boolean canShootLaser;
-	static String icono = "^__^";;
-	static String death = "!xx!";
+	public static String icono = "^__^";
+	public static String death = "!xx!";
+	public static int live = 3;
 
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
 
-		super(game, x, y , 3);		//el 3 es la vida
+		super(game, x, y , live);		//el 3 es la vida
 		hasShockwave = false;
 		canShootLaser = true;
 		points = 0;
@@ -29,10 +30,53 @@ public class UCMShip extends Ship{
 		getDamage(damage);
 		return true;
 	}
-
+	
+	@Override
+	public void onDelete() {
+	}
+	
+	public boolean shootLaser() {
+		if(canShootLaser) {
+			
+			game.addObject(new UCMShipLaser(game, x, y));
+			canShootLaser = false;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean shockwave() {
+		if(hasShockwave) {
+			
+			game.addObject(new ShockWave(game));
+			hasShockwave = false;
+			return true;
+		}
+		return false;
+	}
+	
+	public void receivePoints(int points) {
+		this.points += points;
+	}
+	
+	public boolean move(int cells) {
+		
+			y += cells;
+			if (y < 0) {
+				y = 0;
+			}
+			else if (y >= Game.DIM_Y) {
+				y = Game.DIM_Y - 1;
+			}
+			return true;
+	}
+	
 	@Override
 	public String toString() {
-		return getIcono();
+		if (isAlive()) {
+			return getIcono();
+		}
+		return getDeath();
 	}
 
 	public String stateToString() {

@@ -10,15 +10,17 @@ import pr2.game.GameObjects.Weapon;
 import pr2.game.logic.Move;
 
 public class ShockWave extends Weapon {
+	
+	public static int damage = 1;
 
 	public ShockWave(Game game) {
 		
-		super(game, -1, -1, 1, 1, Move.NONE);
+		super(game, -1, -1, 1, damage, Move.NONE);
 	}
 
 	public boolean performAttack(GameObject other) {
 
-		return other.receiveShockWaveAttack(this.damage);
+		return other.receiveShockWaveAttack(damage);
 	}
 	
 	@Override
@@ -26,9 +28,4 @@ public class ShockWave extends Weapon {
 		game.enableShockWave();
 	}
 	
-	@Override
-	public void onDelete() {
-
-		
-	}
 }

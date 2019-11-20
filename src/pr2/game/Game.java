@@ -76,6 +76,15 @@ public class Game implements IPlayerController{
 		return AlienShip.allDead();
 	}
 
+	//Proporciona dinamicamente la información sobre los objetos del juego
+	public void list() {
+
+		System.out.print("[R]egular ship: Points: " + RegularShip.puntos + " - Harm: 0 - Shield: " + RegularShip.live + "\n");
+		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.puntos + " - Harm: " + Bomb.damage + " - Shield: " + DestroyerShip.live + "\n");
+		System.out.print("[O]vni: Points: " + Ovni.puntos + " - Harm: 0 - Shield: " + Ovni.live + "\n");
+		System.out.print(UCMShip.icono + ": Harm: " + UCMShipLaser.damage + " - Shield: " + UCMShip.live + "\n\n");
+	}
+	
 	public void update() {
 
 		board.computerAction();
@@ -120,26 +129,25 @@ public class Game implements IPlayerController{
 
 	@Override
 	public boolean move(int numCells) {
-		// TODO Auto-generated method stub
-		return false;
+		return player.move(numCells);
 	}
 
 	@Override
 	public boolean shootLaser() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return player.shootLaser();
 	}
 
 	@Override
 	public boolean shockWave() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return player.shockwave();
 	}
 
 	@Override
 	public void receivePoints(int points) {
-		// TODO Auto-generated method stub
-
+		
+		player.receivePoints(points);
 	}
 
 	@Override

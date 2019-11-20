@@ -8,28 +8,35 @@ import pr2.game.Game;
 import pr2.game.GameObjects.*;
 import pr2.game.logic.Move;
 
-public class Bomb extends Weapon implements IExecuteRandomActions{
+public class Bomb extends Weapon{
 
 	private DestroyerShip ship;
-	private int id;
 	private String icono = ".";
+	public static int damage = 1;
 
 	/*Inicializa los atributos de la clase*/
 	public Bomb(Game game, int x, int y, DestroyerShip ship) {
 
-		super(game, x, y, 1, 1, Move.DOWN);
+		super(game, x, y, 1, damage, Move.DOWN);
 		this.ship = ship;
 	}
 
 	public boolean performAttack(GameObject other) {
-
-		return other.receiveBombAttack(this.damage);
+		
+		if(other.receiveBombAttack(damage)) {
+			ship.setBomb(true);
+		}
+		return false;
 	}
 
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
 		return true;
+	}
+	
+	public boolean generate() {
+		return IExecuteRandomActions.canGenerateRandomBomb(game);
 	}
 
 	/*GETS y SETS*/
@@ -42,21 +49,6 @@ public class Bomb extends Weapon implements IExecuteRandomActions{
 	public int getDamage() {
 
 		return damage;
-	}
-
-	public void setDamage(int damage) {
-
-		this.damage = damage;
-	}
-
-	public int getId() {
-
-		return id;
-	}
-
-	public void setId(int id) {
-
-		this.id = id;
 	}
 
 	public String getIcono() {

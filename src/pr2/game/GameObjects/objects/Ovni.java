@@ -11,11 +11,13 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 
 	private Boolean active;
 	public static String icono = "O";
+	public static int puntos = 25;
+	public static int live = 1;
 
 	/*Inicializa los atributos de la clase*/
 	public Ovni(Game game, int x, int y) {
 
-		super(game, x, y, 1, 25);
+		super(game, x, y, live, puntos);
 		setActive(false);
 	}
 
@@ -24,6 +26,14 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		getDamage(damage);
 		return true;
 	}
+
+	@Override
+	public void computerAction() {
+		if(!active) {
+			active = IExecuteRandomActions.canGenerateRandomOvni(game);
+		}
+	}
+	
 
 	/*GETS y SETS*/
 
@@ -35,6 +45,19 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		}
 		
 		return "";
+	}
+	
+	@Override
+	public void move() {
+		if(isAlive() && !isOut()) {
+			y--;
+		}
+	}
+	
+	@Override
+	public void onDelete() {
+		super.onDelete();
+		active = false;
 	}
 
 	public String getIcono() {

@@ -7,17 +7,19 @@ package pr2.game.GameObjects.objects;
 import pr2.game.Game;
 import pr2.game.GameObjects.*;
 
-public class DestroyerShip extends AlienShip {
+public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 
-	private int id;	//Ayuda a identificar cada nave y su proyectil lanzado
+	
 	private Boolean bomb;
 	public static String icono = "D";
+	public static int puntos = 10;
+	public static int live = 1;
 
 	/*Inicializa los atributos de la clase*/
-	public DestroyerShip(Game game, int x, int y, int ident) {
+	public DestroyerShip(Game game, int x, int y) {
 
-		super(game, x, y, 1, 10);
-		id = ident;
+		super(game, x, y, live, puntos);
+		
 		bomb = false;
 	}
 
@@ -32,18 +34,21 @@ public class DestroyerShip extends AlienShip {
 		getDamage(damage);
 		return true;
 	}
+	
+	@Override
+	public void computerAction() {
+		if(bomb && IExecuteRandomActions.canGenerateRandomBomb(game)) {
+			game.addObject(new Bomb(game, x, y, this));
+			bomb = false;
+		}
+	}
+	
 
+	
+	
 	/*GETS y SETS*/
 
-	public int getId() {
 
-		return id;
-	}
-
-	public void setId(int ident) {
-
-		this.id = ident;
-	}
 
 	public Boolean canShootBomb() {
 

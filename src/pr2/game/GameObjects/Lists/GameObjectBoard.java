@@ -94,6 +94,17 @@ public class GameObjectBoard {
 				checkAttacks(objects[i]);
 			}
 		}
+		
+		removeDead();
+		
+		for (int i = 0; i < currentObjects; i++) {
+			if(objects[i].isAlive() && objects[i] instanceof Weapon) {
+				objects[i].move();
+				checkAttacks(objects[i]);
+			}
+		}
+		
+		removeDead();
 	}
 
 	private void checkAttacks(GameObject object) {
@@ -101,8 +112,8 @@ public class GameObjectBoard {
 		while(i < currentObjects) {
 			if(objects[i].isOnPosition(object.getX(), object.getY())) {
 				if (object instanceof Weapon) {
-					if(object.performAttack(objects[i])) {
-						object.getDamage(object.getLive());
+					if(((Weapon) object).performAttack(objects[i])) {
+						((Weapon) object).getDamage(object.getLive());
 					}
 					i = currentObjects;
 				}
@@ -112,24 +123,44 @@ public class GameObjectBoard {
 	}
 
 	public void computerAction() {
-		// TODO implement
+		for (int i = 0; i < currentObjects; i++) {
+			if(objects[i] instanceof AlienShip) {
+				objects[i].move();
+			}
+			else if(objects[i] instanceof Ovni) {
+				if(((Ovni) objects[i]).getActive()) {
+					objects[i].move();
+				}
+			}
+		}
+		
+		for (int i = 0; i < currentObjects; i++) {
+			objects[i].computerAction();
+		}
 	}
 
 	private void removeDead() {
 
 		for (int i = 0; i < currentObjects; i++)
 		{
-			if(!objects[i].isAlive())
-			{
-				objects[i].onDelete();
-				if(objects[i] instanceof Ovni) {
-					if(((Ovni) objects[i]).getActive()) {
-						((Ovni) objects[i]).setActive(false);
+			if (!(objects[i] instanceof ShockWave)) {	//para no borrar el shockwave
+				if(!objects[i].isAlive() || objects[i].isOut())	
+				{
+					
+					if(objects[i] instanceof Ovni) {
+						if(((Ovni) objects[i]).getActive()) {
+							objects[i].onDelete();
+						}
+					}
+					else {
+						objects[i].onDelete();
+						if(!(objects[i] instanceof UCMShip)) {
+							remove(objects[i]);
+							i--;
+							currentObjects--;
+						}
 					}
 				}
-				remove(objects[i]);
-				i--;
-				currentObjects--;
 			}
 		}
 	}

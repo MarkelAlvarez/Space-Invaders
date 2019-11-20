@@ -12,16 +12,17 @@ import pr2.game.logic.Move;
 public class UCMShipLaser extends Weapon {
 
 	static String icono = "oo";
+	public static int damage = 1;
 
 	/*Inicializa los atributos de la clase*/
-	public UCMShipLaser(Game game, int x, int y, UCMShip ship) {
+	public UCMShipLaser(Game game, int x, int y) {
 
-		super(game, x, y, 1, 1, Move.UP);
+		super(game, x, y, 1, damage, Move.UP);
 	}
 
 	public boolean performAttack(GameObject other) {
 
-		return other.receiveMissileAttack(this.damage);
+		return other.receiveMissileAttack(damage);
 	}
 
 	public boolean receiveBombAttack(int damage) {
@@ -41,11 +42,6 @@ public class UCMShipLaser extends Weapon {
 	public int getDamage() {
 
 		return damage;
-	}
-
-	public void setDamage(int damage) {
-
-		this.damage = damage;
 	}
 
 	public String getIcono() {
