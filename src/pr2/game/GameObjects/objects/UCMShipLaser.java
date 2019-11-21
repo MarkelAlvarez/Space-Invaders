@@ -20,10 +20,14 @@ public class UCMShipLaser extends Weapon {
 		super(game, x, y, 1, damage, Move.UP);
 	}
 
+	public UCMShipLaser(Game game, int x, int y, int damage2) {
+		super(game, x, y, 1, damage2, Move.UP);
+	}
+
 	@Override
 	public boolean performAttack(GameObject other) {
 
-		return other.receiveMissileAttack(damage);
+		return other.receiveMissileAttack(super.damage);
 	}
 
 	@Override

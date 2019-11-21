@@ -9,6 +9,8 @@ import pr2.game.control.Command;
 
 public class ShootCommand extends Command {
 
+	private String[] comando;
+	
 	public ShootCommand(String name, String shortcut, String details, String help) {
 		
 		super(name, shortcut, details, help);
@@ -17,7 +19,16 @@ public class ShootCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 
-		game.shootLaser();
+		if (comando.length == 2) {
+			if(comando[1].equals("supermissile") || comando[1].equals("superlaser")) {
+				if (!game.superlaser()) {
+					System.out.println("No supermissiles avaiable\n");
+				}
+			}
+		}
+		else {
+			game.shootLaser();
+		}
 		
 		if(game.isFinished() == false)
 		{
@@ -32,6 +43,7 @@ public class ShootCommand extends Command {
 
 		if (matchCommandName(commandWords[0]))
 		{
+			comando = commandWords;
 			return this;
 		}
 

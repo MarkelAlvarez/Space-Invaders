@@ -6,7 +6,6 @@ package pr2.game.control.commands;
 
 import pr2.game.Game;
 import pr2.game.control.Command;
-import pr2.game.control.CommandGenerator;
 
 public class HelpCommand extends Command {
 

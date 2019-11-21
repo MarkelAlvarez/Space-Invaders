@@ -78,10 +78,10 @@ public class Game implements IPlayerController{
 	//Proporciona dinamicamente la información sobre los objetos del juego
 	public void list() {
 
-		System.out.print("[R]egular ship: Points: " + RegularShip.puntos + " - Harm: 0 - Shield: " + RegularShip.live + "\n");
-		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.puntos + " - Harm: " + Bomb.damage + " - Shield: " + DestroyerShip.live + "\n");
-		System.out.print("[O]vni: Points: " + Ovni.puntos + " - Harm: 0 - Shield: " + Ovni.live + "\n");
-		System.out.print(UCMShip.icono + ": Harm: " + UCMShipLaser.damage + " - Shield: " + UCMShip.live + "\n\n");
+		System.out.print("[R]egular ship: Points: " + RegularShip.puntos + " - Harm: 0 - Shield: " + RegularShip.life + "\n");
+		System.out.print("[D]estroyer ship: Points: " + DestroyerShip.puntos + " - Harm: " + Bomb.damage + " - Shield: " + DestroyerShip.life + "\n");
+		System.out.print("[O]vni: Points: " + Ovni.puntos + " - Harm: 0 - Shield: " + Ovni.life + "\n");
+		System.out.print(UCMShip.icono + ": Harm: " + UCMShipLaser.damage + " - Shield: " + UCMShip.life + "\n\n");
 	}
 	
 	public void update() {
@@ -104,7 +104,8 @@ public class Game implements IPlayerController{
 	public String infoToString() {
 
 		String chain = "Life: " + player.getLive() + "\n" + "Cycles: " + currentCycle + "\n" + player.stateToString()
-		+ "Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n";
+		+ "Remaining aliens: " + (AlienShip.getRemainingAliens()) + "\n"
+		+ "SuperLasers: " + (player.getPoints() / SuperLaser.cost + "\n");
 
 		if (player.getShockwave())
 		{
@@ -126,30 +127,33 @@ public class Game implements IPlayerController{
 		else return "This should not happen";
 	}
 
-	@Override
+	
 	public boolean move(int numCells) {
 		return player.move(numCells);
 	}
 
-	@Override
+	
 	public boolean shootLaser() {
 		
 		return player.shootLaser();
 	}
-
-	@Override
+	
+	public boolean superlaser() {
+		return player.buy();
+	}
+	
 	public boolean shockWave() {
 		
 		return player.shockwave();
 	}
 
-	@Override
+	
 	public void receivePoints(int points) {
 		
 		player.receivePoints(points);
 	}
 
-	@Override
+	
 	public void enableShockWave() { //pasa a ser enable shockwave
 
 		if (player.getShockwave())
@@ -162,7 +166,7 @@ public class Game implements IPlayerController{
 		}
 	}
 
-	@Override
+	
 	public void enableMissile() {
 		
 		if (player.getLaser())
@@ -174,7 +178,6 @@ public class Game implements IPlayerController{
 			player.setLaser(true);
 		}
 	}
-	// TODO implementar los métodos del interfaz IPlayerController
 }
 
 /*package pr2.game;

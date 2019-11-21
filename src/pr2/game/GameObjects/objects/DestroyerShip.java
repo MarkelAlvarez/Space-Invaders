@@ -13,12 +13,12 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	private Boolean bomb;
 	public static String icono = "D";
 	public static int puntos = 10;
-	public static int live = 1;
+	public static int life = 1;
 
 	/*Inicializa los atributos de la clase*/
 	public DestroyerShip(Game game, int x, int y) {
 
-		super(game, x, y, live, puntos);
+		super(game, x, y, life, puntos);
 		
 		bomb = true;
 	}

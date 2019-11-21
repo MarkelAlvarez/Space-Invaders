@@ -22,7 +22,14 @@ public class AlienShip extends EnemyShip {
 		SHIPS_ON_BORDER = 0;
 		cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 	}
+	
+	public AlienShip(Game game, int x, int y, int live, int points, int cycles) {
 
+		super(game, x, y, live, points);
+		REMAINING_ALIENS += 1;
+		cyclesToMove = cycles;
+	}
+	
 	@Override
 	public void move() {
 		if (cyclesToMove== 0)
@@ -60,6 +67,8 @@ public class AlienShip extends EnemyShip {
 	public void onDelete() {
 		super.onDelete();
 		REMAINING_ALIENS--;
+		if(SHIPS_ON_BORDER > 0)
+			SHIPS_ON_BORDER--;
 	}
 
 	@Override

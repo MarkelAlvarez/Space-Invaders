@@ -14,12 +14,12 @@ public class UCMShip extends Ship{
 	private boolean canShootLaser;
 	public static String icono = "^__^";
 	public static String death = "!xx!";
-	public static int live = 3;
+	public static int life = 3;
 
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
 
-		super(game, x, y , live);		//el 3 es la vida
+		super(game, x, y , life);		//el 3 es la vida
 		hasShockwave = false;
 		canShootLaser = true;
 		points = 0;
@@ -49,6 +49,15 @@ public class UCMShip extends Ship{
 		if(hasShockwave) {
 			
 			game.addObject(new ShockWave(game));
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean buy() {
+		if(points > SuperLaser.cost) {
+			game.addObject(new SuperLaser(game, x, y));
+			game.receivePoints(-SuperLaser.cost);
 			return true;
 		}
 		return false;
