@@ -13,4 +13,9 @@ public class ExplosiveShip extends RegularShip {
 	@Override
 	public void onDelete() {
 	}
+	
+	@Override
+	public void computerAction() {
+		
+	}
 }

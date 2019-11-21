@@ -23,12 +23,14 @@ public class AlienShip extends EnemyShip {
 		cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 	}
 	
+	/*
 	public AlienShip(Game game, int x, int y, int live, int points, int cycles) {
 
 		super(game, x, y, live, points);
 		REMAINING_ALIENS += 1;
 		cyclesToMove = cycles;
 	}
+	*/
 	
 	@Override
 	public void move() {
