@@ -67,7 +67,8 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	public void onDelete() {
 		if(active) {		//para que no lo compruebe cuando está muerto
 			super.onDelete();
-			active = false;
+			game.enableShockWave();
+			deactivate();
 		}
 	}
 

@@ -38,8 +38,8 @@ public class UCMShip extends Ship{
 	public boolean shootLaser() {
 		if(canShootLaser) {
 			
-			game.addObject(new UCMShipLaser(game, x, y, this));
-			canShootLaser = false;
+			game.addObject(new UCMShipLaser(game, x, y));
+			game.enableMissile();
 			return true;
 		}
 		return false;
@@ -49,7 +49,6 @@ public class UCMShip extends Ship{
 		if(hasShockwave) {
 			
 			game.addObject(new ShockWave(game));
-			hasShockwave = false;
 			return true;
 		}
 		return false;

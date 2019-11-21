@@ -164,8 +164,15 @@ public class Game implements IPlayerController{
 
 	@Override
 	public void enableMissile() {
-		// TODO Auto-generated method stub
-
+		
+		if (player.getLaser())
+		{
+			player.setLaser(false);
+		}
+		else
+		{
+			player.setLaser(true);
+		}
 	}
 	// TODO implementar los métodos del interfaz IPlayerController
 }

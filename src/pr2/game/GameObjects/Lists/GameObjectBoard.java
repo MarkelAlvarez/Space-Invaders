@@ -74,7 +74,7 @@ public class GameObjectBoard {
 		{
 			if (objects[i] == object)
 			{
-				for (int j = i + 1; j < currentObjects - 1; j++)
+				for (int j = i + 1; j < currentObjects; j++)
 				{
 					objects[i] = objects[j];
 					i++;
@@ -112,16 +112,24 @@ public class GameObjectBoard {
 		//if(aux != null) {
 		// El problema de esto es que puede encontrarse a sí mismo y parar la busqueda
 		//Lo dejo de forma jincha para revisar más adelante (sustituir el objects[i] por aux)
-		int i = 0;
-		while (i < currentObjects) {			
-			if(objects[i].isOnPosition(object.getX(), object.getY()) && objects[i].isAlive()
-					 && objects[i] != object) {
-				if(((Weapon) object).performAttack(objects[i])) {	//si este weapon afecta a la nave
-					object.getDamage(object.getLive());
-					i = currentObjects;
+		if(!(object instanceof ShockWave)) {
+			int i = 0;
+			while (i < currentObjects) {
+				if(objects[i].isOnPosition(object.getX(), object.getY()) && objects[i].isAlive()
+						 && objects[i] != object) {
+					if(((Weapon) object).performAttack(objects[i])) {	//si este weapon afecta a la nave
+						object.getDamage(object.getLive());
+						i = currentObjects;
+					}
 				}
+				i++;
 			}
-			i++;
+		}
+		else {
+			for (int i = 0; i < currentObjects; i++) {
+				((Weapon) object).performAttack(objects[i]);
+			}
+			object.getDamage(object.getLive());
 		}
 	}
 
