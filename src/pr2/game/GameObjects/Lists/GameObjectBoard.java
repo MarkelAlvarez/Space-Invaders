@@ -90,7 +90,7 @@ public class GameObjectBoard {
 	public void update() {
 		
 		for (int i = 0; i < currentObjects; i++) {
-			if(objects[i].isAlive()) {
+			if(objects[i].isAlive() && objects[i] instanceof Weapon) {
 				checkAttacks(objects[i]);
 			}
 		}
@@ -108,15 +108,21 @@ public class GameObjectBoard {
 	}
 
 	private void checkAttacks(GameObject object) {
-		GameObject aux = getObjectInPosition(object.getX(), object.getY());
-		if(aux != null) {
-			if(aux.isAlive() && object instanceof Weapon) {
-				if(((Weapon) object).performAttack(aux)) {	//si este weapon afecta a la nave
+		//GameObject aux = getObjectInPosition(object.getX(), object.getY());
+		//if(aux != null) {
+		// El problema de esto es que puede encontrarse a sí mismo y parar la busqueda
+		//Lo dejo de forma jincha para revisar más adelante (sustituir el objects[i] por aux)
+		int i = 0;
+		while (i < currentObjects) {			
+			if(objects[i].isOnPosition(object.getX(), object.getY()) && objects[i].isAlive()
+					 && objects[i] != object) {
+				if(((Weapon) object).performAttack(objects[i])) {	//si este weapon afecta a la nave
 					object.getDamage(object.getLive());
+					i = currentObjects;
 				}
 			}
+			i++;
 		}
-
 	}
 
 	public void computerAction() {
