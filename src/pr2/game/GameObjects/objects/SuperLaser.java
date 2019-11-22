@@ -12,10 +12,13 @@ public class SuperLaser extends UCMShipLaser {
 		super(game, x, y, damage);
 	}
 	
-	
-	
 	@Override
 	public void onDelete() {
 	}
 
+	public String toString() {
+
+		return SuperLaser.icono;
+	}
+	
 }
