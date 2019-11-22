@@ -16,9 +16,9 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	public static int life = 1;
 
 	/*Inicializa los atributos de la clase*/
-	public DestroyerShip(Game game, int x, int y) {
+	public DestroyerShip(Game game, int x, int y, int live) {
 
-		super(game, x, y, life, puntos);
+		super(game, x, y, live, puntos);
 		
 		bomb = true;
 	}

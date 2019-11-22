@@ -14,14 +14,11 @@ public class RegularShip extends AlienShip {
 	public static int puntos = 5;
 
 	/*Inicializa los atributos de la clase*/
-	public RegularShip (Game game, int x, int y) {
+	public RegularShip (Game game, int x, int y, int live) {
 
-		super(game, x, y, life, puntos);
+		super(game, x, y, live, puntos);
 	}
 	
-	public RegularShip(Game game, int x, int y, int live, int cycles) {
-		super(game, x, y, live, cycles);
-	}
 
 	@Override
 	public boolean receiveMissileAttack(int damage) {
@@ -37,15 +34,14 @@ public class RegularShip extends AlienShip {
 		return true;
 	}
 	
-	/*
 	@Override
 	public void computerAction() {
 		if(IExecuteRandomActions.canGenerateExplosiveShip(game)) {
-			game.addObject(new ExplosiveShip(game, x, y, super.live, super.cyclesToMove));
-			getDamage(super.live);
+			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove));
+			getDamage(live);
 		}
 	}
-	*/
+	
 	
 	/*GETS y SETS*/
 

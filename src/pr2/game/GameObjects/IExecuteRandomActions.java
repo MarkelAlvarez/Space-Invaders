@@ -20,6 +20,6 @@ public interface IExecuteRandomActions {
 	
 	static boolean canGenerateExplosiveShip(Game game) {
 		
-		return ( (game.getRandom().nextDouble()) < 0.05 );
+		return ( (game.getRandom().nextDouble()) < 0.1 );
 	}
 }

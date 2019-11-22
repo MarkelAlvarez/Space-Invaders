@@ -66,27 +66,6 @@ public class GameObjectBoard {
 		return -1;
 	}
 
-	private void remove (GameObject object) {
-
-		int i = 0;
-
-		while (i < currentObjects)
-		{
-			if (objects[i] == object)
-			{
-				for (int j = i + 1; j < currentObjects; j++)
-				{
-					objects[i] = objects[j];
-					i++;
-				}
-				objects[currentObjects - 1] = null;
-				currentObjects--;
-				i = currentObjects;
-			}
-			i++;
-		}
-	}
-
 	public void update() {
 		
 		for (int i = 0; i < currentObjects; i++) {
@@ -117,7 +96,7 @@ public class GameObjectBoard {
 			while (i < currentObjects) {
 				if(objects[i].isOnPosition(object.getX(), object.getY()) && objects[i].isAlive()
 						 && objects[i] != object) {
-					if(((Weapon) object).performAttack(objects[i])) {	//si este weapon afecta a la nave
+					if(object.performAttack(objects[i])) {	//si este weapon afecta a la nave
 						object.getDamage(object.getLive());
 						i = currentObjects;
 					}
@@ -127,9 +106,22 @@ public class GameObjectBoard {
 		}
 		else {
 			for (int i = 0; i < currentObjects; i++) {
-				((Weapon) object).performAttack(objects[i]);
+				object.performAttack(objects[i]);
 			}
 			object.getDamage(object.getLive());
+		}
+	}
+	
+	public void explosion(int x, int y, int damage) {
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				if(!(i == 0 && j == 0)) {
+					GameObject aux = getObjectInPosition(x + i, y + j);
+					if(aux != null) {
+						aux.receiveExplosiveAttack(damage);
+					}
+				}
+			}
 		}
 	}
 
@@ -151,7 +143,7 @@ public class GameObjectBoard {
 	}
 
 	private void removeDead() {
-
+		boolean explosiveCheck = false;
 		for (int i = 0; i < currentObjects; i++)
 		{
 			if (!(objects[i] instanceof ShockWave)) {	//para no borrar el shockwave
@@ -171,6 +163,9 @@ public class GameObjectBoard {
 					else {
 						objects[i].onDelete();
 						if(!(objects[i] instanceof UCMShip)) {
+							if(objects[i] instanceof ExplosiveShip) {
+								explosiveCheck = true;
+							}
 							remove(objects[i]);
 							i--;
 						}
@@ -181,6 +176,30 @@ public class GameObjectBoard {
 				objects[i].onDelete();
 				remove(objects[i]);
 			}
+		}
+		if (explosiveCheck) {	//si se ha borrado la explosive vuelvo a comprobar
+			removeDead();		//ineficiente de cojones
+		}
+	}
+
+	private void remove (GameObject object) {
+
+		int i = 0;
+
+		while (i < currentObjects)
+		{
+			if (objects[i] == object)
+			{
+				for (int j = i + 1; j < currentObjects; j++)
+				{
+					objects[i] = objects[j];
+					i++;
+				}
+				objects[currentObjects - 1] = null;
+				currentObjects--;
+				i = currentObjects;
+			}
+			i++;
 		}
 	}
 

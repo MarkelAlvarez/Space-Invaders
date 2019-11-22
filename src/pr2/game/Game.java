@@ -59,6 +59,10 @@ public class Game implements IPlayerController{
 
 		return board.toString(x, y);
 	}
+	
+	public void explosion(int x, int y, int damage) {
+		board.explosion(x, y, damage);
+	}
 
 	public boolean isFinished() {
 
