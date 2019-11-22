@@ -40,7 +40,7 @@ public class GameObjectBoard {
 
 		while (i < currentObjects)
 		{
-			if (objects[i].isOnPosition(x, y))
+			if (objects[i].isAlive() && objects[i].isOnPosition(x, y))
 			{
 				return objects[i];
 			}
