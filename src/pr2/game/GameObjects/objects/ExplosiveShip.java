@@ -8,18 +8,19 @@ public class ExplosiveShip extends RegularShip {
 	private int damage = 1;
 	
 	public ExplosiveShip(Game game, int x, int y, int live, int cycles) {
+		
 		super(game, x, y, live);
 		cyclesToMove = cycles;
 	}
 	
 	@Override
 	public void onDelete() {
+		
 		game.explosion(x, y, damage);
 	}
 	
 	@Override
 	public void computerAction() {
-		
 	}
 	
 	@Override

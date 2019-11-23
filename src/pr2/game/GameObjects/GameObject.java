@@ -21,6 +21,40 @@ public abstract class GameObject implements IAttack {
 		this.live = live;
 	}
 
+	public boolean isAlive() {
+		
+		return this.live > 0;
+	}
+	
+	public boolean isOnPosition(int x, int y) {
+		
+		return ((this.x == x) && (this.y == y));
+	}
+
+	public boolean isOut() {
+		
+		return !game.isOnBoard(x, y);
+	}
+	
+	public boolean receiveExplosiveAttack(int damage) {
+		
+		getDamage(damage);
+		
+		return true;
+	}
+
+	public abstract void computerAction();
+	public abstract void onDelete();
+	public abstract void move();
+	public abstract String toString();
+	
+	/*GETS & SETS*/
+	
+	public void getDamage (int damage) {
+		
+		this.live = damage >= this.live ? 0 : this.live - damage;
+	}
+	
 	public int getX() {
 		return x;
 	}
@@ -29,33 +63,7 @@ public abstract class GameObject implements IAttack {
 		return y;
 	}
 
-	public boolean isAlive() {
-		return this.live > 0;
-	}
-
 	public int getLive() {
 		return this.live;
 	}
-
-	public boolean isOnPosition(int x, int y) {
-		return ((this.x == x) && (this.y == y));
-	}
-
-	public void getDamage (int damage) {
-		this.live = damage >= this.live ? 0 : this.live - damage;
-	}
-
-	public boolean isOut() {
-		return !game.isOnBoard(x, y);
-	}
-	
-	public boolean receiveExplosiveAttack(int damage) {
-		getDamage(damage);
-		return true;
-	}
-
-	public abstract void computerAction();
-	public abstract void onDelete();
-	public abstract void move();
-	public abstract String toString();	
 }

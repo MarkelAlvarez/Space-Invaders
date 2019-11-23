@@ -19,14 +19,18 @@ public class ShootCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 
-		if (comando.length == 2) {
-			if(comando[1].equals("supermissile") || comando[1].equals("superlaser")) {
-				if (!game.superlaser()) {
+		if (comando.length == 2)
+		{
+			if(comando[1].equals("supermissile") || comando[1].equals("superlaser"))
+			{
+				if (!game.superlaser())
+				{
 					System.out.println("No supermissiles avaiable\n");
 				}
 			}
 		}
-		else {
+		else
+		{
 			game.shootLaser();
 		}
 		

@@ -31,11 +31,13 @@ public class Bomb extends Weapon{
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 
 	@Override
 	public void onDelete() {
+		
 		ship.setBomb(true);
 	}
 
@@ -43,6 +45,7 @@ public class Bomb extends Weapon{
 
 	@Override
 	public String toString() {
+		
 		return icono;
 	}
 
@@ -60,5 +63,4 @@ public class Bomb extends Weapon{
 
 		this.icono = icono;
 	}
-
 }
