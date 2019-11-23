@@ -17,7 +17,7 @@ public class NoneCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 
-		if(game.isFinished() == false)
+		if(!game.isFinished())
 		{
 			game.update();
 		}

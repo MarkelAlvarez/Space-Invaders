@@ -20,7 +20,7 @@ public class HelpCommand extends Command {
 
 		System.out.println(CommandGenerator.commandHelp());
 		
-		if(game.isFinished() == false)
+		if(!game.isFinished())
 		{
 			game.update();
 		}

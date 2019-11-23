@@ -19,7 +19,7 @@ public class ResetCommand extends Command {
 
 		game.reset();
 		
-		if(game.isFinished() == false)
+		if(!game.isFinished())
 		{
 			game.update();
 		}

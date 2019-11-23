@@ -34,7 +34,7 @@ public class ShootCommand extends Command {
 			game.shootLaser();
 		}
 		
-		if(game.isFinished() == false)
+		if(!game.isFinished())
 		{
 			game.update();
 		}
