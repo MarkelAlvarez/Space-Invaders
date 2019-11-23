@@ -148,6 +148,11 @@ public class Game implements IPlayerController{
 	
 	public boolean shockWave() {
 		
+		if (!player.shockwave())
+		{
+			System.out.println("No shockwaves available\n");
+		}
+		
 		return player.shockwave();
 	}
 	

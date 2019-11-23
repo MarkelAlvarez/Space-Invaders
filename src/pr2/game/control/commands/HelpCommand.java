@@ -6,6 +6,7 @@ package pr2.game.control.commands;
 
 import pr2.game.Game;
 import pr2.game.control.Command;
+import pr2.game.control.CommandGenerator;
 
 public class HelpCommand extends Command {
 
@@ -17,7 +18,7 @@ public class HelpCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 
-		game.infoToString();
+		System.out.println(CommandGenerator.commandHelp());
 		
 		if(game.isFinished() == false)
 		{
