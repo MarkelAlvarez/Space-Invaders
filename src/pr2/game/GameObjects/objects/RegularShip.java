@@ -23,7 +23,7 @@ public class RegularShip extends AlienShip {
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
-		
+
 		return true;
 	}
 
@@ -31,25 +31,24 @@ public class RegularShip extends AlienShip {
 	public boolean receiveShockWaveAttack(int damage) {
 
 		getDamage(damage);
-		
+
 		return true;
 	}
-	
+
 	@Override
 	public void computerAction() {
-
 		if(IExecuteRandomActions.canGenerateExplosiveShip(game)) {
 			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove, move));
 			getDamage(live);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 
 		return RegularShip.icono + super.toString();
 	}
-	
+
 	/*GETS y SETS*/
 
 	public String getIcono() {
