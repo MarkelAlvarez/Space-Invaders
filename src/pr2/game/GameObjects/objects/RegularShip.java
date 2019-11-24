@@ -37,15 +37,9 @@ public class RegularShip extends AlienShip {
 	
 	@Override
 	public void computerAction() {
-<<<<<<< HEAD
+
 		if(IExecuteRandomActions.canGenerateExplosiveShip(game)) {
 			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove, move));
-=======
-		
-		if(IExecuteRandomActions.canGenerateExplosiveShip(game))
-		{
-			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove));
->>>>>>> 77be59c0d9beab7e16be38b40d67317cd4563962
 			getDamage(live);
 		}
 	}

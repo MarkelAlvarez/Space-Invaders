@@ -15,7 +15,6 @@ public class SuperLaser extends UCMShipLaser {
 	@Override
 	public void onDelete() {
 	}
-<<<<<<< HEAD
 
 	public String toString() {
 
@@ -23,6 +22,4 @@ public class SuperLaser extends UCMShipLaser {
 	}
 	
 }
-=======
-}
->>>>>>> 77be59c0d9beab7e16be38b40d67317cd4563962
+
