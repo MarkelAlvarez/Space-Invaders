@@ -19,7 +19,6 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	public DestroyerShip(Game game, int x, int y, int live) {
 
 		super(game, x, y, live, puntos);
-		
 		bomb = true;
 	}
 	
@@ -27,6 +26,7 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 
@@ -34,21 +34,27 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	public boolean receiveShockWaveAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 	
 	@Override
 	public void computerAction() {
-		if(bomb && IExecuteRandomActions.canGenerateRandomBomb(game)) {
+		
+		if(bomb && IExecuteRandomActions.canGenerateRandomBomb(game))
+		{
 			game.addObject(new Bomb(game, x, y, this));
 			bomb = false;
 		}
 	}
 	
+	@Override
+	public String toString() {
+
+		return DestroyerShip.icono + super.toString();
+	}
 	
 	/*GETS y SETS*/
-
-
 
 	public Boolean canShootBomb() {
 
@@ -60,12 +66,6 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 		this.bomb = bomb;
 	}
 
-	@Override
-	public String toString() {
-
-		return DestroyerShip.icono + super.toString();
-	}
-
 	public String getIcono() {
 
 		return icono;
@@ -75,5 +75,4 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 
 		DestroyerShip.icono = icono;
 	}
-
 }

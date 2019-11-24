@@ -23,21 +23,21 @@ public class AlienShip extends EnemyShip {
 		cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 	}
 	
-	/*
-	public AlienShip(Game game, int x, int y, int live, int points, int cycles) {
+	/*public AlienShip(Game game, int x, int y, int live, int points, int cycles) {
 
 		super(game, x, y, live, points);
 		REMAINING_ALIENS += 1;
 		cyclesToMove = cycles;
-	}
-	*/
+	}*/
 	
 	@Override
 	public void move() {
+		
 		if (cyclesToMove== 0)
 		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 			super.move();
+			
 			if(x == Game.DIM_X - 1)
 			{
 				IS_IN_FINAL_ROW = true;
@@ -61,32 +61,39 @@ public class AlienShip extends EnemyShip {
 
 	@Override
 	public void computerAction() {
-		// TODO Auto-generated method stub
-
 	}
 	
 	@Override
 	public void onDelete() {
+		
 		super.onDelete();
+		
 		REMAINING_ALIENS--;
+		
 		if(SHIPS_ON_BORDER > 0)
+		{
 			SHIPS_ON_BORDER--;
+		}
 	}
 
 	@Override
 	public String toString() {
+		
 		return super.toString();
 	}
 
 	public static boolean haveLanded() {
+		
 		return IS_IN_FINAL_ROW;
 	}
 
 	public static boolean allDead() {
+		
 		return REMAINING_ALIENS == 0;
 	}
 
 	public static int getRemainingAliens() {
+		
 		return REMAINING_ALIENS;
 	}
 }

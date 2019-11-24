@@ -9,21 +9,21 @@ import pr2.game.GameObjects.*;
 
 public class RegularShip extends AlienShip {
 
-	public static String icono = "C";
 	public static int life = 3;
 	public static int puntos = 5;
+	public static String icono = "C";
 
 	/*Inicializa los atributos de la clase*/
 	public RegularShip (Game game, int x, int y, int live) {
 
 		super(game, x, y, live, puntos);
 	}
-	
 
 	@Override
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 
@@ -31,25 +31,32 @@ public class RegularShip extends AlienShip {
 	public boolean receiveShockWaveAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 	
 	@Override
 	public void computerAction() {
+<<<<<<< HEAD
 		if(IExecuteRandomActions.canGenerateExplosiveShip(game)) {
 			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove, move));
+=======
+		
+		if(IExecuteRandomActions.canGenerateExplosiveShip(game))
+		{
+			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove));
+>>>>>>> 77be59c0d9beab7e16be38b40d67317cd4563962
 			getDamage(live);
 		}
 	}
 	
-	
-	/*GETS y SETS*/
-
 	@Override
 	public String toString() {
 
 		return RegularShip.icono + super.toString();
 	}
+	
+	/*GETS y SETS*/
 
 	public String getIcono() {
 

@@ -20,7 +20,6 @@ public class UCMShipLaser extends Weapon {
 		super(game, x, y, 1, damage, Move.UP);
 	}
 
-
 	@Override
 	public boolean performAttack(GameObject other) {
 
@@ -31,6 +30,7 @@ public class UCMShipLaser extends Weapon {
 	public boolean receiveBombAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 
@@ -42,6 +42,7 @@ public class UCMShipLaser extends Weapon {
 	
 	@Override
 	public void onDelete() {
+		
 		game.enableMissile();
 	}
 	

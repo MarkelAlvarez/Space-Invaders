@@ -19,7 +19,7 @@ public class ShockwaveCommand extends Command {
 
 		game.shockWave();
 		
-		if(game.isFinished() == false)
+		if(!game.isFinished())
 		{
 			game.update();
 		}

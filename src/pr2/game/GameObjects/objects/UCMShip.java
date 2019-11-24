@@ -19,7 +19,7 @@ public class UCMShip extends Ship{
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
 
-		super(game, x, y , life);		//el 3 es la vida
+		super(game, x, y , life); //el 3 es la vida
 		hasShockwave = false;
 		canShootLaser = true;
 		points = 0;
@@ -28,70 +28,93 @@ public class UCMShip extends Ship{
 	public boolean receiveBombAttack(int damage) {
 
 		getDamage(damage);
+		
 		return true;
 	}
 	
-	@Override
-	public void onDelete() {
-	}
-	
 	public boolean shootLaser() {
-		if(canShootLaser) {
-			
+		
+		if(canShootLaser)
+		{
 			game.addObject(new UCMShipLaser(game, x, y, UCMShipLaser.damage));
 			game.enableMissile();
+			
 			return true;
 		}
+		
 		return false;
 	}
 	
 	public boolean shockwave() {
-		if(hasShockwave) {
-			
+		
+		if(hasShockwave)
+		{
 			game.addObject(new ShockWave(game));
+			
 			return true;
 		}
+		
 		return false;
 	}
 	
 	public boolean buy() {
-		if(points > SuperLaser.cost) {
+		
+		if(points > SuperLaser.cost)
+		{
 			game.addObject(new SuperLaser(game, x, y));
 			game.receivePoints(-SuperLaser.cost);
+			
 			return true;
 		}
+		
 		return false;
 	}
 	
 	public void receivePoints(int points) {
+		
 		this.points += points;
 	}
 	
 	public boolean move(int cells) {
 		
-			y += cells;
-			if (y < 0) {
-				y = 0;
-			}
-			else if (y >= Game.DIM_Y) {
-				y = Game.DIM_Y - 1;
-			}
-			return true;
+		y += cells;
+		
+		if (y < 0)
+		{
+			y = 0;
+		}
+		else if (y >= Game.DIM_Y)
+		{
+			y = Game.DIM_Y - 1;
+		}
+			
+		return true;
 	}
 	
 	@Override
 	public String toString() {
-		if (isAlive()) {
+		
+		if (isAlive())
+		{
 			return getIcono();
 		}
+		
 		return getDeath();
 	}
 
 	public String stateToString() {
+		
 		return "Points: " + points + "\n";
 	}
+	
+	@Override
+	public void onDelete() {
+	}
 
+	/*GETS & SETS*/
+	
 	public void setState(int points) {
+		
 		this.points += points;
 	}
 
@@ -136,6 +159,7 @@ public class UCMShip extends Ship{
 	}
 	
 	public int getPoints() {
+		
 		return points;
 	}
 }

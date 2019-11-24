@@ -21,8 +21,6 @@ public class EnemyShip extends Ship {
 
 	@Override
 	public void computerAction() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -33,10 +31,13 @@ public class EnemyShip extends Ship {
 
 	@Override
 	public void move() {
-		if (move == Move.LEFT) {
+		
+		if (move == Move.LEFT)
+		{
 			y--;
 		}
-		else if (move == Move.RIGHT) {
+		else if (move == Move.RIGHT)
+		{
 			y++;
 		}
 	}

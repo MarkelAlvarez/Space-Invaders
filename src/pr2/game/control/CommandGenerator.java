@@ -52,11 +52,12 @@ public class CommandGenerator {
 	}
 
 	public static Command[] getAvailableCommands() {
+		
 		return availableCommands;
 	}
 
 	public static void setAvailableCommands(Command[] availableCommands) {
+		
 		CommandGenerator.availableCommands = availableCommands;
 	}
-
 }

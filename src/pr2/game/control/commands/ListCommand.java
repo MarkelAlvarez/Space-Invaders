@@ -19,7 +19,7 @@ public class ListCommand extends Command {
 
 		game.list();
 		
-		if(game.isFinished() == false)
+		if(!game.isFinished())
 		{
 			game.update();
 		}

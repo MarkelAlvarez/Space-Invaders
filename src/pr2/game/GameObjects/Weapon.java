@@ -21,13 +21,10 @@ public class Weapon extends GameObject {
 
 	@Override
 	public void computerAction() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onDelete() {
-		
 	}
 
 	@Override
@@ -45,7 +42,6 @@ public class Weapon extends GameObject {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
