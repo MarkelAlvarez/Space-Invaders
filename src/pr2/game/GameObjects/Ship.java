@@ -27,6 +27,7 @@ public abstract class Ship extends GameObject {
 
 	@Override
 	public String toString() {
+		
 		return null;
 	}
 }

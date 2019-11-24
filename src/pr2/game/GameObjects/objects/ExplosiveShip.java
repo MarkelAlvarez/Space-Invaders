@@ -27,7 +27,6 @@ public class ExplosiveShip extends RegularShip {
 	@Override
 	public String toString() {
 
-		//return ExplosiveShip.icono + super.toString();
 		return ExplosiveShip.icono + "[" + live + "]";
 	}
 }

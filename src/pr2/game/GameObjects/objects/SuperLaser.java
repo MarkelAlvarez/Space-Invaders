@@ -9,6 +9,7 @@ public class SuperLaser extends UCMShipLaser {
 	public static String icono = "^";
 
 	public SuperLaser(Game game, int x, int y) {
+		
 		super(game, x, y, damage);
 	}
 
@@ -20,5 +21,4 @@ public class SuperLaser extends UCMShipLaser {
 
 		return SuperLaser.icono;
 	}
-
 }

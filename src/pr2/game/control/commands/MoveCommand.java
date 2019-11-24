@@ -38,7 +38,7 @@ public class MoveCommand extends Command {
 			/*Se mueve la nave segun lo que haya pedido el usuario*/
 			if (comando[1].equals("left"))
 			{
-				ret = game.move(foo * (-1));	//le paso el numero en negativo para que se reste
+				ret = game.move(foo * (-1)); //le paso el numero en negativo para que se reste
 			}
 			else if (comando[1].equals("right"))
 			{

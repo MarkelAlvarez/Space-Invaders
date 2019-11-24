@@ -42,6 +42,7 @@ public class Weapon extends GameObject {
 
 	@Override
 	public String toString() {
+		
 		return null;
 	}
 }

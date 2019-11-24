@@ -63,7 +63,7 @@ public enum Level {
 	
 	public static Level fromParam(String param) {
 		
-		for (Level level : Level.values() )
+		for (Level level : Level.values())
 			if (level . name().equalsIgnoreCase(param)) return level;
 				return EASY;
 	}

@@ -61,6 +61,7 @@ public class Game implements IPlayerController{
 	}
 	
 	public void explosion(int x, int y, int damage) {
+		
 		board.explosion(x, y, damage);
 	}
 
