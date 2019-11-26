@@ -40,7 +40,9 @@ public class RegularShip extends AlienShip {
 	{
 		if(IExecuteRandomActions.canGenerateExplosiveShip(game))
 		{
+			int shipsBorder = getShipsOnBorder();
 			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove, move));
+			setShipsOnBorder(shipsBorder);
 			getDamage(live);
 		}
 	}
