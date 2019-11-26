@@ -98,10 +98,12 @@ public class AlienShip extends EnemyShip {
 	}
 	
 	public static int getShipsOnBorder() {
+		
 		return SHIPS_ON_BORDER;
 	}
 	
 	public static void setShipsOnBorder(int ships) {
+		
 		SHIPS_ON_BORDER = ships;
 	}
 }
