@@ -110,6 +110,11 @@ public class UCMShip extends Ship{
 	@Override
 	public void onDelete() {
 	}
+	
+	public String toStringifier() {
+		
+		return "P: " + x + " " + y + " " + live + " " + points + " " + hasShockwave + " " + (points / SuperLaser.cost);
+	}
 
 	/*GETS & SETS*/
 	

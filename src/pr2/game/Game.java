@@ -185,4 +185,13 @@ public class Game implements IPlayerController{
 			player.setLaser(true);
 		}
 	}
+
+	public void stringifier() {
+		
+		System.out.println("-- Space Invaders v2.0 --\n\n"
+				+ "Game: " + currentCycle + "\n"
+				+ "Level: " + level.getLevelString() + "\n"
+				+ board.toStringifier());
+		
+	}
 }

@@ -21,4 +21,9 @@ public class SuperLaser extends UCMShipLaser {
 
 		return SuperLaser.icono;
 	}
+	
+	public String toStringifier() {
+		
+		return "X: " + x + " " + y;
+	}
 }

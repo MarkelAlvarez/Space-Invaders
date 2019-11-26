@@ -1,8 +1,8 @@
 package pr2.game.logic;
 
-public abstract class GamePrinter {
+public class Stringifier extends GamePrinter {
 
-	public GamePrinter() {
+	public Stringifier() {
 		// TODO Auto-generated constructor stub
 	}
 

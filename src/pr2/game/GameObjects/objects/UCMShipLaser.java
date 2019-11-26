@@ -45,6 +45,10 @@ public class UCMShipLaser extends Weapon {
 		
 		game.enableMissile();
 	}
+	public String toStringifier() {
+		
+		return "M: " + x + " " + y;
+	}
 	
 	/*GETS y SETS*/
 	

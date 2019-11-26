@@ -66,4 +66,9 @@ public abstract class GameObject implements IAttack {
 	public int getLive() {
 		return this.live;
 	}
+
+	public String toStringifier() {
+		
+		return null;
+	}
 }

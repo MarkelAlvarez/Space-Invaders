@@ -41,6 +41,11 @@ public class Bomb extends Weapon{
 		ship.setBomb(true);
 	}
 
+	public String toStringifier() {
+		
+		return "B: " + x + " " + y;
+	}
+	
 	/*GETS y SETS*/
 
 	@Override

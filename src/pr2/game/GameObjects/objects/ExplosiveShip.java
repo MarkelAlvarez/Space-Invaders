@@ -31,4 +31,11 @@ public class ExplosiveShip extends RegularShip {
 
 		return ExplosiveShip.icono + "[" + live + "]";
 	}
+	
+	@Override
+	public String toStringifier() {
+		
+		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
+	}
+
 }

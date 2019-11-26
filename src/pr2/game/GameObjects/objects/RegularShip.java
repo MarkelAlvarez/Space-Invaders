@@ -6,6 +6,7 @@ package pr2.game.GameObjects.objects;
 
 import pr2.game.Game;
 import pr2.game.GameObjects.*;
+import pr2.game.logic.Move;
 
 public class RegularShip extends AlienShip {
 
@@ -51,6 +52,11 @@ public class RegularShip extends AlienShip {
 	public String toString() {
 
 		return RegularShip.icono + super.toString();
+	}
+	
+	public String toStringifier() {
+		
+		return "R: " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
 	}
 
 	/*GETS y SETS*/

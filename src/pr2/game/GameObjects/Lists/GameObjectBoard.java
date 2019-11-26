@@ -251,4 +251,19 @@ public class GameObjectBoard {
 
 		return "";
 	}
+
+	public String toStringifier() {
+		
+		String str = "";
+		
+		for (int i = 0; i < currentObjects; i++)
+		{
+			if (!(objects[i] instanceof ShockWave))
+			{
+				str += objects[i].toStringifier() + "\n";
+			}
+		}
+		
+		return str;
+	}
 }

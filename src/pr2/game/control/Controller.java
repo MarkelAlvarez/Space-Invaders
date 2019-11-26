@@ -6,13 +6,13 @@ package pr2.game.control;
 
 import java.util.Scanner;
 import pr2.game.Game;
-import pr2.game.logic.GamePrinter;
+import pr2.game.logic.BoardPrinter;
 
 public class Controller {
 
 	private Game game;
 	private Scanner in;
-	private GamePrinter printer;
+	private BoardPrinter printer;
 	final static int numF = 8;
 	final static int numC = 9;
 
@@ -63,8 +63,9 @@ public class Controller {
 
 		System.out.println(game.infoToString());
 		/*Pinta el tablero*/
-		printer = new GamePrinter(game, numF, numC);
+		printer = new BoardPrinter(game, numF, numC);
 
-		System.out.println(printer.toString());
+		System.out.println(printer);
+		//System.out.println(printer.toString());
 	}
 }

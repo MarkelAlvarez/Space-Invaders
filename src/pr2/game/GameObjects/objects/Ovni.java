@@ -5,7 +5,8 @@ package pr2.game.GameObjects.objects;
 */
 
 import pr2.game.Game;
-import pr2.game.GameObjects.*;
+import pr2.game.GameObjects.EnemyShip;
+import pr2.game.GameObjects.IExecuteRandomActions;
 
 public class Ovni extends EnemyShip implements IExecuteRandomActions{
 
@@ -78,6 +79,12 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		}
 	}
 	
+	@Override
+	public String toStringifier() {
+		
+		return icono + ": " + x + " " + y + " " + live;
+	}
+
 	/*GETS y SETS*/
 
 	public String getIcono() {

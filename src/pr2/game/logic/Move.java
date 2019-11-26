@@ -21,4 +21,28 @@ public enum Move {
 		
 		return this;
 	}
+	
+	public static String toString(Move move) {
+		
+		if (move.equals(LEFT))
+		{
+			return "LEFT";
+		}
+		else if (move.equals(RIGHT))
+		{
+			return "RIGHT";
+		}
+		else if (move.equals(DOWN))
+		{
+			return "DOWN";
+		}
+		else if (move.equals(UP))
+		{
+			return "UP";
+		}
+		else
+		{
+			return "NONE";
+		}
+	}
 }

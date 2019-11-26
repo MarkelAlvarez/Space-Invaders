@@ -6,9 +6,9 @@ package pr2.game;
 
 public enum Level {
 	
-	EASY(4, 2, 3, 0.2, 0.5, 1),
-	HARD(8, 4, 2, 0.3, 0.2, 2),
-	INSANE(12, 4, 1, 0.5, 0.1, 3);
+	EASY(4, 2, 3, 0.2, 0.5, 1, "EASY"),
+	HARD(8, 4, 2, 0.3, 0.2, 2, "HARD"),
+	INSANE(12, 4, 1, 0.5, 0.1, 3, "INSANE");
 	
 	private int numRegularAliens;
 	private int numDestroyerAliens;
@@ -16,8 +16,9 @@ public enum Level {
 	private double ovniFrequency;
 	private double shootFrequency;
 	private int numRowsOfRegularAliens;
+	private String levelString;
 	
-	private Level(int numRegularAliens, int numDestroyerAliens, int numCyclesToMoveOneCell, double shootFrequency, double ovniFrequency, int numRowsOfRegularAliens) {
+	private Level(int numRegularAliens, int numDestroyerAliens, int numCyclesToMoveOneCell, double shootFrequency, double ovniFrequency, int numRowsOfRegularAliens, String levelString) {
 		
 		this.numRegularAliens = numRegularAliens;
 		this.numDestroyerAliens = numDestroyerAliens;
@@ -25,6 +26,7 @@ public enum Level {
 		this.numCyclesToMoveOneCell = numCyclesToMoveOneCell;
 		this.ovniFrequency = ovniFrequency;
 		this.numRowsOfRegularAliens = numRowsOfRegularAliens;
+		this.levelString = levelString;
 	}
 	
 	/*GETS & SETS*/
@@ -70,5 +72,10 @@ public enum Level {
 
 	public Double getTurnExplodeFreq(){
 		return 0.05;
+	}
+	
+	public String getLevelString() {
+		
+		return levelString;
 	}
 }

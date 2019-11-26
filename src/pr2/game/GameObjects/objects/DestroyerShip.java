@@ -6,6 +6,7 @@ package pr2.game.GameObjects.objects;
 
 import pr2.game.Game;
 import pr2.game.GameObjects.*;
+import pr2.game.logic.Move;
 
 public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 
@@ -54,6 +55,11 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 		return DestroyerShip.icono + super.toString();
 	}
 	
+	public String toStringifier() {
+		
+		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
+	}
+
 	/*GETS y SETS*/
 
 	public Boolean canShootBomb() {

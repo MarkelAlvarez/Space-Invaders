@@ -17,6 +17,7 @@ public class CommandGenerator {
 		new ShootCommand("shoot", "S", "[S]hoot", "UCM-Ship launches a missile."),
 		new MoveCommand("move", "M", "[M]ove", "Moves UCM-Ship to the indicated direction."),
 		new ShockwaveCommand("shockwave", "W", "Shock[W]ave", "UCM-Ship releases a shock wave."),
+		new StringifyCommand("stringify", "G", "Strin[g]ify", "Stringify all objects."),
 		new NoneCommand("none", "N", "[N]one", "Skips cycle.")
 	};
 
