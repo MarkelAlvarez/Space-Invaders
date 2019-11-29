@@ -15,8 +15,8 @@ public class Controller {
 	final static int numC = 9;
 	private Game game;
 	private Scanner in;
+	GamePrinter printer;
 	private String unknownCommandMsg = "Wrong input.\n";
-	private GamePrinter printer = PrinterTypes.BOARDPRINTER.getObject();
 	
 	/*Inicializa los atributos de la clase e initGame()*/
 	public Controller(Game game, Scanner scanner) {
@@ -24,6 +24,7 @@ public class Controller {
 		this.game = game;
 		in = scanner;
 		game.initGame();
+		printer = PrinterTypes.BOARDPRINTER.getObject();
 	}
 
 	public void run() {
@@ -64,6 +65,6 @@ public class Controller {
 		System.out.println(game.infoToString());
 		
 		/*Pinta el tablero*/
-		System.out.println(this.printer);
+		System.out.println(printer.toString(game));
 	}
 }

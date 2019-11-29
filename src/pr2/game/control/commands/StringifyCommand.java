@@ -18,7 +18,7 @@ public class StringifyCommand extends Command {
 		
 		GamePrinter printer = PrinterTypes.STRINGIFIER.getObject();
 		
-		System.out.println(printer.toString());
+		System.out.println(printer.toString(game));
 
 		return true;
 	}

@@ -7,7 +7,6 @@ import pr2.game.logic.Stringifier;
 
 public enum PrinterTypes {
 	
-	//TODO: llamada a la constructora
 	BOARDPRINTER("boardprinter", "prints the game formatted as a board of dimension: ", new BoardPrinter()),
 	STRINGIFIER("stringifier", "prints the game as plain text", new Stringifier());
 	
@@ -28,7 +27,7 @@ public enum PrinterTypes {
 		
 		for (PrinterTypes printer : PrinterTypes.values())
 		{
-			helpString += String.format(" %s : %s %s %n", printer.printerName, printer.helpText, (printer == BOARDPRINTER ? Game.DIM_X + " x " + Game.DIM_Y : "") );
+			helpString += String.format("%s: %s %s %n", printer.printerName, printer.helpText, (printer == BOARDPRINTER ? Game.DIM_X + " x " + Game.DIM_Y : "") );
 		}
 		
 		return helpString;

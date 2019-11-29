@@ -9,4 +9,9 @@ public abstract class GamePrinter {
 	public GamePrinter() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public String toString(Game game) {
+
+		return null;
+	}
 }
