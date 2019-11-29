@@ -1,9 +1,13 @@
-package pr2.game.logic;
+package pr2.game.control;
 
 import pr2.game.Game;
+import pr2.game.logic.BoardPrinter;
+import pr2.game.logic.GamePrinter;
+import pr2.game.logic.Stringifier;
 
 public enum PrinterTypes {
 	
+	//TODO: llamada a la constructora
 	BOARDPRINTER("boardprinter", "prints the game formatted as a board of dimension: ", new BoardPrinter()),
 	STRINGIFIER("stringifier", "prints the game as plain text", new Stringifier());
 	
@@ -31,10 +35,8 @@ public enum PrinterTypes {
 	}
 	
 	// Assumes a max of one object of each printer type is needed (otherwise return copy)
-	public GamePrinter getObject(Game game) {
-	
-		printerObject.setGame(game);
-		
+	public GamePrinter getObject() {
+			
 		return printerObject;
 	}
 }

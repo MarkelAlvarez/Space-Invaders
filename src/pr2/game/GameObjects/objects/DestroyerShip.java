@@ -15,12 +15,14 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	public static String icono = "D";
 	public static int puntos = 10;
 	public static int life = 1;
+	private int id;
 
 	/*Inicializa los atributos de la clase*/
-	public DestroyerShip(Game game, int x, int y, int live) {
+	public DestroyerShip(Game game, int x, int y, int live, int id) {
 
 		super(game, x, y, live, puntos);
 		bomb = true;
+		this.setId(id+1);
 	}
 	
 	@Override
@@ -57,7 +59,7 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	
 	public String toStringifier() {
 		
-		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
+		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + " " + id;
 	}
 
 	/*GETS y SETS*/
@@ -80,5 +82,15 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	public void setIcono(String icono) {
 
 		DestroyerShip.icono = icono;
+	}
+
+	public int getId() {
+		
+		return id;
+	}
+
+	public void setId(int id) {
+		
+		this.id = id;
 	}
 }

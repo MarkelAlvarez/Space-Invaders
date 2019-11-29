@@ -1,9 +1,16 @@
 package pr2.game.logic;
 
-public class Stringifier extends GamePrinter {
+import pr2.game.Game;
 
+public class Stringifier extends GamePrinter {
+	
 	public Stringifier() {
-		// TODO Auto-generated constructor stub
 	}
 
+	public String toString(Game game) {
+				
+		System.out.println(game.stringifier());
+		
+		return "";
+	}
 }

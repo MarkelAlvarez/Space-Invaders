@@ -52,7 +52,7 @@ public class BoardInitializer {
 		
 		for (int i = 0; i < level.getNumDestroyerAliensPerRow(); i++)
 		{
-			board.add(new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i, DestroyerShip.life));
+			board.add(new DestroyerShip(game, level.getNumRowsOfRegularAliens() + 1, inic + i, DestroyerShip.life, i));
 		}
 	}
 }

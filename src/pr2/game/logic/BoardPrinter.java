@@ -7,7 +7,7 @@ package pr2.game.logic;
 import pr2.game.Game;
 import pr2.game.logic.MyStringUtils;
 
-public class BoardPrinter extends GamePrinter{
+public class BoardPrinter extends GamePrinter {
 	
 	int numRows; 
 	int numCols;
@@ -15,14 +15,12 @@ public class BoardPrinter extends GamePrinter{
 	final String space = " ";
 	
 	/*Inicializa los atributos de la clase*/
-	public BoardPrinter(Game game, int rows, int cols) {
-
+	public BoardPrinter() {
+		
 		this.numRows = Game.DIM_X;
-		this.numCols = Game.DIM_Y;	
-
-		encodeGame(game);
+		this.numCols = Game.DIM_Y;
 	}
-	
+
 	/*Situa a las naves y objetos del juego en el tablero*/
 	private void encodeGame(Game game) {
 
@@ -38,8 +36,9 @@ public class BoardPrinter extends GamePrinter{
 	}
 	
 	/*Dibuja el tablero*/
-	public String toString() {
+	public String toString(Game game) {
 
+		encodeGame(game);
 		int cellSize = 7;
 		int marginSize = 2;
 		String vDelimiter = "|";

@@ -18,6 +18,7 @@ public class CommandGenerator {
 		new MoveCommand("move", "M", "[M]ove", "Moves UCM-Ship to the indicated direction."),
 		new ShockwaveCommand("shockwave", "W", "Shock[W]ave", "UCM-Ship releases a shock wave."),
 		new StringifyCommand("stringify", "G", "Strin[g]ify", "Stringify all objects."),
+		new ListPrintersCommand("listPrinters", "P", "List [P]rinters", "Shows available printers."),
 		new NoneCommand("none", "N", "[N]one", "Skips cycle.")
 	};
 

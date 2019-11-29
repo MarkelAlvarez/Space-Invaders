@@ -10,7 +10,7 @@ import pr2.game.GameObjects.*;
 import pr2.game.GameObjects.objects.*;
 import pr2.game.GameObjects.Lists.GameObjectBoard;
 
-public class Game implements IPlayerController{
+public class Game implements IPlayerController {
 
 	public final static int DIM_X = 8;
 	public final static int DIM_Y = 9;
@@ -186,12 +186,13 @@ public class Game implements IPlayerController{
 		}
 	}
 
-	public void stringifier() {
+	public String stringifier() {
 		
-		System.out.println("-- Space Invaders v2.0 --\n\n"
+		String ret = "";
+		
+		return ret += "-- Space Invaders v2.0 --\n\n"
 				+ "Game: " + currentCycle + "\n"
 				+ "Level: " + level.getLevelString() + "\n"
-				+ board.toStringifier());
-		
+				+ board.toStringifier();	
 	}
 }

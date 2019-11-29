@@ -7,17 +7,17 @@ package pr2.game.control;
 import java.util.Scanner;
 import pr2.game.Game;
 import pr2.game.logic.BoardPrinter;
+import pr2.game.logic.GamePrinter;
 
 public class Controller {
 
-	private Game game;
-	private Scanner in;
-	private BoardPrinter printer;
 	final static int numF = 8;
 	final static int numC = 9;
-
-	String unknownCommandMsg = "Wrong input.\n";
-
+	private Game game;
+	private Scanner in;
+	private String unknownCommandMsg = "Wrong input.\n";
+	private GamePrinter printer = PrinterTypes.BOARDPRINTER.getObject();
+	
 	/*Inicializa los atributos de la clase e initGame()*/
 	public Controller(Game game, Scanner scanner) {
 
@@ -58,14 +58,12 @@ public class Controller {
 		System.out.println(game.getWinnerMessage());
 	}
 
-	/*Te refleja la información de la partida y pinta el tableror*/
+	/*Te refleja la informacion de la partida y pinta el tableror*/
 	public void draw() {
 
 		System.out.println(game.infoToString());
+		
 		/*Pinta el tablero*/
-		printer = new BoardPrinter(game, numF, numC);
-
-		System.out.println(printer);
-		//System.out.println(printer.toString());
+		System.out.println(this.printer);
 	}
 }
