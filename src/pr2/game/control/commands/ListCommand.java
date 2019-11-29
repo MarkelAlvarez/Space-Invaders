@@ -18,13 +18,8 @@ public class ListCommand extends Command {
 	public boolean execute(Game game) {
 
 		game.list();
-		
-		if(!game.isFinished())
-		{
-			game.update();
-		}
 
-		return true;
+		return false;
 	}
 
 	@Override

@@ -28,15 +28,21 @@ public class Controller {
 	}
 
 	public void run() {
-
+		
+		boolean printMe = true;
 		/*
 		* Mientras que no se acabe el juego ni se ejecute la opcion 'reset'
 		* el juego hara un ciclo (draw, user command, computer action y update)
 		*/
 		while (!game.isFinished())
 		{
-			draw();
-
+			if(printMe)
+			{
+				draw();
+			}
+			
+			printMe = true;
+			
 			System.out.print("Command > ");
 			String[] words = in.nextLine().toLowerCase().trim().split ("\\s+");
 
@@ -46,12 +52,13 @@ public class Controller {
 			{
 				if (!command.execute(game))
 				{
-					System.out.format(unknownCommandMsg);
+					printMe = false;
 				}
 			}
 			else
 			{
 				System.out.format(unknownCommandMsg);
+				printMe = false;
 			}
 		}
 		

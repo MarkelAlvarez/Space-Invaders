@@ -19,13 +19,8 @@ public class HelpCommand extends Command {
 	public boolean execute(Game game) {
 
 		System.out.println(CommandGenerator.commandHelp());
-		
-		if(!game.isFinished())
-		{
-			game.update();
-		}
-		
-		return true;
+
+		return false;
 	}
 
 	@Override

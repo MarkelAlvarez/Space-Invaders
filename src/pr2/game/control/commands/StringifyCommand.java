@@ -20,7 +20,7 @@ public class StringifyCommand extends Command {
 		
 		System.out.println(printer.toString(game));
 
-		return true;
+		return false;
 	}
 
 	@Override

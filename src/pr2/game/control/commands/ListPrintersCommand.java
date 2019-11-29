@@ -16,7 +16,7 @@ public class ListPrintersCommand extends Command {
 		
 		System.out.println(PrinterTypes.printerHelp(game));
 
-		return true;
+		return false;
 	}
 
 	@Override

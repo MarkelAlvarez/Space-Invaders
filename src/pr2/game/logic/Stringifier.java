@@ -9,7 +9,7 @@ public class Stringifier extends GamePrinter {
 
 	public String toString(Game game) {
 				
-		System.out.println(game.stringifier());
+		System.out.print(game.stringifier());
 		
 		return "";
 	}

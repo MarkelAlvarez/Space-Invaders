@@ -19,11 +19,6 @@ public class ExitCommand extends Command {
 
 		game.exit();
 		
-		if(!game.isFinished())
-		{
-			game.update();
-		}
-		
 		return true;
 	}
 
