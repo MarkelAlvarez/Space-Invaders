@@ -7,10 +7,11 @@ import java.util.Scanner;
 import pr2.game.Game;
 import pr2.game.Level;
 import pr2.game.control.Controller;
+import pr2.game.exceptions.CommandParseException;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CommandParseException {
 		
 		int semilla;
 		Game game;
@@ -30,9 +31,14 @@ public class Main {
 			//Obtener nivel
 			nivelStr = args[0].toLowerCase();
 			//Comprueba si es el nivel correcto
+			if (nivelStr.equals("difficult"))
+			{
+				throw new CommandParseException("Usage: Main <EASY|HARD|INSANE> [seed]: level must be one of: EASY, HARD, INSANE");
+			}
 			if ((!nivelStr.equals("easy")) && (!nivelStr.equals("hard")) && (!nivelStr.equals("insane")))
 			{
-				System.out.println("Los parametros establecidos son erroneos.");
+				//System.out.println("Los parametros establecidos son erroneos.");
+				throw new CommandParseException("Usage: Main <EASY|HARD|INSANE> [seed]");
 			}
 			else
 			{

@@ -50,6 +50,7 @@ public class UCMShip extends Ship{
 		if(hasShockwave)
 		{
 			game.addObject(new ShockWave(game));
+			hasShockwave = false;
 			
 			return true;
 		}

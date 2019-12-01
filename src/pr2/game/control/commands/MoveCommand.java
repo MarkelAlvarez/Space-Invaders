@@ -6,6 +6,8 @@ package pr2.game.control.commands;
 
 import pr2.game.Game;
 import pr2.game.control.Command;
+import pr2.game.exceptions.CommandExecuteException;
+import pr2.game.exceptions.CommandParseException;
 
 public class MoveCommand extends Command {
 	
@@ -17,15 +19,19 @@ public class MoveCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException {
 		
-		int foo;
+		int foo = 0; //inicializado por el try
 		boolean ret = false;
 		
 		if (comando.length == 3)
 		{
 			/*Convierte el numero leido en un 'int'*/
-			foo = Integer.parseInt(comando[2]);
+			try {
+				foo = Integer.parseInt(comando[2]);
+			} catch (NumberFormatException e) {
+				System.err.println(e);
+			}
 			/*Filtra los numeros para que tengan el rango adecuado*/
 			if (foo > 2)
 			{
@@ -45,6 +51,10 @@ public class MoveCommand extends Command {
 				ret = game.move(foo);
 			}
 		}
+		else
+		{
+			throw new CommandExecuteException("Wrong parameters were entered.");
+		}
 		
 		if(!game.isFinished())
 		{
@@ -55,7 +65,7 @@ public class MoveCommand extends Command {
 	}
 
 	@Override
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 
 		if (matchCommandName(commandWords[0]))
 		{

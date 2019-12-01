@@ -5,6 +5,8 @@ package pr2.game.control;
 */
 
 import pr2.game.Game;
+import pr2.game.exceptions.CommandExecuteException;
+import pr2.game.exceptions.CommandParseException;
 
 public abstract class Command {
 
@@ -24,9 +26,9 @@ public abstract class Command {
 		this.help = help;
 	}
 
-	public abstract boolean execute(Game game);
+	public abstract boolean execute(Game game) throws CommandExecuteException;
 
-	public abstract Command parse(String[] commandWords);
+	public abstract Command parse(String[] commandWords) throws CommandParseException;
 
 	protected boolean matchCommandName(String name) {
 		

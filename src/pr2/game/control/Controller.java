@@ -6,7 +6,8 @@ package pr2.game.control;
 
 import java.util.Scanner;
 import pr2.game.Game;
-import pr2.game.logic.BoardPrinter;
+import pr2.game.exceptions.CommandExecuteException;
+import pr2.game.exceptions.CommandParseException;
 import pr2.game.logic.GamePrinter;
 
 public class Controller {
@@ -46,19 +47,23 @@ public class Controller {
 			System.out.print("Command > ");
 			String[] words = in.nextLine().toLowerCase().trim().split ("\\s+");
 
-			Command command = CommandGenerator.parseCommand(words);
+			try {
+				Command command = CommandGenerator.parseCommand(words);
 
-			if (command != null)
-			{
-				if (!command.execute(game))
+				if (command != null)
 				{
+					if (!command.execute(game))
+					{
+						printMe = false;
+					}
+				}
+				else
+				{
+					System.out.format(unknownCommandMsg);
 					printMe = false;
 				}
-			}
-			else
-			{
-				System.out.format(unknownCommandMsg);
-				printMe = false;
+			} catch (CommandParseException | CommandExecuteException ex) {
+				System.out.format(ex.getMessage() + " %n %n");
 			}
 		}
 		

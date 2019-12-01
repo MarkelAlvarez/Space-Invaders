@@ -5,6 +5,7 @@ package pr2.game.control;
 */
 
 import pr2.game.control.commands.*;
+import pr2.game.exceptions.CommandParseException;
 
 public class CommandGenerator {
 
@@ -22,7 +23,7 @@ public class CommandGenerator {
 		new NoneCommand("none", "N", "[N]one", "Skips cycle.")
 	};
 
-	public static Command parseCommand(String[] commandWords) {
+	public static Command parseCommand(String[] commandWords) throws CommandParseException {
 
 		int i = 0;
 
@@ -34,8 +35,8 @@ public class CommandGenerator {
 			}
 			i++;
 		}
-
-		return null;
+		
+		throw new CommandParseException("");
 	}
 
 	public static String commandHelp() {

@@ -3,8 +3,9 @@ package pr2.game.control.commands;
 import pr2.game.Game;
 import pr2.game.control.Command;
 import pr2.game.control.PrinterTypes;
+import pr2.game.exceptions.CommandExecuteException;
+import pr2.game.exceptions.CommandParseException;
 import pr2.game.logic.GamePrinter;
-import pr2.game.logic.Stringifier;
 
 public class StringifyCommand extends Command {
 	
@@ -14,7 +15,7 @@ public class StringifyCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException {
 		
 		GamePrinter printer = PrinterTypes.STRINGIFIER.getObject();
 		
@@ -24,7 +25,7 @@ public class StringifyCommand extends Command {
 	}
 
 	@Override
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 
 		if (matchCommandName(commandWords[0]))
 		{
