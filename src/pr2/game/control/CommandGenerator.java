@@ -20,6 +20,8 @@ public class CommandGenerator {
 		new ShockwaveCommand("shockwave", "W", "Shock[W]ave", "UCM-Ship releases a shock wave."),
 		new StringifyCommand("stringify", "G", "Strin[g]ify", "Stringify all objects."),
 		new ListPrintersCommand("listPrinters", "P", "List [P]rinters", "Shows available printers."),
+		new SaveCommand("save", "V", "Sa[V]e", "Save progress into a file."),
+		new LoadCommand("load", "D", "Loa[D]", "Load progress from a file."),
 		new NoneCommand("none", "N", "[N]one", "Skips cycle.")
 	};
 
