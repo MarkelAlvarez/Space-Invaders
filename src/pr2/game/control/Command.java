@@ -1,5 +1,7 @@
 package pr2.game.control;
 
+import java.io.IOException;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */

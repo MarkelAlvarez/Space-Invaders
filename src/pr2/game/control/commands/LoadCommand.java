@@ -1,5 +1,7 @@
 package pr2.game.control.commands;
 
+import java.io.IOException;
+
 import pr2.game.Game;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
@@ -8,6 +10,7 @@ import pr2.game.exceptions.CommandParseException;
 public class LoadCommand extends Command {
 
 	String[] comando;
+	String nFichero;
 	
 	public LoadCommand(String name, String shortcut, String details, String help) {
 		
@@ -19,12 +22,12 @@ public class LoadCommand extends Command {
 
 		if (comando.length == 2)
 		{
-			if(comando[1].equals("supermissile") || comando[1].equals("superlaser"))
-			{
-				if (!game.superlaser())
-				{
-					System.out.println("No supermissiles avaiable\n");
-				}
+			nFichero = comando[1] + ".dat";
+			try {
+				game.readFile(nFichero);
+				System.out.println("Game successfully from file " + nFichero + ".");
+			} catch (IOException e) {
+				System.out.println(e);
 			}
 		}
 		else //no ha introducido el nombre del fichero

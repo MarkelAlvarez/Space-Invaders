@@ -1,5 +1,13 @@
 package pr2.game;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
@@ -8,6 +16,8 @@ import java.util.Random;
 import pr2.game.Level;
 import pr2.game.GameObjects.*;
 import pr2.game.GameObjects.objects.*;
+import pr2.game.control.FileContentsVerifier;
+import pr2.game.exceptions.FileContentsException;
 import pr2.game.GameObjects.Lists.GameObjectBoard;
 
 public class Game implements IPlayerController {
@@ -194,5 +204,42 @@ public class Game implements IPlayerController {
 				+ "Game: " + currentCycle + "\n"
 				+ "Level: " + level.getLevelString() + "\n"
 				+ board.toStringifier();	
+	}
+
+	public void readFile(String nFichero) throws IOException {
+		
+		//BufferedReader y FileReader
+		BufferedReader read = new BufferedReader(new FileReader(new File(nFichero)));
+		read.readLine();
+		read.close();
+		load(read);
+	}
+	
+	public void load(BufferedReader inStream) {
+		
+		boolean loading = false;
+		String line = inStream.readLine().trim();
+		FileContentsVerifier verifier;
+		
+		while( line != null && !line.isEmpty() )
+		{
+			GameObject gameObject = GameObjectGenerator.parse(line, this, verifier);
+			
+			if (gameObject == null)
+			{
+				throw new FileContentsException("invalid file, " + "unrecognised line prefix");
+			}
+			
+			board.add(gameObject);
+			line = inStream.readLine().trim();
+		}
+	}
+
+	public void writeFile(String nFichero) throws IOException {
+
+		//BufferedWriter y FileWriter
+		BufferedWriter write = new BufferedWriter(new FileWriter(new File(nFichero)));
+		write.write(stringifier());
+		write.close();
 	}
 }
