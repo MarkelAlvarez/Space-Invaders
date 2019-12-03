@@ -1,8 +1,4 @@
-package pr2.game.control;
-
-import pr2.game.Game;
-import pr2.game.Level;
-import pr2.game.logic.Move;
+package pr2.game.logic;
 
 public class FileContentsVerifier {
 

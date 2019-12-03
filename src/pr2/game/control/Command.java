@@ -1,12 +1,8 @@
 package pr2.game.control;
 
-/*
-* Juan Pablo Corella y Markel Alvarez (2ºB)
-*/
-
-import pr2.game.Game;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.logic.Game;
 
 public abstract class Command {
 

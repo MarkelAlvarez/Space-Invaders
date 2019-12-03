@@ -1,6 +1,6 @@
-package pr2.game.logic;
+package pr2.game.view;
 
-import pr2.game.Game;
+import pr2.game.logic.Game;
 
 public abstract class GamePrinter {
 	

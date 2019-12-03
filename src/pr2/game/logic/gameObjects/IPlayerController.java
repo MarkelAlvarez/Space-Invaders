@@ -1,4 +1,4 @@
-package pr2.game.GameObjects;
+package pr2.game.logic.gameObjects;
 
 import pr2.game.exceptions.CommandExecuteException;
 

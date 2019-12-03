@@ -1,10 +1,6 @@
-package pr2.game.logic;
+package pr2.game.view;
 
-/*
-* Juan Pablo Corella y Markel Alvarez (2ºB)
-*/
-
-import pr2.game.Game;
+import pr2.game.logic.Game;
 import pr2.game.logic.MyStringUtils;
 
 public class BoardPrinter extends GamePrinter {

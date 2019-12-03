@@ -1,10 +1,10 @@
-package pr2.game.GameObjects;
+package pr2.game.logic.gameObjects;
 
 import java.io.*;
-import pr2.game.Game;
-import pr2.game.GameObjects.objects.*;
-import pr2.game.control.FileContentsVerifier;
+
 import pr2.game.exceptions.FileContentsException;
+import pr2.game.logic.*;
+import pr2.game.logic.gameObjects.objects.*;
 
 public class GameObjectGenerator {
 	

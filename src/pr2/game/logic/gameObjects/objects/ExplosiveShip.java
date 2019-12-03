@@ -1,6 +1,6 @@
-package pr2.game.GameObjects.objects;
+package pr2.game.logic.gameObjects.objects;
 
-import pr2.game.Game;
+import pr2.game.logic.Game;
 import pr2.game.logic.Move;
 
 public class ExplosiveShip extends RegularShip {

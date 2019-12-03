@@ -5,10 +5,12 @@ package pr2.game.control;
 */
 
 import java.util.Scanner;
-import pr2.game.Game;
+
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
-import pr2.game.logic.GamePrinter;
+import pr2.game.logic.Game;
+import pr2.game.view.GamePrinter;
+import pr2.game.view.PrinterTypes;
 
 public class Controller {
 

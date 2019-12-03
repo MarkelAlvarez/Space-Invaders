@@ -1,11 +1,7 @@
-package pr2.game.GameObjects.objects;
+package pr2.game.logic.gameObjects.objects;
 
-/*
-* Juan Pablo Corella y Markel Alvarez (2ºB)
-*/
-
-import pr2.game.Game;
-import pr2.game.GameObjects.*;
+import pr2.game.logic.Game;
+import pr2.game.logic.gameObjects.Ship;
 
 public class UCMShip extends Ship{
 	

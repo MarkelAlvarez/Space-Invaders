@@ -1,4 +1,4 @@
-package pr2.game.GameObjects;
+package pr2.game.logic.gameObjects;
 
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)

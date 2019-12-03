@@ -1,9 +1,6 @@
-package pr2.game.control;
+package pr2.game.view;
 
-import pr2.game.Game;
-import pr2.game.logic.BoardPrinter;
-import pr2.game.logic.GamePrinter;
-import pr2.game.logic.Stringifier;
+import pr2.game.logic.Game;
 
 public enum PrinterTypes {
 	

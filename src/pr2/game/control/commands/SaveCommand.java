@@ -2,10 +2,10 @@ package pr2.game.control.commands;
 
 import java.io.IOException;
 
-import pr2.game.Game;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.logic.Game;
 
 public class SaveCommand extends Command {
 	

@@ -4,10 +4,11 @@
 
 import java.util.Random;
 import java.util.Scanner;
-import pr2.game.Game;
-import pr2.game.Level;
+
 import pr2.game.control.Controller;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.logic.Game;
+import pr2.game.logic.Level;
 
 public class Main {
 

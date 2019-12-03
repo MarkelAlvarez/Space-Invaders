@@ -1,11 +1,11 @@
-package pr2.game.GameObjects.Lists;
+package pr2.game.logic.gameObjects.lists;
 
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
-import pr2.game.GameObjects.*;
-import pr2.game.GameObjects.objects.*;
+import pr2.game.logic.gameObjects.*;
+import pr2.game.logic.gameObjects.objects.*;
 
 public class GameObjectBoard {
 

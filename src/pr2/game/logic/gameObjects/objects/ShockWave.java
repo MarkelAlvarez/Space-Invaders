@@ -1,13 +1,9 @@
-package pr2.game.GameObjects.objects;
+package pr2.game.logic.gameObjects.objects;
 
-/*
-* Juan Pablo Corella y Markel Alvarez (2ºB)
-*/
-
-import pr2.game.Game;
-import pr2.game.GameObjects.GameObject;
-import pr2.game.GameObjects.Weapon;
+import pr2.game.logic.Game;
 import pr2.game.logic.Move;
+import pr2.game.logic.gameObjects.GameObject;
+import pr2.game.logic.gameObjects.Weapon;
 
 public class ShockWave extends Weapon {
 	
