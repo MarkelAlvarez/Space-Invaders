@@ -7,10 +7,9 @@ public class FileContentsVerifier {
 	public static final String labelRefSeparator = " - ";
 	
 	private String foundInFileString = "";
-
-
 	
 	private void appendToFoundInFileString(String linePrefix) {
+		
 		foundInFileString += linePrefix;
 	}
 	
@@ -20,7 +19,7 @@ public class FileContentsVerifier {
 		String[] words = cycleString.split (separator1);
 		appendToFoundInFileString(words[0]);
 		
-		if (words.length != 2 || !verifyCurrentCycle(Integer. parseInt(words[1])))
+		if ((words.length != 2) || !verifyCurrentCycle(Integer.parseInt(words[1])))
 		{
 			return false;
 		}
@@ -33,7 +32,7 @@ public class FileContentsVerifier {
 		String[] words = levelString. split (separator1);
 		appendToFoundInFileString(words[0]);
 		
-		if (words.length != 2 || ! verifyLevel(Level.parse(words[1])))
+		if ((words.length != 2) || ! verifyLevel(Level.parse(words[1])))
 		{
 			return false;
 		}
@@ -51,7 +50,9 @@ public class FileContentsVerifier {
 		{
 			return false;
 		}
+		
 		String[] coords = words[1].split (separator2);
+		
 		if ( !verifyCoords(Integer.parseInt(coords[0]) , Integer.parseInt(coords[1]) , game) || ! verifyLives(Integer.parseInt(words[2]), armour) )
 		{
 			return false;

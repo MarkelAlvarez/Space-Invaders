@@ -23,22 +23,25 @@ public class SaveCommand extends Command {
 		
 		if (comando.length == 2)
 		{
-			nFichero = comando[1] + ".dat";
+			if (!comando[1].contains(".dat"))
+			{
+				nFichero = comando[1] + ".dat";
+			}
+			else
+			{
+				nFichero = comando[1];
+			}
+			
 			try {
 				game.writeFile(nFichero);
 				System.out.println("Game successfully saved in file " + nFichero + ". Use the load command to reload it.");
 			} catch (IOException e) {
 				System.out.println(e);
-			}
-			
+			}	
 		}
-		else //no ha introducido el nombre del fichero
+		else
 		{
-			try {
-				
-			} catch (Exception e) {
-				System.err.println("Cause of Exception: " + e);
-			}
+			System.out.println("Please input a file name.");
 		}
 		
 		return false;

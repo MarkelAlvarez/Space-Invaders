@@ -23,7 +23,15 @@ public class LoadCommand extends Command {
 
 		if (comando.length == 2)
 		{
-			nFichero = comando[1] + ".dat";
+			if (!comando[1].contains(".dat"))
+			{
+				nFichero = comando[1] + ".dat";
+			}
+			else
+			{
+				nFichero = comando[1];
+			}
+			
 			try {
 				game.readFile(nFichero);
 				System.out.println("Game successfully from file " + nFichero + ".");
@@ -31,13 +39,9 @@ public class LoadCommand extends Command {
 				System.out.println(e);
 			}
 		}
-		else //no ha introducido el nombre del fichero
+		else
 		{
-			try {
-				
-			} catch (Exception e) {
-				System.err.println("Cause of Exception: " + e);
-			}
+			System.out.println("Please input a file name");
 		}
 		
 		return false;
