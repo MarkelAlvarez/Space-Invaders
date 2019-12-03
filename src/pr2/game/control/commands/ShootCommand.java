@@ -25,19 +25,16 @@ public class ShootCommand extends Command {
 		{
 			if(comando[1].equals("supermissile") || comando[1].equals("superlaser"))
 			{
-				if (!game.superlaser())
+				game.superlaser();
+				/*if (!game.superlaser())
 				{
 					System.out.println("No supermissiles avaiable\n");
-				}
+				}*/
 			}
 		}
 		else
 		{
-			try {
-				game.shootLaser();
-			} catch (Exception e) {
-				System.err.println("Cause of Exception: " + e);
-			}
+			game.shootLaser();
 		}
 		
 		if(!game.isFinished())

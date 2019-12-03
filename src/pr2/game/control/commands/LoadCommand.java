@@ -6,6 +6,7 @@ import pr2.game.Game;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.exceptions.FileContentsException;
 
 public class LoadCommand extends Command {
 
@@ -26,7 +27,7 @@ public class LoadCommand extends Command {
 			try {
 				game.readFile(nFichero);
 				System.out.println("Game successfully from file " + nFichero + ".");
-			} catch (IOException e) {
+			} catch (IOException | FileContentsException e) {
 				System.out.println(e);
 			}
 		}

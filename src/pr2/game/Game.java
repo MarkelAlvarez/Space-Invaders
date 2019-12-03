@@ -1,17 +1,10 @@
 package pr2.game;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
+import java.io.*;
 import java.util.Random;
 import pr2.game.Level;
 import pr2.game.GameObjects.*;
@@ -143,17 +136,32 @@ public class Game implements IPlayerController {
 		else return "This should not happen";
 	}
 	
-	public boolean move(int numCells) {
+	public boolean move(int numCells) throws CommandExecuteException {
+		
+		if (!player.move(numCells))
+		{
+			throw new CommandExecuteException("Cannot perform move: ship too near border", new CommandExecuteException());
+		}
 		
 		return player.move(numCells);
 	}
 	
-	public boolean shootLaser() {
+	public boolean shootLaser() throws CommandExecuteException {
+		
+		if (!player.shootLaser())
+		{
+			throw new CommandExecuteException("Cannot fire missile: missile already exists on board", new CommandExecuteException());
+		}
 		
 		return player.shootLaser();
 	}
 	
-	public boolean superlaser() {
+	public boolean superlaser() throws CommandExecuteException {
+		
+		if (!player.buy())
+		{
+			throw new CommandExecuteException("Cannot release superlaser: no superlaser available", new CommandExecuteException());
+		}
 		
 		return player.buy();
 	}
@@ -162,9 +170,7 @@ public class Game implements IPlayerController {
 		
 		if (!player.shockwave())
 		{
-			System.out.println("No shockwaves available\n");
-			Throwable NoShockwaveException = null;
-			throw new CommandExecuteException("Cannot release shockwave: no shockwave available", NoShockwaveException);
+			throw new CommandExecuteException("Cannot release shockwave: no shockwave available", new CommandExecuteException());
 		}
 		
 		return player.shockwave();
@@ -175,7 +181,7 @@ public class Game implements IPlayerController {
 		player.receivePoints(points);
 	}
 
-	public void enableShockWave() { //pasa a ser enable shockwave
+	public void enableShockWave() {
 
 		if (player.getShockwave())
 		{
@@ -204,25 +210,24 @@ public class Game implements IPlayerController {
 		String ret = "";
 		
 		return ret += "-- Space Invaders v2.0 --\n\n"
-				+ "Game: " + currentCycle + "\n"
-				+ "Level: " + level.getLevelString() + "\n"
-				+ board.toStringifier();	
+					+ "Game: " + currentCycle + "\n"
+					+ "Level: " + level.getLevelString() + "\n"
+					+ board.toStringifier();	
 	}
 
-	public void readFile(String nFichero) throws IOException {
+	public void readFile(String nFichero) throws IOException, FileContentsException {
 		
-		//BufferedReader y FileReader
 		BufferedReader read = new BufferedReader(new FileReader(new File(nFichero)));
 		read.readLine();
 		read.close();
 		load(read);
 	}
 	
-	public void load(BufferedReader inStream) {
+	public void load(BufferedReader inStream) throws IOException, FileContentsException {
 		
 		boolean loading = false;
 		String line = inStream.readLine().trim();
-		FileContentsVerifier verifier;
+		FileContentsVerifier verifier = new FileContentsVerifier();
 		
 		while( line != null && !line.isEmpty() )
 		{
@@ -240,7 +245,6 @@ public class Game implements IPlayerController {
 
 	public void writeFile(String nFichero) throws IOException {
 
-		//BufferedWriter y FileWriter
 		BufferedWriter write = new BufferedWriter(new FileWriter(new File(nFichero)));
 		write.write(stringifier());
 		write.close();

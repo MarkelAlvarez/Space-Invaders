@@ -43,7 +43,7 @@ public class Bomb extends Weapon{
 
 	public String toStringifier() {
 		
-		return "B: " + x + " " + y + ship.getId();
+		return "B: " + x + " " + y + " "+ ship.getId();
 	}
 	
 	/*GETS y SETS*/

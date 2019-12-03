@@ -2,6 +2,8 @@ package pr2.game.exceptions;
 
 public class CommandParseException extends Exception {
 
+	private static final long serialVersionUID = 2076404981021992986L;
+
 	public CommandParseException() {
 		// TODO Auto-generated constructor stub
 	}

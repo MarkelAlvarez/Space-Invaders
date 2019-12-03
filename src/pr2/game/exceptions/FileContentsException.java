@@ -2,6 +2,8 @@ package pr2.game.exceptions;
 
 public class FileContentsException extends Exception {
 
+	private static final long serialVersionUID = 1224929816548215556L;
+
 	public FileContentsException() {
 		// TODO Auto-generated constructor stub
 	}

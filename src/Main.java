@@ -35,9 +35,8 @@ public class Main {
 			{
 				throw new CommandParseException("Usage: Main <EASY|HARD|INSANE> [seed]: level must be one of: EASY, HARD, INSANE");
 			}
-			if ((!nivelStr.equals("easy")) && (!nivelStr.equals("hard")) && (!nivelStr.equals("insane")))
+			else if ((!nivelStr.equals("easy")) && (!nivelStr.equals("hard")) && (!nivelStr.equals("insane")))
 			{
-				//System.out.println("Los parametros establecidos son erroneos.");
 				throw new CommandParseException("Usage: Main <EASY|HARD|INSANE> [seed]");
 			}
 			else
@@ -61,7 +60,7 @@ public class Main {
 					try {
 						semilla = Integer.parseInt(args[1]);
 					} catch (Exception e) {
-						throw new NumberFormatException("Couldn't parse string into a integer.");
+						throw new NumberFormatException("Usage: Main <EASY|HARD|INSANE> [seed]: the seed must be a number.");
 					}
 				}
 				else

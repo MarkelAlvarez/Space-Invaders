@@ -12,6 +12,8 @@ public class FileContentsVerifier {
 	
 	private String foundInFileString = "";
 
+
+	
 	private void appendToFoundInFileString(String linePrefix) {
 		foundInFileString += linePrefix;
 	}
@@ -54,7 +56,7 @@ public class FileContentsVerifier {
 			return false;
 		}
 		String[] coords = words[1].split (separator2);
-		if ( !verifyCoords(Integer. parseInt(coords[0]) , Integer. parseInt(coords[1]) , game) || ! verifyLives (Integer. parseInt(words[2]), armour) )
+		if ( !verifyCoords(Integer.parseInt(coords[0]) , Integer.parseInt(coords[1]) , game) || ! verifyLives(Integer.parseInt(words[2]), armour) )
 		{
 			return false;
 		}
@@ -72,7 +74,7 @@ public class FileContentsVerifier {
 		
 		String[] coords = words[1].split (separator2);
 		
-		if ( !verifyCoords(Integer. parseInt(coords[0]) , Integer. parseInt(coords[1]) , game) || !verifyLives(Integer. parseInt(words[2]), armour) || !verifyPoints(Integer. parseInt(words[3])) || !verifyBool(words[4]))
+		if ( !verifyCoords(Integer.parseInt(coords[0]) , Integer.parseInt(coords[1]) , game) || !verifyLives(Integer.parseInt(words[2]), armour) || !verifyPoints(Integer.parseInt(words[3])) || !verifyBool(words[4]))
 		{
 			return false;
 		}
@@ -90,7 +92,7 @@ public class FileContentsVerifier {
 		
 		String[] coords = words[1].split (separator2);
 		
-		if (!verifyCoords(Integer. parseInt(coords[0]) , Integer. parseInt(coords[1]) , game) || !verifyLives(Integer. parseInt(words[2]), armour) || !verifyCycleToNextAlienMove(Integer.parseInt(words[3]), game.getLevel()) || !verifyDir(Move.parse(words[4])) )
+		if (!verifyCoords(Integer.parseInt(coords[0]) , Integer.parseInt(coords[1]) , game) || !verifyLives(Integer.parseInt(words[2]), armour) || !verifyCycleToNextAlienMove(Integer.parseInt(words[3]), game.getLevel()) || !verifyDir(Move.parse(words[4])) )
 		{
 			return false;
 		}
@@ -182,14 +184,12 @@ public class FileContentsVerifier {
 	// Use a regular expression to verify the string of concatenated prefixes found
 	public boolean verifyLines() {
 	
-		// TO DO: compare foundInFileString with a regular expression
 		return true;
 	}
 	
 	// text explaining allowed concatenated prefixes
 	public String toString() {
 	
-		// TO DO
 		return "";
 	}
 }
