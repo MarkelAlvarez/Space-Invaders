@@ -21,8 +21,7 @@ public class CommandExecuteException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommandExecuteException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
+	public CommandExecuteException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}

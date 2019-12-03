@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) throws CommandParseException {
 		
-		int semilla;
+		int semilla = 0; //si se quita el try desinicializar
 		Game game;
 		Controller controlador;
 		Scanner scanner;
@@ -58,7 +58,11 @@ public class Main {
 				//Comprueba semilla
 				if (args.length > 1)
 				{
-					semilla = Integer.parseInt(args[1]);
+					try {
+						semilla = Integer.parseInt(args[1]);
+					} catch (Exception e) {
+						throw new NumberFormatException("Couldn't parse string into a integer.");
+					}
 				}
 				else
 				{

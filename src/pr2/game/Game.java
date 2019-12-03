@@ -17,6 +17,7 @@ import pr2.game.Level;
 import pr2.game.GameObjects.*;
 import pr2.game.GameObjects.objects.*;
 import pr2.game.control.FileContentsVerifier;
+import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.FileContentsException;
 import pr2.game.GameObjects.Lists.GameObjectBoard;
 
@@ -157,11 +158,13 @@ public class Game implements IPlayerController {
 		return player.buy();
 	}
 	
-	public boolean shockWave() {
+	public boolean shockWave() throws CommandExecuteException {
 		
 		if (!player.shockwave())
 		{
 			System.out.println("No shockwaves available\n");
+			Throwable NoShockwaveException = null;
+			throw new CommandExecuteException("Cannot release shockwave: no shockwave available", NoShockwaveException);
 		}
 		
 		return player.shockwave();
