@@ -75,7 +75,7 @@ public class GameObjectBoard {
 				checkAttacks(objects[i]);
 			}
 		}
-		
+		System.out.println(""); //TODO borrar
 		removeDead();
 		
 		for (int i = 0; i < currentObjects; i++)

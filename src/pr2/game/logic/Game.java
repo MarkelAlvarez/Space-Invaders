@@ -135,41 +135,21 @@ public class Game implements IPlayerController {
 	}
 	
 	public boolean move(int numCells) throws CommandExecuteException, OffWorldException {
-		
-		/*if (!player.move(numCells))
-		{
-			throw new CommandExecuteException("Cannot perform move: ship too near border", new CommandExecuteException());
-		}*/
-		
+
 		return player.move(numCells);
 	}
 	
 	public boolean shootLaser() throws CommandExecuteException, MissileInFlightException {
-		
-		/*if (!player.shootLaser())
-		{
-			throw new CommandExecuteException("Cannot fire missile: missile already exists on board", new CommandExecuteException());
-		}*/
-		
+
 		return player.shootLaser();
 	}
 	
 	public boolean superlaser() throws CommandExecuteException, NotEnoughPoints {
 		
-		/*if (!player.buy())
-		{
-			throw new CommandExecuteException("Cannot release superlaser: no superlaser available", new CommandExecuteException());
-		}*/
-		
 		return player.buy();
 	}
 	
 	public boolean shockWave() throws CommandExecuteException, NoShockwaveException {
-		
-		/*if (!player.shockwave())
-		{
-			throw new CommandExecuteException("Cannot release shockwave: no shockwave available", new CommandExecuteException());
-		}*/
 		
 		return player.shockwave();
 	}
