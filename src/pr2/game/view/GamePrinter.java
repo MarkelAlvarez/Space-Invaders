@@ -7,7 +7,6 @@ public abstract class GamePrinter {
 	Game game;
 	
 	public GamePrinter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String toString(Game game) {

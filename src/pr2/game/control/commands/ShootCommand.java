@@ -3,6 +3,8 @@ package pr2.game.control.commands;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.exceptions.MissileInFlightException;
+import pr2.game.exceptions.NotEnoughPoints;
 import pr2.game.logic.Game;
 
 public class ShootCommand extends Command {
@@ -21,16 +23,20 @@ public class ShootCommand extends Command {
 		{
 			if(comando[1].equals("supermissile") || comando[1].equals("superlaser"))
 			{
-				game.superlaser();
-				/*if (!game.superlaser())
-				{
-					System.out.println("No supermissiles avaiable\n");
-				}*/
+				try {
+					game.superlaser();
+				} catch (NotEnoughPoints e) {
+					 throw new CommandExecuteException(e.getMessage());
+				}
 			}
 		}
 		else
 		{
-			game.shootLaser();
+			try {
+				game.shootLaser();
+			} catch (MissileInFlightException e) {
+				throw new CommandExecuteException(e.getMessage());
+			}
 		}
 		
 		if(!game.isFinished())

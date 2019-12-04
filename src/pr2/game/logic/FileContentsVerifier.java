@@ -1,4 +1,4 @@
-package pr2.game.logic;
+/*package pr2.game.logic;
 
 public class FileContentsVerifier {
 
@@ -189,4 +189,4 @@ public class FileContentsVerifier {
 	
 		return "";
 	}
-}
+}*/

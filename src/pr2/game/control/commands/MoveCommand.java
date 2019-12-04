@@ -3,6 +3,7 @@ package pr2.game.control.commands;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.exceptions.OffWorldException;
 import pr2.game.logic.Game;
 
 public class MoveCommand extends Command {
@@ -42,8 +43,8 @@ public class MoveCommand extends Command {
 						ret = game.move(foo);
 					}
 				}
-			} catch (NumberFormatException e) {
-				System.err.println(e);
+			} catch (OffWorldException owe) {
+			     throw new CommandExecuteException(owe.getMessage());
 			}
 		}
 		else

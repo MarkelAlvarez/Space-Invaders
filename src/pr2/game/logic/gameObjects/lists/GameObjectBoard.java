@@ -260,6 +260,7 @@ public class GameObjectBoard {
 		{
 			if (!(objects[i] instanceof ShockWave))
 			{
+				//TODO Imprimir nave - bomba - nave
 				str += objects[i].toStringifier() + "\n";
 			}
 		}

@@ -1,0 +1,25 @@
+package pr2.game.exceptions;
+
+public class NoShockwaveException extends Exception {
+
+	private static final long serialVersionUID = -3286753536717731372L;
+
+	public NoShockwaveException() {
+	}
+
+	public NoShockwaveException(String message) {
+		super(message);
+	}
+
+	public NoShockwaveException(Throwable cause) {
+		super(cause);
+	}
+
+	public NoShockwaveException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public NoShockwaveException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
+}

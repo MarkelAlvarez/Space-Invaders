@@ -134,42 +134,42 @@ public class Game implements IPlayerController {
 		else return "This should not happen";
 	}
 	
-	public boolean move(int numCells) throws CommandExecuteException {
+	public boolean move(int numCells) throws CommandExecuteException, OffWorldException {
 		
-		if (!player.move(numCells))
+		/*if (!player.move(numCells))
 		{
 			throw new CommandExecuteException("Cannot perform move: ship too near border", new CommandExecuteException());
-		}
+		}*/
 		
 		return player.move(numCells);
 	}
 	
-	public boolean shootLaser() throws CommandExecuteException {
+	public boolean shootLaser() throws CommandExecuteException, MissileInFlightException {
 		
-		if (!player.shootLaser())
+		/*if (!player.shootLaser())
 		{
 			throw new CommandExecuteException("Cannot fire missile: missile already exists on board", new CommandExecuteException());
-		}
+		}*/
 		
 		return player.shootLaser();
 	}
 	
-	public boolean superlaser() throws CommandExecuteException {
+	public boolean superlaser() throws CommandExecuteException, NotEnoughPoints {
 		
-		if (!player.buy())
+		/*if (!player.buy())
 		{
 			throw new CommandExecuteException("Cannot release superlaser: no superlaser available", new CommandExecuteException());
-		}
+		}*/
 		
 		return player.buy();
 	}
 	
-	public boolean shockWave() throws CommandExecuteException {
+	public boolean shockWave() throws CommandExecuteException, NoShockwaveException {
 		
-		if (!player.shockwave())
+		/*if (!player.shockwave())
 		{
 			throw new CommandExecuteException("Cannot release shockwave: no shockwave available", new CommandExecuteException());
-		}
+		}*/
 		
 		return player.shockwave();
 	}
@@ -213,7 +213,7 @@ public class Game implements IPlayerController {
 					+ board.toStringifier();	
 	}
 
-	public void readFile(String nFichero) throws IOException, FileContentsException {
+	/*public void readFile(String nFichero) throws IOException, FileContentsException {
 		
 		BufferedReader read = new BufferedReader(new FileReader(new File(nFichero)));
 		read.readLine();
@@ -239,7 +239,7 @@ public class Game implements IPlayerController {
 			board.add(gameObject);
 			line = inStream.readLine().trim();
 		}
-	}
+	}*/
 
 	public void writeFile(String nFichero) throws IOException {
 

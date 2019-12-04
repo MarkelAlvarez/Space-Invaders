@@ -15,7 +15,6 @@ public class SaveCommand extends Command {
 	public SaveCommand(String name, String shortcut, String details, String help) {
 		
 		super(name, shortcut, details, help);
-		
 	}
 
 	@Override

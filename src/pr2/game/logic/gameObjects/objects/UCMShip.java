@@ -1,5 +1,10 @@
 package pr2.game.logic.gameObjects.objects;
 
+import pr2.game.exceptions.CommandExecuteException;
+import pr2.game.exceptions.MissileInFlightException;
+import pr2.game.exceptions.NoShockwaveException;
+import pr2.game.exceptions.NotEnoughPoints;
+import pr2.game.exceptions.OffWorldException;
 import pr2.game.logic.Game;
 import pr2.game.logic.gameObjects.Ship;
 
@@ -28,7 +33,7 @@ public class UCMShip extends Ship{
 		return true;
 	}
 	
-	public boolean shootLaser() {
+	public boolean shootLaser() throws MissileInFlightException {
 		
 		if(canShootLaser)
 		{
@@ -37,11 +42,12 @@ public class UCMShip extends Ship{
 			
 			return true;
 		}
-		
-		return false;
+		System.out.println("Failed to shoot");
+		throw new MissileInFlightException("Cause of Exception:\r\n" + 
+				"	pr2.exceptions.MissileInFlightException: Cannot fire missile: missile already exists on board");
 	}
 	
-	public boolean shockwave() {
+	public boolean shockwave() throws NoShockwaveException {
 		
 		if(hasShockwave)
 		{
@@ -50,11 +56,12 @@ public class UCMShip extends Ship{
 			
 			return true;
 		}
-		
-		return false;
+		System.out.println("Failed to shoot");
+		throw new NoShockwaveException("Cause of Exception:\r\n" + 
+				"	pr2.exceptions.NoShockwaveException: Cannot release shockwave: no shockwave available");
 	}
 	
-	public boolean buy() {
+	public boolean buy() throws NotEnoughPoints {
 		
 		if(points > SuperLaser.cost)
 		{
@@ -63,8 +70,9 @@ public class UCMShip extends Ship{
 			
 			return true;
 		}
-		
-		return false;
+		System.out.println("Failed to shoot");
+		throw new NotEnoughPoints("Cause of Exception:\r\n" + 
+				"	pr2.exceptions.NotEnoughPoints: Cannot fire superlaser: there are not enough points.");
 	}
 	
 	public void receivePoints(int points) {
@@ -72,17 +80,23 @@ public class UCMShip extends Ship{
 		this.points += points;
 	}
 	
-	public boolean move(int cells) {
+	public boolean move(int cells) throws CommandExecuteException, OffWorldException {
 		
 		y += cells;
 		
 		if (y < 0)
 		{
 			y = 0;
+			System.out.println("Failed to move");
+			throw new OffWorldException("Cause of Exception:\r\n" + 
+					"	pr2.exceptions.OffWorldException: Cannot perform move: ship too near border", new OffWorldException());
 		}
 		else if (y >= Game.DIM_Y)
 		{
 			y = Game.DIM_Y - 1;
+			System.out.println("Failed to move");
+			throw new OffWorldException("Cause of Exception:\r\n" + 
+					"	pr2.exceptions.OffWorldException: Cannot perform move: ship too near border");
 		}
 			
 		return true;

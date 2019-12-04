@@ -32,12 +32,12 @@ public class LoadCommand extends Command {
 				nFichero = comando[1];
 			}
 			
-			try {
+			/*try {
 				game.readFile(nFichero);
 				System.out.println("Game successfully from file " + nFichero + ".");
 			} catch (IOException | FileContentsException e) {
 				System.out.println(e);
-			}
+			}*/
 		}
 		else
 		{

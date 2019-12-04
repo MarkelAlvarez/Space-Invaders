@@ -25,7 +25,7 @@ public class Main {
 		//Parametros erroneos?
 		if (args.length < 1 || args.length > 2)
 		{
-			System.out.println("Los parametros establecidos son erroneos.");
+			throw new CommandParseException("Usage: Main <EASY|HARD|INSANE> [seed]");
 		}
 		else
 		{

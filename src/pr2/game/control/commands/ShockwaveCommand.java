@@ -3,6 +3,7 @@ package pr2.game.control.commands;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
+import pr2.game.exceptions.NoShockwaveException;
 import pr2.game.logic.Game;
 
 public class ShockwaveCommand extends Command {
@@ -15,7 +16,11 @@ public class ShockwaveCommand extends Command {
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
 
-		game.shockWave();
+		try {
+			game.shockWave();
+		} catch (NoShockwaveException e) {
+			throw new CommandExecuteException(e.getMessage());
+		}
 		
 		if(!game.isFinished())
 		{
