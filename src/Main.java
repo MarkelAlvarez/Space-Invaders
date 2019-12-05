@@ -1,5 +1,5 @@
 /*
-* Juan Pablo Corella y Markel Alvarez (2ÂºB)
+* Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
 import java.util.Random;

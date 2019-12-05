@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ÂºB)
+*/
+
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.MissileInFlightException;
 import pr2.game.exceptions.NoShockwaveException;
@@ -26,6 +30,9 @@ public class UCMShip extends Ship{
 		points = 0;
 	}
 
+	/*
+	 * Recibe el daño de una nave
+	*/
 	public boolean receiveBombAttack(int damage) {
 
 		getDamage(damage);
@@ -35,6 +42,10 @@ public class UCMShip extends Ship{
 	
 	public boolean shootLaser() throws MissileInFlightException {
 		
+		/*
+		 * Si no es posible disparar se lanza una excepcion explicando que ocurre.
+		 * Si es posible lanzar un laser se agrega el objeto y el misil
+		*/
 		if(canShootLaser)
 		{
 			game.addObject(new UCMShipLaser(game, x, y, UCMShipLaser.damage));
@@ -42,6 +53,7 @@ public class UCMShip extends Ship{
 			
 			return true;
 		}
+		
 		System.out.println("Failed to shoot");
 		throw new MissileInFlightException("Cause of Exception:\r\n" + 
 				"	pr2.exceptions.MissileInFlightException: Cannot fire missile: missile already exists on board");
@@ -49,6 +61,11 @@ public class UCMShip extends Ship{
 	
 	public boolean shockwave() throws NoShockwaveException {
 		
+		/*
+		 * Si no es posible disparar se lanza una excepcion explicando que ocurre.
+		 * Si es posible lanzar un shockwave se añade a la lista y luego se desactiva
+		 * para que no puedan ser lanzados de manera infinita
+		*/
 		if(hasShockwave)
 		{
 			game.addObject(new ShockWave(game));
@@ -61,6 +78,10 @@ public class UCMShip extends Ship{
 				"	pr2.exceptions.NoShockwaveException: Cannot release shockwave: no shockwave available");
 	}
 	
+	/*
+	 * Se comprueban con la cantidad de puntos que se tienen cuantas naves pueden comprarse.
+	 * Si no es posible comprar ninguna se lanza una excepción explicando lo ocurrido
+	*/
 	public boolean buy() throws NotEnoughPoints {
 		
 		if(points > SuperLaser.cost)
@@ -80,6 +101,11 @@ public class UCMShip extends Ship{
 		this.points += points;
 	}
 	
+	/*
+	 * Mueve la nave de izquierda a derecha y viceversa hasta que no se puede mover
+	 * más debido a que UCMShip se encuentra en el borde y se lanza una excepción
+	 * explicando que ocurre
+	*/
 	public boolean move(int cells) throws CommandExecuteException, OffWorldException {
 		
 		y += cells;
@@ -103,6 +129,9 @@ public class UCMShip extends Ship{
 	}
 	
 	@Override
+	/*
+	 * Dependiendo de si UCMShip tiene vida o no se da un icono u otro
+	*/
 	public String toString() {
 		
 		if (isAlive())

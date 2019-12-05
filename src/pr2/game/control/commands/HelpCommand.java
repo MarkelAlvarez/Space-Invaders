@@ -1,5 +1,9 @@
 package pr2.game.control.commands;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.control.Command;
 import pr2.game.control.CommandGenerator;
 import pr2.game.exceptions.CommandExecuteException;

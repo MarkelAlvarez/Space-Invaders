@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.Move;
 import pr2.game.logic.gameObjects.*;
@@ -35,6 +39,10 @@ public class RegularShip extends AlienShip {
 	@Override
 	public void computerAction()
 	{
+		/*
+		 * Si la probabilidad lo permite esta RegularShip pasa a
+		 * ser una ExplosiveShip
+		 */
 		if(IExecuteRandomActions.canGenerateExplosiveShip(game))
 		{
 			int shipsBorder = getShipsOnBorder();

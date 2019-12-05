@@ -12,6 +12,9 @@ public class GameObjectBoard {
 	private GameObject[] objects;
 	private int currentObjects;
 
+	/*
+	 * Inicialización del tablero
+	*/
 	public GameObjectBoard (int width, int height)
 	{
 		objects = new GameObject[width * height];
@@ -28,12 +31,18 @@ public class GameObjectBoard {
 		return currentObjects;
 	}
 
+	/*
+	 * Añade nuevos objetos a la lista
+	*/
 	public void add (GameObject object) {
 
 		objects[currentObjects] = object;
 		currentObjects++;
 	}
 
+	/*
+	 * Obtiene el objeto que hay en unas coordenadas
+	*/
 	private GameObject getObjectInPosition (int x, int y) {
 
 		int i = 0;
@@ -66,6 +75,12 @@ public class GameObjectBoard {
 		return -1;
 	}
 
+	/*
+	 * Aquí se actualiza el estado de juego. Primero se comprueban si hay colision,
+	 * si es afirmativo se eliminara(n) de la lista. Despues se repite la operación
+	 * pero moviendo los objetos y volviendo a comprobar las colisiones para luego
+	 * eliminar todo aquello que no tenga vida de la lista
+	*/
 	public void update() {
 		
 		for (int i = 0; i < currentObjects; i++)
@@ -75,7 +90,7 @@ public class GameObjectBoard {
 				checkAttacks(objects[i]);
 			}
 		}
-		System.out.println(""); //TODO borrar
+
 		removeDead();
 		
 		for (int i = 0; i < currentObjects; i++)
@@ -90,12 +105,10 @@ public class GameObjectBoard {
 		removeDead();
 	}
 
+	/*
+	 * Aqui se comprueban las colisiones de los proyectiles con los elementos del juego
+	*/
 	private void checkAttacks(GameObject object) {
-		
-		//GameObject aux = getObjectInPosition(object.getX(), object.getY());
-		//if(aux != null) {
-		//El problema de esto es que puede encontrarse a sÃ­ mismo y parar la busqueda
-		//Lo dejo de forma jincha para revisar mÃ¡s adelante (sustituir el objects[i] por aux)
 		
 		if(!(object instanceof ShockWave))
 		{
@@ -105,7 +118,7 @@ public class GameObjectBoard {
 			{
 				if(objects[i].isOnPosition(object.getX(), object.getY()) && objects[i].isAlive() && objects[i] != object)
 				{
-					if(object.performAttack(objects[i])) //si este weapon afecta a la nave
+					if(object.performAttack(objects[i]))
 					{
 						object.getDamage(object.getLive());
 						i = currentObjects;
@@ -124,6 +137,9 @@ public class GameObjectBoard {
 		}
 	}
 	
+	/*
+	 * Este metodo se encarga de gestionar la explosion de la ExplosiveShip
+	*/
 	public void explosion(int x, int y, int damage) {
 		
 		for (int i = -1; i < 2; i++)
@@ -142,6 +158,10 @@ public class GameObjectBoard {
 		}
 	}
 
+	/*
+	 * Se mueven los objetos del juego despues de haber hecho todas las comprobaciones
+	 * correspondientes
+	*/
 	public void computerAction() {
 		
 		for (int i = 0; i < currentObjects; i++)
@@ -165,13 +185,16 @@ public class GameObjectBoard {
 		}
 	}
 
+	/*
+	 * Aquí se eliminan los elementos del juego sin vida
+	*/
 	private void removeDead() {
 		
 		boolean explosiveCheck = false;
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
-			if (!(objects[i] instanceof ShockWave)) //para no borrar el shockwave
+			if (!(objects[i] instanceof ShockWave))
 			{
 				if(!objects[i].isAlive() || objects[i].isOut())	
 				{
@@ -212,12 +235,15 @@ public class GameObjectBoard {
 			}
 		}
 		
-		if (explosiveCheck) //si se ha borrado la explosive vuelvo a comprobar
+		if (explosiveCheck)
 		{
-			removeDead(); //ineficiente de cojones
+			removeDead();
 		}
 	}
 
+	/*
+	 * Este algoritmo complementa al anterior en la eliminación de los objectos en la lista
+	*/
 	private void remove (GameObject object) {
 
 		int i = 0;
@@ -252,6 +278,9 @@ public class GameObjectBoard {
 		return "";
 	}
 
+	/*
+	 * Recibe la información de los objetos en modo texto
+	*/
 	public String toStringifier() {
 		
 		String str = "";
@@ -260,7 +289,6 @@ public class GameObjectBoard {
 		{
 			if (!(objects[i] instanceof ShockWave))
 			{
-				//TODO Imprimir nave - bomba - nave
 				str += objects[i].toStringifier() + "\n";
 			}
 		}

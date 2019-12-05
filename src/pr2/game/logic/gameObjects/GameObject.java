@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 
 public abstract class GameObject implements IAttack {
@@ -27,6 +31,9 @@ public abstract class GameObject implements IAttack {
 		return ((this.x == x) && (this.y == y));
 	}
 
+	/*
+	 * Comprueba si se encuentra fuera del tablero
+	*/
 	public boolean isOut() {
 		
 		return !game.isOnBoard(x, y);

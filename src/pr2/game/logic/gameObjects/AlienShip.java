@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.Move;
 
@@ -19,6 +23,9 @@ public class AlienShip extends EnemyShip {
 	}
 	
 	@Override
+	/*
+	 * Mediante este algoritmo se consigue el movimiento de las naves alienigenas
+	*/
 	public void move() {
 		
 		if (cyclesToMove== 0)
@@ -69,6 +76,8 @@ public class AlienShip extends EnemyShip {
 		
 		return super.toString();
 	}
+	
+	//GETS & SETS
 
 	public static boolean haveLanded() {
 		

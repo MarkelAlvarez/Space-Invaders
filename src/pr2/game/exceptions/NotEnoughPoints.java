@@ -1,5 +1,12 @@
 package pr2.game.exceptions;
 
+/*
+ * Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
+/*
+ * Aqui se gestionan todas las excepciones relacionadas con la compra de misiles
+*/
 public class NotEnoughPoints extends Exception {
 
 	private static final long serialVersionUID = 3576653426992805524L;

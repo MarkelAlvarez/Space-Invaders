@@ -1,5 +1,12 @@
 package pr2.game.exceptions;
 
+/*
+ * Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
+/*
+ * Aqui se gestionan todas las excepciones relacionadas con los disparos de la UCMShip 
+*/
 public class MissileInFlightException extends Exception {
 
 	private static final long serialVersionUID = 4959569708303081951L;

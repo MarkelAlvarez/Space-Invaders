@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.gameObjects.EnemyShip;
 import pr2.game.logic.gameObjects.IExecuteRandomActions;
@@ -67,7 +71,7 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	@Override
 	public void onDelete() {
 		
-		if(active) //para que no lo compruebe cuando está muerto
+		if(active) //para que no lo compruebe cuando est� muerto
 		{
 			super.onDelete();
 			game.enableShockWave();

@@ -1,5 +1,9 @@
 package pr2.game.control.commands;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
@@ -26,7 +30,7 @@ public class ShootCommand extends Command {
 				try {
 					game.superlaser();
 				} catch (NotEnoughPoints e) {
-					 throw new CommandExecuteException(e.getMessage());
+					throw new CommandExecuteException(e.getMessage());
 				}
 			}
 		}

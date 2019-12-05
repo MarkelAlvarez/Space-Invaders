@@ -1,7 +1,10 @@
 package pr2.game.control.commands;
 
-import java.io.IOException;
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
 
+import java.io.IOException;
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
@@ -23,6 +26,10 @@ public class LoadCommand extends Command {
 
 		if (comando.length == 2)
 		{
+			/*
+			 * Comprueba si el comando introducido tiene la extensión del fichero,
+			 * en el caso de que no lo tenga se lo añade.
+			*/
 			if (!comando[1].contains(".dat"))
 			{
 				nFichero = comando[1] + ".dat";
@@ -32,6 +39,8 @@ public class LoadCommand extends Command {
 				nFichero = comando[1];
 			}
 			
+			//TODO Load from file (a las bombas sin nave crearles una fuera de la lista)
+			System.out.println("This funtionality is currently unavailable.");
 			/*try {
 				game.readFile(nFichero);
 				System.out.println("Game successfully from file " + nFichero + ".");

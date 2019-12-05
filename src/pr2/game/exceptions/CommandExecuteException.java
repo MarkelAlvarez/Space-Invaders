@@ -1,5 +1,12 @@
 package pr2.game.exceptions;
 
+/*
+ * Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
+/*
+ * Aqui se gestionan todas las excepciones relacionadas con la ejecucion de metodos
+*/
 public class CommandExecuteException extends Exception {
 
 	private static final long serialVersionUID = -5466977732384133180L;

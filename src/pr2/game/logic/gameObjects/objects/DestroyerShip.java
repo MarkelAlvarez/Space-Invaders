@@ -1,12 +1,15 @@
 package pr2.game.logic.gameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.Move;
 import pr2.game.logic.gameObjects.*;
 
 public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 
-	
 	private Boolean bomb;
 	public static String icono = "D";
 	public static int puntos = 10;

@@ -1,7 +1,7 @@
 package pr2.game.control;
 
 /*
-* Juan Pablo Corella y Markel Alvarez (2ÂºB)
+* Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
 import java.util.Scanner;
@@ -35,7 +35,8 @@ public class Controller {
 		boolean printMe = true;
 		/*
 		* Mientras que no se acabe el juego ni se ejecute la opcion 'reset'
-		* el juego hara un ciclo (draw, user command, computer action y update)
+		* el juego hara un ciclo (draw (si se ha pedido el tablero), user command, computer action y update).
+		* Tambien se gestionan las excepciones lanzadas por los metodos que son llamados desde aqui.
 		*/
 		while (!game.isFinished())
 		{

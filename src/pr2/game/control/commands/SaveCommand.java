@@ -1,5 +1,9 @@
 package pr2.game.control.commands;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import java.io.IOException;
 
 import pr2.game.control.Command;
@@ -22,6 +26,10 @@ public class SaveCommand extends Command {
 		
 		if (comando.length == 2)
 		{
+			/*
+			 * Comprueba si el comando introducido tiene la extensión del fichero,
+			 * en el caso de que no lo tenga se lo añade.
+			*/
 			if (!comando[1].contains(".dat"))
 			{
 				nFichero = comando[1] + ".dat";

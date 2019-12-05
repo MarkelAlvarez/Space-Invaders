@@ -1,7 +1,7 @@
 package pr2.game.control;
 
 /*
-* Juan Pablo Corella y Markel Alvarez (2ÂºB)
+* Juan Pablo Corella y Markel Alvarez (2ºB)
 */
 
 import pr2.game.control.commands.*;
@@ -9,6 +9,9 @@ import pr2.game.exceptions.CommandParseException;
 
 public class CommandGenerator {
 
+	/*
+	 * En el array se crean instancias de los comandos del programa con su informacion y caracteristicas
+	*/
 	private static Command[] availableCommands = {
 			
 		new ListCommand("list", "L", "[L]ist", "Prints the list of available ships."),
@@ -25,6 +28,9 @@ public class CommandGenerator {
 		new NoneCommand("none", "N", "[N]one", "Skips cycle.")
 	};
 
+	/*
+	 * Se hace la busqueda en el array del comando introducido
+	*/
 	public static Command parseCommand(String[] commandWords) throws CommandParseException {
 
 		int i = 0;
@@ -41,6 +47,9 @@ public class CommandGenerator {
 		throw new CommandParseException("");
 	}
 
+	/*
+	 * Se muestra en pantalla la ayuda de los comandos
+	*/
 	public static String commandHelp() {
 
 		String help = "";
@@ -56,6 +65,8 @@ public class CommandGenerator {
 		return help;
 	}
 
+	// GETS & SETS
+	
 	public static Command[] getAvailableCommands() {
 		
 		return availableCommands;

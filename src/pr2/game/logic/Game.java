@@ -82,7 +82,9 @@ public class Game implements IPlayerController {
 		return AlienShip.allDead();
 	}
 
-	//Proporciona dinamicamente la informaciÃ³n sobre los objetos del juego
+	/*
+	 * Proporciona dinamicamente la información sobre los objetos del juego
+	*/
 	public void list() {
 
 		System.out.print("[R]egular ship: Points: " + RegularShip.puntos + " - Harm: 0 - Shield: " + RegularShip.life + "\n");
@@ -98,6 +100,9 @@ public class Game implements IPlayerController {
 		currentCycle += 1;
 	}
 
+	/* 
+	 * Comprueba si está dentro del tablero
+	*/
 	public boolean isOnBoard(int x, int y) {
 
 		return ( (x >= 0) && (y >= 0) && (x < DIM_X) && (y < DIM_Y) );
@@ -108,6 +113,9 @@ public class Game implements IPlayerController {
 		doExit = true;
 	}
 
+	/*
+	 * Añade en un string la información basica del juego que despues será mostrada
+	*/
 	public String infoToString() {
 
 		String chain = "Life: " + player.getLive() + "\n" + "Cycles: " + currentCycle + "\n" + player.stateToString()
@@ -126,6 +134,9 @@ public class Game implements IPlayerController {
 		return chain;
 	}
 
+	/*
+	 * Dependiendo de como haya terminado la partida muestra un mensaje u otro
+	*/
 	public String getWinnerMessage () {
 
 		if (playerWin()) return "Player win! Points obtained: " + player.getPoints();
@@ -193,6 +204,19 @@ public class Game implements IPlayerController {
 					+ board.toStringifier();	
 	}
 
+	/*
+	 * Escribe en un fichero el estado del juego
+	*/
+	public void writeFile(String nFichero) throws IOException {
+
+		BufferedWriter write = new BufferedWriter(new FileWriter(new File(nFichero)));
+		write.write(stringifier());
+		write.close();
+	}
+	
+	/*
+	 * Carga de un fichero el estado del juego
+	*/
 	/*public void readFile(String nFichero) throws IOException, FileContentsException {
 		
 		BufferedReader read = new BufferedReader(new FileReader(new File(nFichero)));
@@ -220,11 +244,4 @@ public class Game implements IPlayerController {
 			line = inStream.readLine().trim();
 		}
 	}*/
-
-	public void writeFile(String nFichero) throws IOException {
-
-		BufferedWriter write = new BufferedWriter(new FileWriter(new File(nFichero)));
-		write.write(stringifier());
-		write.close();
-	}
 }

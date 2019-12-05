@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.Move;
 import pr2.game.logic.gameObjects.GameObject;
@@ -41,6 +45,7 @@ public class UCMShipLaser extends Weapon {
 		
 		game.enableMissile();
 	}
+	
 	public String toStringifier() {
 		
 		return "M: " + x + " " + y;

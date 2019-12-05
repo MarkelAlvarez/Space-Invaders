@@ -1,5 +1,9 @@
 package pr2.game.logic.gameObjects.objects;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.Move;
 
@@ -37,5 +41,4 @@ public class ExplosiveShip extends RegularShip {
 		
 		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
 	}
-
 }

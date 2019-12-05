@@ -1,5 +1,9 @@
 package pr2.game.control.commands;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
@@ -17,6 +21,10 @@ public class StringifyCommand extends Command {
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
 		
+		/*
+		 * Se le pasa a printer las caracteristicas de STRINGIFIER para
+		 * luego poder mostrarlo en pantalla
+		 */
 		GamePrinter printer = PrinterTypes.STRINGIFIER.getObject();
 		
 		System.out.println(printer.toString(game));

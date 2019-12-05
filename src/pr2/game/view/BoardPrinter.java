@@ -1,5 +1,9 @@
 package pr2.game.view;
 
+/*
+* Juan Pablo Corella y Markel Alvarez (2ºB)
+*/
+
 import pr2.game.logic.Game;
 import pr2.game.logic.MyStringUtils;
 
