@@ -7,7 +7,7 @@ package pr2.game.logic.gameObjects.objects;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.MissileInFlightException;
 import pr2.game.exceptions.NoShockwaveException;
-import pr2.game.exceptions.NotEnoughPoints;
+import pr2.game.exceptions.NotEnoughPointsException;
 import pr2.game.exceptions.OffWorldException;
 import pr2.game.logic.Game;
 import pr2.game.logic.gameObjects.Ship;
@@ -82,7 +82,7 @@ public class UCMShip extends Ship{
 	 * Se comprueban con la cantidad de puntos que se tienen cuantas naves pueden comprarse.
 	 * Si no es posible comprar ninguna se lanza una excepción explicando lo ocurrido
 	*/
-	public boolean buy() throws NotEnoughPoints {
+	public boolean buy() throws NotEnoughPointsException {
 		
 		if(points > SuperLaser.cost)
 		{
@@ -92,7 +92,7 @@ public class UCMShip extends Ship{
 			return true;
 		}
 		System.out.println("Failed to shoot");
-		throw new NotEnoughPoints("Cause of Exception:\r\n" + 
+		throw new NotEnoughPointsException("Cause of Exception:\r\n" + 
 				"	pr2.exceptions.NotEnoughPoints: Cannot fire superlaser: there are not enough points.");
 	}
 	

@@ -155,7 +155,7 @@ public class Game implements IPlayerController {
 		return player.shootLaser();
 	}
 	
-	public boolean superlaser() throws CommandExecuteException, NotEnoughPoints {
+	public boolean superlaser() throws CommandExecuteException, NotEnoughPointsException {
 		
 		return player.buy();
 	}

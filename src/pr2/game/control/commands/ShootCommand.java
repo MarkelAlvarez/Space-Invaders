@@ -8,7 +8,7 @@ import pr2.game.control.Command;
 import pr2.game.exceptions.CommandExecuteException;
 import pr2.game.exceptions.CommandParseException;
 import pr2.game.exceptions.MissileInFlightException;
-import pr2.game.exceptions.NotEnoughPoints;
+import pr2.game.exceptions.NotEnoughPointsException;
 import pr2.game.logic.Game;
 
 public class ShootCommand extends Command {
@@ -29,7 +29,7 @@ public class ShootCommand extends Command {
 			{
 				try {
 					game.superlaser();
-				} catch (NotEnoughPoints e) {
+				} catch (NotEnoughPointsException e) {
 					throw new CommandExecuteException(e.getMessage());
 				}
 			}
