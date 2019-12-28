@@ -22,14 +22,19 @@ public class MoveCommand extends Command {
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException, NumberFormatException {
 		
-		int foo = 0; //inicializado por el try
+		int foo; //inicializado por el try
 		boolean ret = false;
 		
 		if (comando.length == 3)
 		{
 			/*Convierte el numero leido en un 'int'*/
 			try {
-				foo = Integer.parseInt(comando[2]);
+				try {
+					foo = Integer.parseInt(comando[2]);
+				} catch (NumberFormatException e) {
+					throw new NumberFormatException("Cause of Exception: \r\n" + 
+							"	pr2.exceptions.NumberFormatException: wrong parameter format: {move} {left | right} {1 | 2}");
+				}
 				/*Filtra los numeros para que tengan el rango adecuado*/
 				if (foo > 2 || foo < 1)
 				{
@@ -46,9 +51,13 @@ public class MoveCommand extends Command {
 					{
 						ret = game.move(foo);
 					}
+					else
+					{
+						System.out.println("Wrong direction parameter, check spelling.");
+					}
 				}
 			} catch (OffWorldException owe) {
-			     throw new CommandExecuteException(owe.getMessage());
+				throw new CommandExecuteException(owe.getMessage());
 			}
 		}
 		else

@@ -65,7 +65,7 @@ public class Controller {
 					System.out.format(unknownCommandMsg);
 					printMe = false;
 				}
-			} catch (CommandParseException | CommandExecuteException ex) {
+			} catch (CommandParseException | CommandExecuteException | NumberFormatException ex) {
 				System.out.format(ex.getMessage() + " %n %n");
 			}
 		}
