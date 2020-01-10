@@ -33,7 +33,7 @@ public class MoveCommand extends Command {
 					foo = Integer.parseInt(comando[2]);
 				} catch (NumberFormatException e) {
 					throw new NumberFormatException("Cause of Exception: \r\n" + 
-							"	pr2.exceptions.NumberFormatException: wrong parameter format: {move} {left | right} {1 | 2}");
+							"\t pr2.exceptions.NumberFormatException: wrong parameter format: {move} {left | right} {1 | 2}");
 				}
 				/*Filtra los numeros para que tengan el rango adecuado*/
 				if (foo > 2 || foo < 1)
@@ -62,7 +62,7 @@ public class MoveCommand extends Command {
 		}
 		else
 		{
-			throw new CommandExecuteException("Wrong parameters were entered.");
+			throw new CommandExecuteException("Not enough parameters were entered.");
 		}
 		
 		if(!game.isFinished())

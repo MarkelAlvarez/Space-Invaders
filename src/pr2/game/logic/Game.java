@@ -34,7 +34,7 @@ public class Game implements IPlayerController {
 	public void initGame () {
 
 		currentCycle = 0;
-		board = initializer.initialize (this, level );
+		board = initializer.initialize(this, level);
 		player = new UCMShip(this, DIM_X - 1, DIM_Y/2);
 		board.add(player);
 	}
@@ -192,6 +192,11 @@ public class Game implements IPlayerController {
 		{
 			player.setLaser(true);
 		}
+	}
+	
+	public void setCurrentCycle(int currentCycle) {
+		
+		this.currentCycle = currentCycle;
 	}
 
 	public String stringifier() {

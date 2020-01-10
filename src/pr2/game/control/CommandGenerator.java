@@ -44,7 +44,8 @@ public class CommandGenerator {
 			i++;
 		}
 		
-		throw new CommandParseException("");
+		throw new CommandParseException("Cause of Exception:\n" + 
+				"\t pr2.exceptions.CommandParseException: Wrong command: no such command is available.");
 	}
 
 	/*
