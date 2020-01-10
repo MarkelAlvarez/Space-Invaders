@@ -28,6 +28,6 @@ public class SuperLaser extends UCMShipLaser {
 	
 	public String toStringifier() {
 		
-		return "X: " + x + " " + y;
+		return "X: " + x + " " + y + "\n";
 	}
 }

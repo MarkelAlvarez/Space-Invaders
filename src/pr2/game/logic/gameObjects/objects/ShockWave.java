@@ -15,7 +15,7 @@ public class ShockWave extends Weapon {
 
 	public ShockWave(Game game) {
 		
-		super(game, -1, -1, 1, damage, Move.NONE);
+		super(game, -1, -1, 0, damage, Move.NONE);
 	}
 
 	public boolean performAttack(GameObject other) {
@@ -25,7 +25,11 @@ public class ShockWave extends Weapon {
 	
 	@Override
 	public void onDelete() {
+	}
+	
+	@Override
+	public String toStringifier() {
 		
-		//game.enableShockWave();
+		return "";
 	}
 }

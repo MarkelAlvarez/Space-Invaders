@@ -22,9 +22,21 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		setActive(false);
 	}
 
+	/*
+	 * Cuando el ovni recive da√±o se desactiva y pone el shockwave a true
+	 */
 	public boolean receiveMissileAttack(int damage) {
 
 		getDamage(damage);
+		
+		if (!isAlive())
+		{
+			super.onDelete();
+			life = 1; //Para que el removeDead no lo borre de la lista
+			game.enableShockWave();
+			deactivate();
+		}
+		
 		return true;
 	}
 
@@ -70,19 +82,12 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	@Override
 	public void onDelete() {
-		
-		if(active) //para que no lo compruebe cuando est· muerto
-		{
-			super.onDelete();
-			game.enableShockWave();
-			deactivate();
-		}
 	}
 	
 	@Override
 	public String toStringifier() {
 		
-		return icono + ": " + x + " " + y + " " + live;
+		return icono + ": " + x + " " + y + " " + live + "\n";
 	}
 
 	/*GETS y SETS*/

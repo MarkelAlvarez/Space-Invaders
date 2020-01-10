@@ -58,7 +58,7 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 	
 	public String toStringifier() {
 		
-		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + " " + id;
+		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + " " + id + "\n";
 	}
 
 	/*GETS y SETS*/

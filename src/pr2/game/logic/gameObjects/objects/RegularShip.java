@@ -60,7 +60,7 @@ public class RegularShip extends AlienShip {
 	
 	public String toStringifier() {
 		
-		return "R: " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
+		return "R: " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + "\n";
 	}
 
 	/*GETS y SETS*/

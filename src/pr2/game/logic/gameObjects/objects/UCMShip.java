@@ -20,6 +20,7 @@ public class UCMShip extends Ship{
 	public static String icono = "^__^";
 	public static String death = "!xx!";
 	public static int life = 3;
+	private boolean dead = false;
 
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
@@ -31,11 +32,17 @@ public class UCMShip extends Ship{
 	}
 
 	/*
-	 * Recibe el daño de una nave
+	 * Recibe el daï¿½o de una nave
 	*/
 	public boolean receiveBombAttack(int damage) {
 
 		getDamage(damage);
+		
+		if (isAlive())
+		{
+			dead = true;
+			life++; //Para que el removeDead no se lo lleve por delante
+		}
 		
 		return true;
 	}
@@ -63,7 +70,7 @@ public class UCMShip extends Ship{
 		
 		/*
 		 * Si no es posible disparar se lanza una excepcion explicando que ocurre.
-		 * Si es posible lanzar un shockwave se añade a la lista y luego se desactiva
+		 * Si es posible lanzar un shockwave se aï¿½ade a la lista y luego se desactiva
 		 * para que no puedan ser lanzados de manera infinita
 		*/
 		if(hasShockwave)
@@ -80,7 +87,7 @@ public class UCMShip extends Ship{
 	
 	/*
 	 * Se comprueban con la cantidad de puntos que se tienen cuantas naves pueden comprarse.
-	 * Si no es posible comprar ninguna se lanza una excepción explicando lo ocurrido
+	 * Si no es posible comprar ninguna se lanza una excepciï¿½n explicando lo ocurrido
 	*/
 	public boolean buy() throws NotEnoughPointsException {
 		
@@ -103,7 +110,7 @@ public class UCMShip extends Ship{
 	
 	/*
 	 * Mueve la nave de izquierda a derecha y viceversa hasta que no se puede mover
-	 * más debido a que UCMShip se encuentra en el borde y se lanza una excepción
+	 * mï¿½s debido a que UCMShip se encuentra en el borde y se lanza una excepciï¿½n
 	 * explicando que ocurre
 	*/
 	public boolean move(int cells) throws CommandExecuteException, OffWorldException {
@@ -153,7 +160,7 @@ public class UCMShip extends Ship{
 	
 	public String toStringifier() {
 		
-		return "P: " + x + " " + y + " " + live + " " + points + " " + hasShockwave + " " + (points / SuperLaser.cost);
+		return "P: " + x + " " + y + " " + live + " " + points + " " + hasShockwave + " " + (points / SuperLaser.cost) + "\n";
 	}
 
 	/*GETS & SETS*/

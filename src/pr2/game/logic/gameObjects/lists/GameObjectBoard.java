@@ -1,7 +1,7 @@
 package pr2.game.logic.gameObjects.lists;
 
 /*
-* Juan Pablo Corella y Markel Alvarez (2ºB)
+* Juan Pablo Corella y Markel Alvarez (2ÂºB)
 */
 
 import pr2.game.logic.gameObjects.*;
@@ -13,7 +13,7 @@ public class GameObjectBoard {
 	private int currentObjects;
 
 	/*
-	 * Inicializaci�n del tablero
+	 * Inicializaciï¿½n del tablero
 	*/
 	public GameObjectBoard (int width, int height)
 	{
@@ -32,7 +32,7 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * A�ade nuevos objetos a la lista
+	 * Añade nuevos objetos a la lista
 	*/
 	public void add (GameObject object) {
 
@@ -76,8 +76,8 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Aqu� se actualiza el estado de juego. Primero se comprueban si hay colision,
-	 * si es afirmativo se eliminara(n) de la lista. Despues se repite la operaci�n
+	 * Aquí se actualiza el estado de juego. Primero se comprueban si hay colision,
+	 * si es afirmativo se eliminara(n) de la lista. Despues se repite la operación
 	 * pero moviendo los objetos y volviendo a comprobar las colisiones para luego
 	 * eliminar todo aquello que no tenga vida de la lista
 	*/
@@ -85,8 +85,11 @@ public class GameObjectBoard {
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
-			objects[i].move();
-			checkAttacks(objects[i]);
+			if (objects[i].isAlive()) 
+			{
+				objects[i].move();
+				checkAttacks(objects[i]);
+			}
 		}
 		
 		removeDead();
@@ -97,30 +100,22 @@ public class GameObjectBoard {
 	*/
 	private void checkAttacks(GameObject object) {
 		
-		if(!(object instanceof ShockWave))
-		{
-			int i = 0;
+		int i = 0;
 			
-			while (i < currentObjects)
+		while (i < currentObjects)
+		{
+			for (int j = 0; j < currentObjects; j++)
 			{
-				if(objects[i].isOnPosition(object.getX(), object.getY()) && objects[i].isAlive() && objects[i] != object)
+				if (objects[j].isAlive())
 				{
-					if(object.performAttack(objects[i]))
+					if(object.performAttack(objects[j]))
 					{
 						object.getDamage(object.getLive());
 						i = currentObjects;
 					}
 				}
-				i++;
 			}
-		}
-		else
-		{
-			for (int i = 0; i < currentObjects; i++)
-			{
-				object.performAttack(objects[i]);
-			}
-			object.getDamage(object.getLive());
+			i++;
 		}
 	}
 	
@@ -158,39 +153,24 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Aqu� se eliminan los elementos del juego sin vida
+	 * Aquí se eliminan los elementos del juego sin vida
 	*/
 	private void removeDead() {
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
+			objects[i].onDelete();
+			
 			if (!(objects[i] instanceof ShockWave))
 			{
 				if(!objects[i].isAlive() || objects[i].isOut())	
 				{
-					if(objects[i] instanceof Ovni)
-					{
-						if(!objects[i].isAlive())
-						{
-							if(((Ovni) objects[i]).getActive())
-							{
-								objects[i].onDelete();
-							}
-						}
-						else
-						{
-							((Ovni) objects[i]).deactivate();
-						}
-					}
-					else
-					{
-						objects[i].onDelete();
+					objects[i].onDelete();
 						
-						if(!(objects[i] instanceof UCMShip)) 
-						{
-							remove(objects[i]);
-							i--;
-						}
+					if(!(objects[i] instanceof UCMShip)) 
+					{
+						remove(objects[i]);
+						i--;
 					}
 				}
 			}
@@ -203,7 +183,7 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Este algoritmo complementa al anterior en la eliminaci�n de los objectos en la lista
+	 * Este algoritmo complementa al anterior en la eliminación de los objectos en la lista
 	*/
 	private void remove(GameObject object) {
 
@@ -240,7 +220,7 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Recibe la informaci�n de los objetos en modo texto
+	 * Recibe la información de los objetos en modo texto
 	*/
 	public String toStringifier() {
 		
@@ -248,10 +228,7 @@ public class GameObjectBoard {
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
-			if (!(objects[i] instanceof ShockWave))
-			{
-				str += objects[i].toStringifier() + "\n";
-			}
+			str += objects[i].toStringifier();
 		}
 		
 		return str;

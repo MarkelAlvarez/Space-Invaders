@@ -26,10 +26,12 @@ public class ExplosiveShip extends RegularShip {
 
 		super.getDamage(damage);
 		
-		if(!isAlive() && !explode) {
+		if(!isAlive() && !explode)
+		{
 			game.explosion(x, y, damage);	
 			explode = true;
 		}
+		
 		return true;
 	}
 
@@ -38,10 +40,12 @@ public class ExplosiveShip extends RegularShip {
 
 		super.getDamage(damage);
 		
-		if(!isAlive() && !explode) {
+		if(!isAlive() && !explode)
+		{
 			game.explosion(x, y, damage);	
 			explode = true;
 		}
+		
 		return true;
 	}
 
@@ -64,6 +68,6 @@ public class ExplosiveShip extends RegularShip {
 	@Override
 	public String toStringifier() {
 		
-		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move);
+		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + "\n";
 	}
 }

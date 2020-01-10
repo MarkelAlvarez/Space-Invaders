@@ -22,9 +22,16 @@ public class Bomb extends Weapon{
 	}
 
 	@Override
-	public boolean performAttack(GameObject other) {
+public boolean performAttack(GameObject other) {
 		
-		return other.receiveBombAttack(damage);
+		boolean ret = false;
+		
+		if (other.isOnPosition(x, y))
+		{
+			ret = other.receiveBombAttack(super.damage);
+		}
+		
+		return ret;
 	}
 
 	@Override
@@ -43,7 +50,7 @@ public class Bomb extends Weapon{
 
 	public String toStringifier() {
 		
-		return "B: " + x + " " + y + " "+ ship.getId();
+		return "B: " + x + " " + y + " " + ship.getId() + "\n";
 	}
 	
 	/*GETS y SETS*/

@@ -22,8 +22,15 @@ public class UCMShipLaser extends Weapon {
 
 	@Override
 	public boolean performAttack(GameObject other) {
-
-		return other.receiveMissileAttack(super.damage);
+		
+		boolean ret = false;
+		
+		if (other.isOnPosition(x, y))
+		{
+			ret = other.receiveMissileAttack(super.damage);
+		}
+		
+		return ret;
 	}
 
 	@Override
@@ -48,7 +55,7 @@ public class UCMShipLaser extends Weapon {
 	
 	public String toStringifier() {
 		
-		return "M: " + x + " " + y;
+		return "M: " + x + " " + y + "\n";
 	}
 	
 	/*GETS y SETS*/
