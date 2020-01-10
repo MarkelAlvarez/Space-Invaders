@@ -5,7 +5,6 @@ package pr2.game.logic.gameObjects.lists;
 */
 
 import pr2.game.logic.gameObjects.*;
-import pr2.game.logic.gameObjects.objects.*;
 
 public class GameObjectBoard {
 
@@ -157,27 +156,11 @@ public class GameObjectBoard {
 	*/
 	private void removeDead() {
 		
-		for (int i = 0; i < currentObjects; i++)
+		for (int i = currentObjects-1; i >= 0; i--)
 		{
-			objects[i].onDelete();
-			
-			if (!(objects[i] instanceof ShockWave))
-			{
-				if(!objects[i].isAlive() || objects[i].isOut())	
-				{
-					objects[i].onDelete();
-						
-					if(!(objects[i] instanceof UCMShip)) 
-					{
-						remove(objects[i]);
-						i--;
-					}
-				}
-			}
-			else if(!objects[i].isAlive())
+			if (!objects[i].isAlive())
 			{
 				objects[i].onDelete();
-				remove(objects[i]);
 			}
 		}
 	}
@@ -185,7 +168,7 @@ public class GameObjectBoard {
 	/*
 	 * Este algoritmo complementa al anterior en la eliminación de los objectos en la lista
 	*/
-	private void remove(GameObject object) {
+	public void remove(GameObject object) {
 
 		int i = 0;
 

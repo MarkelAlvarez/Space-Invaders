@@ -83,7 +83,7 @@ public class Game implements IPlayerController {
 	}
 
 	/*
-	 * Proporciona dinamicamente la información sobre los objetos del juego
+	 * Proporciona dinamicamente la informaciï¿½n sobre los objetos del juego
 	*/
 	public void list() {
 
@@ -101,7 +101,7 @@ public class Game implements IPlayerController {
 	}
 
 	/* 
-	 * Comprueba si está dentro del tablero
+	 * Comprueba si estÃ¡ dentro del tablero
 	*/
 	public boolean isOnBoard(int x, int y) {
 
@@ -114,7 +114,7 @@ public class Game implements IPlayerController {
 	}
 
 	/*
-	 * Añade en un string la información basica del juego que despues será mostrada
+	 * Aï¿½ade en un string la informaciÃ³n basica del juego que despues serÃ¡ mostrada
 	*/
 	public String infoToString() {
 
@@ -202,6 +202,11 @@ public class Game implements IPlayerController {
 					+ "Game: " + currentCycle + "\n"
 					+ "Level: " + level.getLevelString() + "\n"
 					+ board.toStringifier();	
+	}
+	
+	public void remove(GameObject object) {
+
+		board.remove(object);
 	}
 
 	/*

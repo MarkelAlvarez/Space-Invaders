@@ -22,7 +22,7 @@ public class Bomb extends Weapon{
 	}
 
 	@Override
-public boolean performAttack(GameObject other) {
+	public boolean performAttack(GameObject other) {
 		
 		boolean ret = false;
 		
@@ -46,6 +46,7 @@ public boolean performAttack(GameObject other) {
 	public void onDelete() {
 		
 		ship.setBomb(true);
+		game.remove(this);
 	}
 
 	public String toStringifier() {

@@ -29,14 +29,6 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 
 		getDamage(damage);
 		
-		if (!isAlive())
-		{
-			super.onDelete();
-			life = 1; //Para que el removeDead no lo borre de la lista
-			game.enableShockWave();
-			deactivate();
-		}
-		
 		return true;
 	}
 
@@ -77,11 +69,19 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		if(isAlive() && !isOut())
 		{
 			y--;
+			if (isOut())
+			{
+				deactivate();
+			}
 		}
 	}
 	
 	@Override
 	public void onDelete() {
+
+		super.onDelete();
+		game.enableShockWave();
+		deactivate();
 	}
 	
 	@Override

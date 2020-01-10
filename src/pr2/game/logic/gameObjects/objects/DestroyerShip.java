@@ -60,6 +60,13 @@ public class DestroyerShip extends AlienShip implements IExecuteRandomActions{
 		
 		return icono + ": " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + " " + id + "\n";
 	}
+	
+	@Override
+	public void onDelete() {
+
+		super.onDelete();
+		game.remove(this);
+	}
 
 	/*GETS y SETS*/
 

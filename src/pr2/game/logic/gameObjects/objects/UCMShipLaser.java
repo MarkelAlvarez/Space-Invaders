@@ -51,6 +51,7 @@ public class UCMShipLaser extends Weapon {
 	public void onDelete() {
 		
 		game.enableMissile();
+		game.remove(this);
 	}
 	
 	public String toStringifier() {

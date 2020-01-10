@@ -19,6 +19,8 @@ public class SuperLaser extends UCMShipLaser {
 
 	@Override
 	public void onDelete() {
+
+		game.remove(this);
 	}
 
 	public String toString() {

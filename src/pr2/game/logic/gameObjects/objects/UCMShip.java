@@ -20,7 +20,6 @@ public class UCMShip extends Ship{
 	public static String icono = "^__^";
 	public static String death = "!xx!";
 	public static int life = 3;
-	private boolean dead = false;
 
 	/*Inicializa los atributos de la clase*/
 	public UCMShip(Game game, int x, int y) {
@@ -37,12 +36,6 @@ public class UCMShip extends Ship{
 	public boolean receiveBombAttack(int damage) {
 
 		getDamage(damage);
-		
-		if (isAlive())
-		{
-			dead = true;
-			life++; //Para que el removeDead no se lo lleve por delante
-		}
 		
 		return true;
 	}

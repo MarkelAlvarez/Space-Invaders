@@ -62,6 +62,13 @@ public class RegularShip extends AlienShip {
 		
 		return "R: " + x + " " + y + " " + live + " " + cyclesToMove + " " + Move.toString(move) + "\n";
 	}
+	
+	@Override
+	public void onDelete() {
+
+		super.onDelete();
+		game.remove(this);
+	}
 
 	/*GETS y SETS*/
 
