@@ -244,7 +244,7 @@ public class GameObjectBoard {
 	/*
 	 * Este algoritmo complementa al anterior en la eliminación de los objectos en la lista
 	*/
-	private void remove (GameObject object) {
+	private void remove(GameObject object) {
 
 		int i = 0;
 

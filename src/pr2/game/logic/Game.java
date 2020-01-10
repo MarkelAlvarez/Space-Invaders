@@ -193,11 +193,6 @@ public class Game implements IPlayerController {
 			player.setLaser(true);
 		}
 	}
-	
-	public void setCurrentCycle(int currentCycle) {
-		
-		this.currentCycle = currentCycle;
-	}
 
 	public String stringifier() {
 		
