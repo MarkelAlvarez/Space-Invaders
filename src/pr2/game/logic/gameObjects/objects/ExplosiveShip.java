@@ -11,19 +11,44 @@ public class ExplosiveShip extends RegularShip {
 
 	public static String icono = "E";
 	private int damage = 1;
+	private boolean explode;
 
 	public ExplosiveShip(Game game, int x, int y, int live, int cycles, Move move) {
 		
 		super(game, x, y, live);
 		cyclesToMove = cycles;
 		this.move = move;
+		explode = false;
+	}
+	
+	@Override
+	public boolean receiveMissileAttack(int damage) {
+
+		super.getDamage(damage);
+		
+		if(!isAlive() && !explode) {
+			game.explosion(x, y, damage);	
+			explode = true;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean receiveShockWaveAttack(int damage) {
+
+		super.getDamage(damage);
+		
+		if(!isAlive() && !explode) {
+			game.explosion(x, y, damage);	
+			explode = true;
+		}
+		return true;
 	}
 
 	@Override
 	public void onDelete() {
 		
 		super.onDelete();
-		game.explosion(x, y, damage);
 	}
 
 	@Override

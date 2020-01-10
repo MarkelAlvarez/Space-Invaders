@@ -13,7 +13,7 @@ public class GameObjectBoard {
 	private int currentObjects;
 
 	/*
-	 * Inicialización del tablero
+	 * Inicializaciï¿½n del tablero
 	*/
 	public GameObjectBoard (int width, int height)
 	{
@@ -32,7 +32,7 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Añade nuevos objetos a la lista
+	 * Aï¿½ade nuevos objetos a la lista
 	*/
 	public void add (GameObject object) {
 
@@ -76,8 +76,8 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Aquí se actualiza el estado de juego. Primero se comprueban si hay colision,
-	 * si es afirmativo se eliminara(n) de la lista. Despues se repite la operación
+	 * Aquï¿½ se actualiza el estado de juego. Primero se comprueban si hay colision,
+	 * si es afirmativo se eliminara(n) de la lista. Despues se repite la operaciï¿½n
 	 * pero moviendo los objetos y volviendo a comprobar las colisiones para luego
 	 * eliminar todo aquello que no tenga vida de la lista
 	*/
@@ -158,11 +158,9 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Aquí se eliminan los elementos del juego sin vida
+	 * Aquï¿½ se eliminan los elementos del juego sin vida
 	*/
 	private void removeDead() {
-		
-		boolean explosiveCheck = false;
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
@@ -190,10 +188,6 @@ public class GameObjectBoard {
 						
 						if(!(objects[i] instanceof UCMShip)) 
 						{
-							if(objects[i] instanceof ExplosiveShip)
-							{
-								explosiveCheck = true;
-							}
 							remove(objects[i]);
 							i--;
 						}
@@ -206,15 +200,10 @@ public class GameObjectBoard {
 				remove(objects[i]);
 			}
 		}
-		
-		if (explosiveCheck)
-		{
-			removeDead();
-		}
 	}
 
 	/*
-	 * Este algoritmo complementa al anterior en la eliminación de los objectos en la lista
+	 * Este algoritmo complementa al anterior en la eliminaciï¿½n de los objectos en la lista
 	*/
 	private void remove(GameObject object) {
 
@@ -251,7 +240,7 @@ public class GameObjectBoard {
 	}
 
 	/*
-	 * Recibe la información de los objetos en modo texto
+	 * Recibe la informaciï¿½n de los objetos en modo texto
 	*/
 	public String toStringifier() {
 		
