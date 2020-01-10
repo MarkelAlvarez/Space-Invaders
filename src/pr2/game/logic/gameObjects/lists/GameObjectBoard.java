@@ -85,21 +85,8 @@ public class GameObjectBoard {
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
-			if(objects[i].isAlive() && objects[i] instanceof Weapon)
-			{
-				checkAttacks(objects[i]);
-			}
-		}
-
-		removeDead();
-		
-		for (int i = 0; i < currentObjects; i++)
-		{
-			if(objects[i].isAlive() && objects[i] instanceof Weapon)
-			{
-				objects[i].move();
-				checkAttacks(objects[i]);
-			}
+			objects[i].move();
+			checkAttacks(objects[i]);
 		}
 		
 		removeDead();
@@ -163,21 +150,6 @@ public class GameObjectBoard {
 	 * correspondientes
 	*/
 	public void computerAction() {
-		
-		for (int i = 0; i < currentObjects; i++)
-		{
-			if(objects[i] instanceof AlienShip)
-			{
-				objects[i].move();
-			}
-			else if(objects[i] instanceof Ovni)
-			{
-				if(((Ovni) objects[i]).getActive())
-				{
-					objects[i].move();
-				}
-			}
-		}
 		
 		for (int i = 0; i < currentObjects; i++)
 		{
