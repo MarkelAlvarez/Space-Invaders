@@ -78,6 +78,7 @@ public class AlienShip extends EnemyShip {
 	}
 	
 	public static void initRemainingAliens() {
+		
 		REMAINING_ALIENS = 0;
 	}
 	
