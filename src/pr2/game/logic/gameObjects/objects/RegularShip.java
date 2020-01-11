@@ -49,6 +49,7 @@ public class RegularShip extends AlienShip {
 			game.addObject(new ExplosiveShip(game, x, y, live, cyclesToMove, move));
 			setShipsOnBorder(shipsBorder);
 			getDamage(live);
+			game.receivePoints(-points); //Para que el jugador no gane puntos cuando se convierta en explosive
 		}
 	}
 

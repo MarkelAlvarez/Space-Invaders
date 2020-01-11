@@ -1,5 +1,7 @@
 package pr2.game.logic;
 
+import pr2.game.logic.gameObjects.AlienShip;
+
 /*
 * Juan Pablo Corella y Markel Alvarez (2ºB)
 */
@@ -18,6 +20,7 @@ public class BoardInitializer {
 		this.level = level;
 		this.game = game;
 		board = new GameObjectBoard(Game.DIM_X, Game.DIM_Y);
+		AlienShip.initRemainingAliens();	//RemainingAliens vuelve a 0 cuando reseteo
 		initializeOvni();
 		initializeRegularAliens();
 		initializeDestroyerAliens();

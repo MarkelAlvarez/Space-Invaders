@@ -77,6 +77,10 @@ public class AlienShip extends EnemyShip {
 		return super.toString();
 	}
 	
+	public static void initRemainingAliens() {
+		REMAINING_ALIENS = 0;
+	}
+	
 	//GETS & SETS
 
 	public static boolean haveLanded() {
