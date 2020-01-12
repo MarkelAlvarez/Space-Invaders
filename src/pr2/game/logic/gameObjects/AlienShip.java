@@ -28,7 +28,7 @@ public class AlienShip extends EnemyShip {
 	*/
 	public void move() {
 		
-		if (cyclesToMove== 0)
+		if (cyclesToMove == 0)
 		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 			super.move();
@@ -84,6 +84,16 @@ public class AlienShip extends EnemyShip {
 	
 	//GETS & SETS
 
+	public static void setIS_IN_FINAL_ROW(boolean iS_IN_FINAL_ROW) {
+		
+		IS_IN_FINAL_ROW = iS_IN_FINAL_ROW;
+	}
+
+	public static boolean isIS_IN_FINAL_ROW() {
+		
+		return IS_IN_FINAL_ROW;
+	}
+	
 	public static boolean haveLanded() {
 		
 		return IS_IN_FINAL_ROW;

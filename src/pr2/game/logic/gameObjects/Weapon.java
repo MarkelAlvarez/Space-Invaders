@@ -41,7 +41,8 @@ public class Weapon extends GameObject {
 				x++;
 			}
 			
-			if(isOut()) {
+			if(isOut())
+			{
 				live = 0;
 			}
 		}
