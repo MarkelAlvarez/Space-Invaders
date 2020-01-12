@@ -84,7 +84,7 @@ public class UCMShip extends Ship{
 	*/
 	public boolean buy() throws NotEnoughPointsException {
 		
-		if(points > SuperLaser.cost)
+		if(points >= SuperLaser.cost)
 		{
 			game.addObject(new SuperLaser(game, x, y));
 			game.receivePoints(-SuperLaser.cost);
