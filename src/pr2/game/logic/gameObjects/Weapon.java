@@ -30,13 +30,20 @@ public class Weapon extends GameObject {
 	@Override
 	public void move() {
 		
-		if (move == Move.UP)
-		{
-			x--;
-		}
-		else
-		{
-			x++;
+		if(move != Move.NONE) {
+			
+			if (move == Move.UP)
+			{
+				x--;
+			}
+			else
+			{
+				x++;
+			}
+			
+			if(isOut()) {
+				live = 0;
+			}
 		}
 	}
 
