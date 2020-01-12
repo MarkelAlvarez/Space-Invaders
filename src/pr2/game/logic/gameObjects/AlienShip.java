@@ -22,10 +22,10 @@ public class AlienShip extends EnemyShip {
 		cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 	}
 	
-	@Override
 	/*
 	 * Mediante este algoritmo se consigue el movimiento de las naves alienigenas
 	*/
+	@Override
 	public void move() {
 		
 		if (cyclesToMove == 1)		//El ciclo que queda es el de moverse
@@ -48,7 +48,6 @@ public class AlienShip extends EnemyShip {
 		{
 			cyclesToMove--;
 		}
-
 
 		if(x == Game.DIM_X - 1)
 		{
