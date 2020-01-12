@@ -48,8 +48,8 @@ public class AlienShip extends EnemyShip {
 		{
 			cyclesToMove--;
 		}
-		
-		
+
+
 		if(x == Game.DIM_X - 1)
 		{
 			IS_IN_FINAL_ROW = true;
@@ -59,14 +59,14 @@ public class AlienShip extends EnemyShip {
 	@Override
 	public void computerAction() {
 	}
-	
+
 	@Override
 	public void onDelete() {
-		
+
 		super.onDelete();
-		
+
 		REMAINING_ALIENS--;
-		
+
 		if(SHIPS_ON_BORDER > 0)
 		{
 			SHIPS_ON_BORDER--;
@@ -75,39 +75,49 @@ public class AlienShip extends EnemyShip {
 
 	@Override
 	public String toString() {
-		
+
 		return super.toString();
 	}
-	
+
 	public static void initRemainingAliens() {
-		
+
 		REMAINING_ALIENS = 0;
 	}
-	
+
 	//GETS & SETS
 
+	public static void setIS_IN_FINAL_ROW(boolean iS_IN_FINAL_ROW) {
+
+		IS_IN_FINAL_ROW = iS_IN_FINAL_ROW;
+	}
+
+	public static boolean isIS_IN_FINAL_ROW() {
+
+		return IS_IN_FINAL_ROW;
+	}
+
 	public static boolean haveLanded() {
-		
+
 		return IS_IN_FINAL_ROW;
 	}
 
 	public static boolean allDead() {
-		
+
 		return REMAINING_ALIENS == 0;
 	}
 
 	public static int getRemainingAliens() {
-		
+
 		return REMAINING_ALIENS;
 	}
-	
+
 	public static int getShipsOnBorder() {
-		
+
 		return SHIPS_ON_BORDER;
 	}
-	
+
 	public static void setShipsOnBorder(int ships) {
-		
+
 		SHIPS_ON_BORDER = ships;
 	}
 }
