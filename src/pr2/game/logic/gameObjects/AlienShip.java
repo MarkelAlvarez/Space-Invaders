@@ -28,7 +28,7 @@ public class AlienShip extends EnemyShip {
 	@Override
 	public void move() {
 		
-		if (cyclesToMove == 1)		//El ciclo que queda es el de moverse
+		if (cyclesToMove == 0)
 		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 			super.move();
