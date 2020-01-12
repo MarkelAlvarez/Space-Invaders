@@ -28,21 +28,17 @@ public class AlienShip extends EnemyShip {
 	*/
 	public void move() {
 		
-		if (cyclesToMove== 0)
+		if (cyclesToMove == 1)		//El ciclo que queda es el de moverse
 		{
 			cyclesToMove = game.getLevel().getNumCyclesToMoveOneCell();
 			super.move();
 			
-			if(x == Game.DIM_X - 1)
-			{
-				IS_IN_FINAL_ROW = true;
-			}
 			if ((move == Move.LEFT && y == 0) || (move == Move.RIGHT && y == Game.DIM_Y - 1))
 			{
 				SHIPS_ON_BORDER = REMAINING_ALIENS;
 			}
 		}
-		else if ((SHIPS_ON_BORDER > 0) && !IS_IN_FINAL_ROW)
+		else if (SHIPS_ON_BORDER > 0)
 		{
 			x++;
 			move = move.flip();
@@ -51,6 +47,12 @@ public class AlienShip extends EnemyShip {
 		else
 		{
 			cyclesToMove--;
+		}
+		
+		
+		if(x == Game.DIM_X - 1)
+		{
+			IS_IN_FINAL_ROW = true;
 		}
 	}
 
