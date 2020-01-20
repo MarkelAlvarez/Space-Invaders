@@ -11,6 +11,7 @@ import pr2.game.logic.gameObjects.IExecuteRandomActions;
 public class Ovni extends EnemyShip implements IExecuteRandomActions{
 
 	private Boolean active;
+	private Boolean init = true;
 	public static String icono = "O";
 	public static int puntos = 25;
 	public static int life = 1;
@@ -43,6 +44,7 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 				y = Game.DIM_Y - 1;
 				live = life;
 				active = true;
+				init = true;
 			}
 		}
 	}
@@ -66,13 +68,17 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	@Override
 	public void move() {
 		
-		if(isAlive() && !isOut())
+		if(isAlive() && !isOut() && !init)
 		{
 			y--;
 			if (isOut())
 			{
 				deactivate();
 			}
+		}
+		else
+		{
+			init = false;
 		}
 	}
 	
