@@ -23,7 +23,7 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	}
 
 	/*
-	 * Cuando el ovni recive daño se desactiva y pone el shockwave a true
+	 * Cuando el ovni recibe daño se desactiva y pone el shockwave a true
 	 */
 	public boolean receiveMissileAttack(int damage) {
 
