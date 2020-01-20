@@ -48,7 +48,7 @@ public class Controller {
 			printMe = true;
 			
 			System.out.print("Command > ");
-			String[] words = in.nextLine().toLowerCase().trim().split ("\\s+");
+			String[] words = in.nextLine().toLowerCase().trim().split("\\s+");
 
 			try {
 				Command command = CommandGenerator.parseCommand(words);
