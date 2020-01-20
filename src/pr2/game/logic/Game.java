@@ -26,7 +26,7 @@ public class Game implements IPlayerController {
 
 	public Game (Level level, Random random) {
 
-		this. rand = random;
+		this.rand = random;
 		this.level = level;
 		initializer = new BoardInitializer();
 	}
